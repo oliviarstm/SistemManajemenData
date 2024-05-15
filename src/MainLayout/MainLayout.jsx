@@ -1,4 +1,3 @@
-import React from "react";
 import gambar10 from "../../public/gambar10.png";
 import gambar11 from "../../public/gambar11.png";
 import DrawerButton from "../Components/DrawerButton";

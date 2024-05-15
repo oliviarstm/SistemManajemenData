@@ -1,4 +1,3 @@
-import React from "react";
 import gambar15 from "../../../public/gambar15.png";
 import gambar13 from "../../../public/gambar13.png";
 import gambar12 from "../../../public/gambar12.png";

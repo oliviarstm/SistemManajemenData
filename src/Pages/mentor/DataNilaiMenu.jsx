@@ -6,7 +6,7 @@ import kelasC from "../../../public/kelasC.png";
 import menteeIndividual from "../../../public/menteeIndividual.png";
 import DashboardButton from "../../Components/DashboardButton";
 
-const DataNilai = () => {
+const DataNilaiMenu = () => {
   return (
     <div>
       <div className="  text-center p-12">
@@ -25,4 +25,4 @@ const DataNilai = () => {
   );
 };
 
-export default DataNilai;
+export default DataNilaiMenu;

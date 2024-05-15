@@ -7,7 +7,9 @@ import DashboardMentor from "./Pages/mentor/DashboardMentor";
 import DashboardAdmin from "./Pages/admin/DashboardAdmin";
 import DashboardMentee from "./Pages/mentee/DashboardMentee";
 import DataMenteeMenu from "./Pages/mentor/DataMenteeMenu";
-import DataNilai from "./Pages/mentor/DataNilai";
+import DataNilaiMenu from "./Pages/mentor/DataNilaiMenu.jsx";
+import DataMentee from "./Pages/mentor/DataMentee.jsx";
+import EditUserModal from "./Components/EditUserModal.jsx";
 
 const App = () => {
   return (
@@ -19,7 +21,9 @@ const App = () => {
           <Route element={<MainLayout />}>
             <Route path="/admin" element={<DashboardAdmin />} />
             <Route path="/datamentee" element={<DataMenteeMenu />} />
-            <Route path="/datanilai" element={<DataNilai />} />
+            <Route path="/detailmentee" element={<DataMentee />} />
+            <Route path="/datanilai" element={<DataNilaiMenu />} />
+            <Route path="/test" element={<EditUserModal />} />
           </Route>
         </Routes>
       </BrowserRouter>

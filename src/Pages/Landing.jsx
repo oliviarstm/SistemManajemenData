@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../Components/Navbar";
 import gambar1 from "../../public/gambar1.png";
 import arrow from "../../public/arrow.png";
@@ -13,7 +12,7 @@ import gambar8 from "../../public/gambar8.png";
 
 const Landing = () => {
   return (
-    <div>
+    <div className="bg-white">
       <Navbar />
       <div className="p-5">
         <div
