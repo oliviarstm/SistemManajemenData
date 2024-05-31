@@ -10,7 +10,7 @@ const Login = () => {
   return (
     <div className="flex flex-row h-screen">
       <div className="w-1/2  flex flex-col justify-center">
-        <img src={gambar9} alt="" className="w-3/4 mb-5 mx-auto" />
+        <img src={gambar9} alt="gambar login" className="w-3/4 mb-5 mx-auto" />
         <p className="text-center text-[#235EAC] text-2xl font-semibold">
           Selamat datang di portal kami! Silahkan masuk dan nikmati pembelajaran
           web yang lebih baik

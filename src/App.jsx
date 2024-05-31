@@ -10,6 +10,14 @@ import DataMenteeMenu from "./Pages/mentor/DataMenteeMenu";
 import DataNilaiMenu from "./Pages/mentor/DataNilaiMenu.jsx";
 import DataMentee from "./Pages/mentor/DataMentee.jsx";
 import EditUserModal from "./Components/EditUserModal.jsx";
+import EditProfilAdmin from "./Pages/admin/EditProfilAdmin.jsx";
+import EditProfilMentee from "./Pages/mentee/EditProfilMentee.jsx";
+import EditProfilMentor from "./Pages/mentor/EditProfilMentor.jsx";
+import PengumpulanTugas from "./Pages/mentor/PengumpulanTugas.jsx";
+import AbsenMentee from "./Pages/mentor/AbsenMentee.jsx";
+import KonfirmasiHapus from "./Pages/admin/KonfirmasiHapus";
+import TestHapus from "./Pages/admin/TestHapus.jsx";
+import TambahMentee from "./Pages/admin/tambahmentee.jsx";
 
 const App = () => {
   return (
@@ -24,6 +32,14 @@ const App = () => {
             <Route path="/detailmentee" element={<DataMentee />} />
             <Route path="/datanilai" element={<DataNilaiMenu />} />
             <Route path="/test" element={<EditUserModal />} />
+            <Route path="/editprofiladmin" element={<EditProfilAdmin />} />
+            <Route path="/editprofilmentee" element={<EditProfilMentee />} />
+            <Route path="/editprofilmentor" element={<EditProfilMentor />} />
+            <Route path="/pengumpulantugas" element={<PengumpulanTugas />} />
+            <Route path="/absenmentee" element={<AbsenMentee />} />
+            <Route path="/konfirmasihapus" element={<KonfirmasiHapus />} />
+            <Route path="/testhapus" element={<TestHapus />} />
+            <Route path="/tambahmentee" element={<TambahMentee />} />
           </Route>
         </Routes>
       </BrowserRouter>

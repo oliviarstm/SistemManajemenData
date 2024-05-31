@@ -8,9 +8,9 @@ import { Outlet } from "react-router-dom";
 import ProfilButton from "../Components/ProfilButton";
 
 const MainLayout = () => {
-  const role = "Mentor";
+  const role = "Admin";
   const roleMenu =
-    role === "Mentor" ? menuMentor : role === "Admin" ? menuAdmin : menuMentee;
+    role === "Admin" ? menuAdmin : role === "Mentor" ? menuMentor : menuMentee;
   return (
     <div className="flex min-h-screen">
       <div className="bg-[#235EAC] w-1/4 h-auto">
