@@ -15,9 +15,10 @@ import EditProfilMentee from "./Pages/mentee/EditProfilMentee.jsx";
 import EditProfilMentor from "./Pages/mentor/EditProfilMentor.jsx";
 import PengumpulanTugas from "./Pages/mentor/PengumpulanTugas.jsx";
 import AbsenMentee from "./Pages/mentor/AbsenMentee.jsx";
-import KonfirmasiHapus from "./Pages/admin/KonfirmasiHapus";
 import TestHapus from "./Pages/admin/TestHapus.jsx";
-import TambahMentee from "./Pages/admin/tambahmentee.jsx";
+import TesAddMentee from "./Pages/admin/TesAddMentee.jsx";
+import TambahMentee from "./Components/TambahMentee.jsx";
+import TesAddUser from "./Pages/admin/TesAddUser.jsx";
 
 const App = () => {
   return (
@@ -37,9 +38,9 @@ const App = () => {
             <Route path="/editprofilmentor" element={<EditProfilMentor />} />
             <Route path="/pengumpulantugas" element={<PengumpulanTugas />} />
             <Route path="/absenmentee" element={<AbsenMentee />} />
-            <Route path="/konfirmasihapus" element={<KonfirmasiHapus />} />
             <Route path="/testhapus" element={<TestHapus />} />
-            <Route path="/tambahmentee" element={<TambahMentee />} />
+            <Route path="/tesaddmentee" element={<TesAddMentee />} />
+            <Route path="/tesadduser" element={<TesAddUser />} />
           </Route>
         </Routes>
       </BrowserRouter>
