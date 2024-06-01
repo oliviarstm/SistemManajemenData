@@ -1,9 +1,7 @@
-import React from "react";
 import semuaMentee from "../../../public/semuaMentee.png";
 import kelasA from "../../../public/kelasA.png";
 import kelasB from "../../../public/kelasB.png";
 import kelasC from "../../../public/kelasC.png";
-import menteeIndividual from "../../../public/menteeIndividual.png";
 import absen from "../../../public/absen.png";
 import DashboardButton from "../../Components/DashboardButton";
 

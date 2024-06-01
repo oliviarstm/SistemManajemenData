@@ -1,16 +1,16 @@
 // const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""]
 // const exData = [["Olivia", "Poltek", "A", "Pagi"], ["Kelvin", "ITEBA", "B", "Siang"]]
-const exData = [{
-    Name:"Olivia",
-    Universty:"Poltek",
-    Class:"A",
-    Session:"Pagi"
-}, {
-    Name:"Kelvin",
-    Universty:"ITEBA",
-    Class:"B",
-    Session:"Siang"
-}]
+// const exData = [{
+//     Name:"Olivia",
+//     Universty:"Poltek",
+//     Class:"A",
+//     Session:"Pagi"
+// }, {
+//     Name:"Kelvin",
+//     Universty:"ITEBA",
+//     Class:"B",
+//     Session:"Siang"
+// }]
 
 
 const TableData=({field, data, button, isEnable})=>{
@@ -22,7 +22,7 @@ const TableData=({field, data, button, isEnable})=>{
                 }
             </tr>
             {
-                exData.map((val, index) => {
+                data.map((val, index) => {
                     return <tr key={index} className="h-12">
                         {
                             Object.entries(val).map(([_, value], innerIndex) => {

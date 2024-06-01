@@ -1,4 +1,3 @@
-import React from "react";
 import konfirhapus from "../../../public/konfirhapus.png";
 
 const KonfirmasiHapus = ({ show, fileName, onConfirm, onCancel }) => {

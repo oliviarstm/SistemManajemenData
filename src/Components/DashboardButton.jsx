@@ -1,4 +1,3 @@
-import React from "react";
 
 const DashboardButton = ({ image, title }) => {
   return (

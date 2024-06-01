@@ -1,4 +1,3 @@
-import React from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import gambar11 from "../../public/gambar11.png";

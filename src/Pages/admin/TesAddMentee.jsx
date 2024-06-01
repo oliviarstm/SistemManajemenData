@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TambahMentee from "../../Components/TambahMentee";
 
 const TesAddMentee = ({}) => {
@@ -19,7 +19,7 @@ const TesAddMentee = ({}) => {
       <button className="btn" onClick={openModal}>
         open modal
       </button>
-      <TambahMentee isOpen={isModalOpen} onClose={closeModal} title={titles} />
+      <TambahMentee isOpen={isModalOpen} onClose={closeModal} title={titles} isButton={false}/>
     </div>
   );
 };

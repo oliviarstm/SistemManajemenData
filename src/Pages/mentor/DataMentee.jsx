@@ -2,10 +2,17 @@ import Table from "../../Components/table/Index.jsx";
 
 const exTitle = "Data Mentee";
 const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
-const exData = [
-  ["Olivia", "Poltek", "A", "Pagi"],
-  ["Kelvin", "ITEBA", "B", "Siang"],
-];
+const exData = [{
+  Name:"Olivia",
+  Universty:"Poltek",
+  Class:"A",
+  Session:"Pagi"
+}, {
+  Name:"Kelvin",
+  Universty:"ITEBA",
+  Class:"B",
+  Session:"Siang"
+}]
 
 const DataMentee = () => {
   return (

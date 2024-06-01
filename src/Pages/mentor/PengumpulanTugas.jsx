@@ -1,4 +1,3 @@
-import React from "react";
 import semuaMentee from "../../../public/semuaMentee.png";
 import kelasA from "../../../public/kelasA.png";
 import kelasB from "../../../public/kelasB.png";

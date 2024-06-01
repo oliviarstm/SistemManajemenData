@@ -1,4 +1,3 @@
-import React from "react";
 import Landing from "./Pages/Landing";
 import Login from "./Pages/login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";

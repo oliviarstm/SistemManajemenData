@@ -1,4 +1,3 @@
-import React from "react";
 import gambar9 from "../../public/gambar9.png";
 import { useNavigate } from "react-router-dom";
 
