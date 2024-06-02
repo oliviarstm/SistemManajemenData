@@ -19,7 +19,12 @@ const TesAddMentee = ({}) => {
       <button className="btn" onClick={openModal}>
         open modal
       </button>
-      <TambahMentee isOpen={isModalOpen} onClose={closeModal} title={titles} isButton={false}/>
+      <TambahMentee
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        title={titles}
+        isButton={true}
+      />
     </div>
   );
 };

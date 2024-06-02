@@ -16,8 +16,9 @@ import PengumpulanTugas from "./Pages/mentor/PengumpulanTugas.jsx";
 import AbsenMentee from "./Pages/mentor/AbsenMentee.jsx";
 import TestHapus from "./Pages/admin/TestHapus.jsx";
 import TesAddMentee from "./Pages/admin/TesAddMentee.jsx";
-import TambahMentee from "./Components/TambahMentee.jsx";
 import TesAddUser from "./Pages/admin/TesAddUser.jsx";
+import DetailUniv from "./Pages/admin/DetailUniv.jsx";
+import EditUniv from "./Pages/admin/EditUniv.jsx";
 
 const App = () => {
   return (
@@ -40,6 +41,8 @@ const App = () => {
             <Route path="/testhapus" element={<TestHapus />} />
             <Route path="/tesaddmentee" element={<TesAddMentee />} />
             <Route path="/tesadduser" element={<TesAddUser />} />
+            <Route path="/detailuniv" element={<DetailUniv />} />
+            <Route path="/edituniv" element={<EditUniv />} />
           </Route>
         </Routes>
       </BrowserRouter>
