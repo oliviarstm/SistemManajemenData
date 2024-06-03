@@ -19,6 +19,7 @@ import TesAddMentee from "./Pages/admin/TesAddMentee.jsx";
 import TesAddUser from "./Pages/admin/TesAddUser.jsx";
 import DetailUniv from "./Pages/admin/DetailUniv.jsx";
 import EditUniv from "./Pages/admin/EditUniv.jsx";
+import ValidasiPengunduran from "./Pages/admin/ValidasiPengunduran.jsx";
 
 const App = () => {
   return (
@@ -28,7 +29,15 @@ const App = () => {
           <Route path="/" element={<Landing />} />
           <Route path="/login" element={<Login />} />
           <Route element={<MainLayout />}>
+            {/*ADMIN*/}
             <Route path="/admin" element={<DashboardAdmin />} />
+            <Route path="/validasipengunduran" element={<ValidasiPengunduran />} />
+
+
+            {/*MENTOR*/}
+
+
+            {/*MENTEE*/}
             <Route path="/datamentee" element={<DataMenteeMenu />} />
             <Route path="/detailmentee" element={<DataMentee />} />
             <Route path="/datanilai" element={<DataNilaiMenu />} />
