@@ -29,7 +29,7 @@ import EditUniv from "../Pages/admin/EditUniv.jsx";
 
 const Routing = ()=>{
     const isLogin = true
-    const role = "admin"
+    const role = "mentee"
     // console.log("ROUTING")
     // const dispatch = useDispatch()
     // const {role, isLogin} = useSelector(state => state)
@@ -60,7 +60,7 @@ const Routing = ()=>{
                             <Route path="pengajuan" element={<ValidasiPengajuan />}/>
                             <Route path="datamentee" element={<DataMenteeMenu />} />
                             <Route path="detailmentee" element={<DataMentee />} />
-                            <Route path="/editprofiladmin" element={<EditProfilAdmin />} />
+                            <Route path="editprofiladmin" element={<EditProfilAdmin />} />
                         </Route>
                     </Route>
                     <Route element={<MentorRoute role={role}/>}>
@@ -68,13 +68,13 @@ const Routing = ()=>{
                             <Route path="dashboard" element={<DashboardMentor/>}/>
                             <Route path="datamentee" element={<DataMenteeMenu />} />
                             <Route path="detailmentee" element={<DataMentee />} />
-                            <Route path="/editprofilmentor" element={<EditProfilMentor />} />
+                            <Route path="editprofilmentor" element={<EditProfilMentor />} />
                         </Route>
                     </Route>
                     <Route element={<MenteeRoute role={role}/>}>
                         <Route path="mentee">
                             <Route path="dashboard" element={<DashboardMentee/>}/>
-                            <Route path="/editprofilmentee" element={<EditProfilMentee />} />
+                            <Route path="editprofilmentee" element={<EditProfilMentee />} />
                         </Route>
                     </Route>
                 </Route>
@@ -83,15 +83,15 @@ const Routing = ()=>{
             <Route path="*" element={<NotFound/>}/>
 
             <Route element={<MainLayout role="admin"/>}>
-                <Route path="/test" element={<EditUserModal />} />
+                <Route path="test" element={<EditUserModal />} />
 
-                <Route path="/pengumpulantugas" element={<PengumpulanTugas />} />
-                <Route path="/absenmentee" element={<AbsenMentee />} />
-                <Route path="/testhapus" element={<TestHapus />} />
-                <Route path="/tesaddmentee" element={<TesAddMentee />} />
-                <Route path="/tesadduser" element={<TesAddUser />} />
-                <Route path="/detailuniv" element={<DetailUniv />} />
-                <Route path="/edituniv" element={<EditUniv />} />
+                <Route path="pengumpulantugas" element={<PengumpulanTugas />} />
+                <Route path="absenmentee" element={<AbsenMentee />} />
+                <Route path="testhapus" element={<TestHapus />} />
+                <Route path="tesaddmentee" element={<TesAddMentee />} />
+                <Route path="tesadduser" element={<TesAddUser />} />
+                <Route path="detailuniv" element={<DetailUniv />} />
+                <Route path="edituniv" element={<EditUniv />} />
             </Route>
 
         </Routes>
