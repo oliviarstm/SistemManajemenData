@@ -1,27 +1,5 @@
-import Landing from "./Pages/Landing";
-import Login from "./Pages/login";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 import Routing from "./route/index.jsx"
-import MainLayout from "./MainLayout/MainLayout";
-import DashboardMentor from "./Pages/mentor/DashboardMentor";
-import DashboardAdmin from "./Pages/admin/DashboardAdmin";
-import DashboardMentee from "./Pages/mentee/DashboardMentee";
-import DataMenteeMenu from "./Pages/mentor/DataMenteeMenu";
-import DataNilaiMenu from "./Pages/mentor/DataNilaiMenu.jsx";
-import DataMentee from "./Pages/mentor/DataMentee.jsx";
-import EditUserModal from "./Components/EditUserModal.jsx";
-import EditProfilAdmin from "./Pages/admin/EditProfilAdmin.jsx";
-import EditProfilMentee from "./Pages/mentee/EditProfilMentee.jsx";
-import EditProfilMentor from "./Pages/mentor/EditProfilMentor.jsx";
-import PengumpulanTugas from "./Pages/mentor/PengumpulanTugas.jsx";
-import AbsenMentee from "./Pages/mentor/AbsenMentee.jsx";
-import TestHapus from "./Pages/admin/TestHapus.jsx";
-import TesAddMentee from "./Pages/admin/TesAddMentee.jsx";
-import TesAddUser from "./Pages/admin/TesAddUser.jsx";
-import DetailUniv from "./Pages/admin/DetailUniv.jsx";
-import EditUniv from "./Pages/admin/EditUniv.jsx";
-import ValidasiPengunduran from "./Pages/admin/ValidasiPengunduran.jsx";
-import ValidasiPengajuan from "./Pages/admin/ValidasiPengajuan.jsx";
 
 const App = () => {
   return (

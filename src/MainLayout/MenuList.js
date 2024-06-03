@@ -1,64 +1,64 @@
 export const menuMentor = [
   {
     title: "Dashboard",
-    children: [],
+    path: "/mentor/dashboard",
   },
   {
     title: "Data Mentee",
-    children: [],
+    path: "/mentor/mentee",
   },
   {
     title: "Absensi",
-    children: [],
+    path: "/mentor/absen",
   },
   {
     title: "Tugas",
-    children: [{ title: "Pengumpulan Tugas" }],
+    path: "/mentor/tugas",
   },
 ];
 
 export const menuAdmin = [
   {
     title: "Dashboard",
-    children: [],
+    path: "/admin/dashboard",
   },
   {
     title: "Data Mentee",
-    children: [],
+    path: "/admin/mentee",
   },
   {
     title: "Data User",
-    children: [],
+    path: "/admin/",
   },
   {
     title: "Data Universitas",
-    children: [],
+    path: "/admin/",
   },
   {
     title: "Validasi",
-    children: [],
+    path: "/admin/",
   },
 ];
 
 export const menuMentee = [
   {
     title: "Dashboard",
-    children: [],
+    path: "/mentee/dashboard",
   },
   {
     title: "Data Kelas",
-    children: [],
+    path: "/mentee/",
   },
   {
     title: "Pengajuan Izin",
-    children: [],
+    path: "/mentee/",
   },
   {
     title: "Tugas",
-    children: [{ title: "Pengumpulan Tugas" }],
+    path: "/mentee/",
   },
   {
     title: "Pengunduran Diri",
-    children: [],
+    path: "/mentee/",
   },
 ];

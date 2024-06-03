@@ -1,7 +1,7 @@
 import { useState } from "react";
 import TambahMentee from "../../Components/TambahMentee";
 
-const TesAddMentee = ({}) => {
+const TesAddMentee = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const openModal = () => {

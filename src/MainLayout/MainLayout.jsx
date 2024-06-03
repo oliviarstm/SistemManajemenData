@@ -1,9 +1,6 @@
 import gambar10 from "../../public/gambar10.png";
-import gambar11 from "../../public/gambar11.png";
 import DrawerButton from "../Components/DrawerButton";
-import DashboardAdmin from "../Pages/admin/DashboardAdmin";
-import DashboardMentor from "../Pages/mentor/DashboardMentor";
-import { menuAdmin, menuMentee, menuMentor } from "./MenuList";
+import { menuAdmin, menuMentee, menuMentor } from "./MenuList.js";
 import { Outlet } from "react-router-dom";
 import ProfilButton from "../Components/ProfilButton";
 
@@ -21,8 +18,8 @@ const MainLayout = ({role}) => {
           </div>
         </div>
         <div className=" relative pt-4">
-          {roleMenu.map((value) => {
-            return <DrawerButton title={value.title} />;
+          {roleMenu.map((value,index) => {
+            return <DrawerButton key={index} title={value.title} destination={value.path} />;
           })}
         </div>
       </div>
@@ -34,7 +31,6 @@ const MainLayout = ({role}) => {
           </div>
         </div>
         {/* TODO Outlet */}
-        {/* <DashboardMentor /> */}
         <Outlet />
       </div>
     </div>
