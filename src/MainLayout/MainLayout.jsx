@@ -7,10 +7,9 @@ import { menuAdmin, menuMentee, menuMentor } from "./MenuList";
 import { Outlet } from "react-router-dom";
 import ProfilButton from "../Components/ProfilButton";
 
-const MainLayout = () => {
-  const role = "Admin";
+const MainLayout = ({role}) => {
   const roleMenu =
-    role === "Admin" ? menuAdmin : role === "Mentor" ? menuMentor : menuMentee;
+    role === "admin" ? menuAdmin : role === "mentor" ? menuMentor : role === "mentee" ? menuMentee: null ;
   return (
     <div className="flex min-h-screen">
       <div className="bg-[#235EAC] w-1/4 h-auto">
@@ -29,7 +28,7 @@ const MainLayout = () => {
       </div>
       <div className="bg-slate-100 w-screen relative">
         <div className="bg-[#FBFBFB] justify-between h-24 flex flex-row shadow drop-shadow-lg items-center px-9">
-          <div className="text-3xl text-[#6D737A] font-semibold">{role}</div>
+          <div className="text-3xl text-[#6D737A] font-semibold">{role.toUpperCase()}</div>
           <div>
             <ProfilButton />
           </div>
