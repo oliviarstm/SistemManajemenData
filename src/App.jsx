@@ -20,6 +20,7 @@ import TesAddUser from "./Pages/admin/TesAddUser.jsx";
 import DetailUniv from "./Pages/admin/DetailUniv.jsx";
 import EditUniv from "./Pages/admin/EditUniv.jsx";
 import ValidasiPengunduran from "./Pages/admin/ValidasiPengunduran.jsx";
+import ValidasiPengajuan from "./Pages/admin/ValidasiPengajuan.jsx";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
             {/*ADMIN*/}
             <Route path="/admin" element={<DashboardAdmin />} />
             <Route path="/validasipengunduran" element={<ValidasiPengunduran />} />
+            <Route path="/validasipengajuan" element={<ValidasiPengajuan />} />
 
 
             {/*MENTOR*/}

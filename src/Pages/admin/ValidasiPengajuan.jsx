@@ -1,12 +1,10 @@
 import {useState} from "react";
 import FormCard from "../../Components/FormCard.jsx";
 
-
-const ValidasiPengunduran = ()=>{
+const ValidasiPengajuan = ()=>{
     // State untuk menyimpan data formulir
     const [formData, setFormData] = useState({
         "Nama":"Nama",
-        "Universitas":"Universitas",
         "Kelas":"Kelas",
         "Sesi":"Sesi",
         "Individual Mentor":"Individual Mentor",
@@ -19,7 +17,6 @@ const ValidasiPengunduran = ()=>{
     // Daftar judul bidang formulir
     const titles = [
         "Nama",
-        "Universitas",
         "Kelas",
         "Sesi",
         "Individual Mentor",
@@ -30,18 +27,17 @@ const ValidasiPengunduran = ()=>{
     return (
         <div className="flex flex-col items-center mt-10 leading-10 mx-20 justify-center bg-gray-100">
             <FormCard
-                title="Pengunduran Diri"
+                title="Validasi Pengajuan"
                 fields={titles}
                 editable={false} // Set nilai editable sesuai dengan status input
                 formData={formData} // kirim data formData sebagai prop
             />
             <div className="mt-4 flex flex-row gap-5">
                 <button className="text-white py-0 px-5 rounded bg-[#235EAC] w-24">Terima</button>
-                <button className="text-white py-0 px-5 rounded bg-[#858585] w-24">Tolak</button>
                 <button className="text-[#235EAC] py-0 px-5 rounded bg-white w-24 border border-[#235EAC]">Batal</button>
             </div>
         </div>
     )
 }
 
-export default ValidasiPengunduran
+export default ValidasiPengajuan
