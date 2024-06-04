@@ -12,9 +12,9 @@ const DashboardMentor = () => {
         </h1>
       </div>
       <div className="flex gap-24 justify-center mt-8">
-        <DashboardButton title="Data Mentee" image={gambar15} />
-        <DashboardButton title="Absensi" image={gambar14} />
-        <DashboardButton title="Tugas" image={gambar16} />
+        <DashboardButton title="Data Mentee" image={gambar15} path="/mentor/mentee"/>
+        <DashboardButton title="Absensi" image={gambar14} path="/mentor/absen"/>
+        <DashboardButton title="Tugas" image={gambar16} path="/mentor/tugas"/>
       </div>
     </div>
   );
