@@ -57,7 +57,7 @@ const Routing = ()=>{
                         <Route path="admin">
                             <Route path="dashboard" element={<DashboardAdmin/>}/>
                             <Route path="mentee">
-                                <Route path="" element={<DataMenteeMenu />} />
+                                <Route path="" element={<DataMenteeMenu role={role} />} />
                                 <Route path="detail" element={<DataMentee />} />
                             </Route>
                             <Route path="pengunduran" element={<ValidasiPengunduran />}/>
@@ -69,7 +69,7 @@ const Routing = ()=>{
                         <Route path="mentor">
                             <Route path="dashboard" element={<DashboardMentor/>}/>
                             <Route path="mentee">
-                                <Route path="" element={<DataMenteeMenu />} />
+                                <Route path="" element={<DataMenteeMenu role={role}/>} />
                                 <Route path="detail" element={<DataMentee />} />
                             </Route>
                             <Route path="profile" element={<EditProfilMentor />} />

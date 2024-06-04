@@ -26,7 +26,6 @@ const TableData=({field, data, button, isEnable})=>{
                     return <tr key={index} className="h-12">
                         {
                             Object.entries(val).map(([_, value], innerIndex) => {
-                                console.log(innerIndex)
                                 if (innerIndex===0){
                                     return <td key={innerIndex} className="px-5 text-black">
                                         {isEnable?<button className="hover:underline" disabled>{value}</button>:value}
