@@ -19,10 +19,19 @@ const DataMentee = () => {
   const location = useLocation()
   const filter = location.state?.filter
 
+  const propsData={
+    title:exTitle,
+    field:exField,
+    data:exData,
+    isEnable:false,
+    desc:filter==="Individual Mentor"?"Individual Mentee":filter,
+    isButton:true
+  }
+
   console.log(filter)
   return (
       <>
-        <Table title={exTitle} field={exField} data={exData} isEnable={false} desc={filter==="Individual Mentor"?"Individual Mentee":filter}/>
+        <Table props={propsData}/>
       </>
   );
 };
