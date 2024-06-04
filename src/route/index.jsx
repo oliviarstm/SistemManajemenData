@@ -25,13 +25,14 @@ import TesAddMentee from "../Pages/admin/TesAddMentee.jsx";
 import TesAddUser from "../Pages/admin/TesAddUser.jsx";
 import DetailUniv from "../Pages/admin/EditUniv.jsx";
 import EditUniv from "../Pages/admin/EditUniv.jsx";
+import {useSelector} from "react-redux";
 
 const Routing = ()=>{
-    const isLogin = true
-    const role = "admin"
+    // const isLogin = true
+    // const role = "admin"
     // console.log("ROUTING")
     // const dispatch = useDispatch()
-    // const {role, isLogin} = useSelector(state => state)
+    const {role, isLogin} = useSelector(state=>state.Auth)
     // useEffect(() => {
     //     console.log("USE EFFECT")
     //     const getToken = localStorage.getItem("Authorization")
