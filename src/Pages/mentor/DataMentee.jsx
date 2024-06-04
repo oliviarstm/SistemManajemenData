@@ -17,7 +17,7 @@ const exData = [{
 const DataMentee = () => {
   return (
     <>
-      <Table title={exTitle} field={exField} data={exData} isEnable={false} />
+      <Table title={exTitle} field={exField} data={exData} isEnable={false}/>
     </>
   );
 };

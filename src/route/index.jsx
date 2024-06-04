@@ -55,18 +55,22 @@ const Routing = ()=>{
                     <Route element={<AdminRoute role={role}/>}>
                         <Route path="admin">
                             <Route path="dashboard" element={<DashboardAdmin/>}/>
+                            <Route path="mentee">
+                                <Route path="" element={<DataMenteeMenu />} />
+                                <Route path="detail" element={<DataMentee />} />
+                            </Route>
                             <Route path="pengunduran" element={<ValidasiPengunduran />}/>
-                            {/*<Route path="pengajuan" element={<ValidasiPengajuan />}/>*/}
-                            <Route path="mentee" element={<DataMenteeMenu />} />
-                            <Route path="detailmentee" element={<DataMentee />} />
                             <Route path="profile" element={<EditProfilAdmin />} />
+                            {/*<Route path="pengajuan" element={<ValidasiPengajuan />}/>*/}
                         </Route>
                     </Route>
                     <Route element={<MentorRoute role={role}/>}>
                         <Route path="mentor">
                             <Route path="dashboard" element={<DashboardMentor/>}/>
-                            <Route path="mentee" element={<DataMenteeMenu />} />
-                            <Route path="detailmentee" element={<DataMentee />} />
+                            <Route path="mentee">
+                                <Route path="" element={<DataMenteeMenu />} />
+                                <Route path="detail" element={<DataMentee />} />
+                            </Route>
                             <Route path="profile" element={<EditProfilMentor />} />
                             <Route path="tugas" element={<PengumpulanTugas />} />
                             <Route path="absen" element={<AbsenMentee />} />
