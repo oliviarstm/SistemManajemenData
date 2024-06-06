@@ -1,5 +1,4 @@
 // const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""]
-// const exData = [["Olivia", "Poltek", "A", "Pagi"], ["Kelvin", "ITEBA", "B", "Siang"]]
 // const exData = [{
 //     Name:"Olivia",
 //     Universty:"Poltek",
@@ -38,7 +37,7 @@ const TableData=({field, data, button, isEnable, options})=>{
                             })
 
                         }
-                        <td className="px-5 text-black"><ThreeDot options={options}/></td>
+                        <td className="px-5 text-black"><ThreeDot options={options} dataId={val.id}/></td>
                     </tr>
 
                 })

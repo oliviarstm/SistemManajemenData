@@ -5,11 +5,13 @@ import {editdelete} from "../../Components/table/threedotmenu.js";
 const exTitle = "Data Mentee";
 const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
 const exData = [{
+  id:1,
   Name:"Olivia",
   Universty:"Poltek",
   Class:"A",
   Session:"Pagi"
 }, {
+  id:2,
   Name:"Kelvin",
   Universty:"ITEBA",
   Class:"B",
@@ -30,7 +32,6 @@ const DataMentee = () => {
     option:editdelete
   }
 
-  console.log(filter)
   return (
       <>
         <Table props={propsData}/>
