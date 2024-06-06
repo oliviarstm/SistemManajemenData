@@ -10,11 +10,12 @@ import TableData from "./TableData.jsx";
 //     isButton:
 // }
 
+
 const Table =({props})=>{
-    const {title, field, data, isEnable, desc, isButton}=props
+    const {title, field, data, isEnable, desc, isButton, option}=props
     return <>
         <TableBar title={title} desc={desc} isButton={isButton}/>
-        <TableData field={field} data={data} isEnable={isEnable}/>
+        <TableData field={field} data={data} isEnable={isEnable} options={option}/>
     </>
 }
 

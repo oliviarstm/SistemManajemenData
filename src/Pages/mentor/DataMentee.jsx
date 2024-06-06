@@ -1,5 +1,6 @@
 import Table from "../../Components/table/Index.jsx";
 import {useLocation} from "react-router-dom";
+import {editdelete} from "../../Components/table/threedotmenu.js";
 
 const exTitle = "Data Mentee";
 const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
@@ -25,7 +26,8 @@ const DataMentee = () => {
     data:exData,
     isEnable:false,
     desc:filter==="Individual Mentor"?"Individual Mentee":filter,
-    isButton:true
+    isButton:true,
+    option:editdelete
   }
 
   console.log(filter)
