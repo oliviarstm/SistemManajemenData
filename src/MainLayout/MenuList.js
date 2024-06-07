@@ -8,6 +8,10 @@ export const menuMentor = [
     path: "/mentor/mentee",
   },
   {
+    title: "Data Nilai",
+    path: "/mentor/",
+  },
+  {
     title: "Absensi",
     path: "/mentor/absen",
   },
