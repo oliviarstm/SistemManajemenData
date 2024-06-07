@@ -20,12 +20,13 @@ const exData = [{
 const DataAdmin = () => {
     const [isModalOpen, setModalOpen] = useState(false);
     const openModal = () => {
+        console.log("OPEN")
         setModalOpen(true);
     };
     const closeModal = () => {
         setModalOpen(false);
     };
-    const titles = ["Nama", "Universitas", "Kelas", "Sesi", "Individual Mentor"];
+    const titles = ["Nama", "Email", "Username"];
     const propsData={
         title:exTitle,
         field:exField,
