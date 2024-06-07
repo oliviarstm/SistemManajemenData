@@ -29,6 +29,7 @@ import {useSelector} from "react-redux";
 import DataAdmin from "../Pages/admin/DataAdmin.jsx";
 import DataMentor from "../Pages/admin/DataMentor.jsx";
 import DataUser from "../Pages/admin/DataUser.jsx";
+import DataUniv from "../Pages/admin/DataUniv.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -66,6 +67,7 @@ const Routing = ()=>{
                             <Route path="admin" element={<DataAdmin />}/>
                             <Route path="mentor" element={<DataMentor />}/>
                             <Route path="user" element={<DataUser />}/>
+                            <Route path="universitas" element={<DataUniv />}/>
                             <Route path="pengunduran" element={<ValidasiPengunduran />}/>
                             <Route path="profile" element={<EditProfilAdmin />} />
                             {/*<Route path="pengajuan" element={<ValidasiPengajuan />}/>*/}

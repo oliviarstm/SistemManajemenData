@@ -7,6 +7,7 @@ import TableData from "./TableData.jsx";
 //     data:,
 //     isEnable:,
 //     desc:,
+//     isButton:,
 //     isButton:
 // }
 
