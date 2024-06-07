@@ -23,6 +23,14 @@ export const menuAdmin = [
     path: "/admin/dashboard",
   },
   {
+    title: "Data Admin",
+    path: "/admin/admin",
+  },
+  {
+    title: "Data Mentor",
+    path: "/admin/mentor",
+  },
+  {
     title: "Data Mentee",
     path: "/admin/mentee",
   },
