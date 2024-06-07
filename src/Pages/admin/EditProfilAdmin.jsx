@@ -33,6 +33,17 @@ const EditProfilAdmin = () => {
         </div>
         <div style={{ marginBottom: "10px" }}>
           <label>
+            Email:
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+            />
+          </label>
+        </div>
+        <div style={{ marginBottom: "10px" }}>
+          <label>
             Password Lama:
             <input
               type="password"
