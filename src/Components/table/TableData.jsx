@@ -26,10 +26,10 @@ const TableData=({field, data, button, isEnable, options})=>{
                 data.map((val, index) => {
                     return <tr key={index} className="h-12">
                         {
-                            Object.entries(val).map(([_, value], innerIndex) => {
+                            Object.entries(val).slice(1).map(([key, value], innerIndex) => {
                                 if (innerIndex===0){
                                     return <td key={innerIndex} className="px-5 text-black">
-                                        {isEnable?<button className="hover:underline" disabled>{value}</button>:value}
+                                        {isEnable?<button className="hover:underline" onClick={()=>console.log("CLICKED")}>{value}</button>:value}
                                     </td>
                                 } else {
                                     return <td key={innerIndex} className="px-5 text-black">{value}</td>
