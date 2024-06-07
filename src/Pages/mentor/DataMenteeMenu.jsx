@@ -9,19 +9,19 @@ import {useNavigate} from "react-router-dom";
 const DataMenteeMenu = ({role}) => {
     const navigate = useNavigate()
     const handleClickAll = ()=>{
-        navigate('detail', {state:{filter:"All Mentee"}})
+        navigate('detail', {state:{filter:"Semua Mentee"}})
     }
     const handleClickA = ()=>{
-        navigate('detail', {state:{filter:"Class A"}})
+        navigate('detail', {state:{filter:"Kelas A"}})
     }
     const handleClickB = ()=>{
-        navigate('detail', {state:{filter:"Class B"}})
+        navigate('detail', {state:{filter:"Kelas B"}})
     }
     const handleClickC = ()=>{
-        navigate('detail', {state:{filter:"Class C"}})
+        navigate('detail', {state:{filter:"Kelas C"}})
     }
     const handleClickIndividual = ()=>{
-        navigate('detail', {state:{filter:"Individual Mentor"}})
+        navigate('detail', {state:{filter:"Mentee Individual"}})
     }
     return (
         <div>
