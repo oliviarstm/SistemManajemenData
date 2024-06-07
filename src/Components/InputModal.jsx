@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TambahMentee = ({ isOpen, onClose, title, isButton }) => {
+const InputModal = ({ isOpen, onClose, title, isButton }) => {
   const [formValues, setFormValues] = useState({});
 
   // Function to handle input changes
@@ -57,4 +57,4 @@ const TambahMentee = ({ isOpen, onClose, title, isButton }) => {
   );
 };
 
-export default TambahMentee;
+export default InputModal;

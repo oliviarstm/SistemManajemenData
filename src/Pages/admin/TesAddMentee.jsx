@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TambahMentee from "../../Components/TambahMentee";
+import InputModal from "../../Components/InputModal.jsx";
 
 const TesAddMentee = () => {
   const [isModalOpen, setModalOpen] = useState(false);
@@ -19,7 +19,7 @@ const TesAddMentee = () => {
       <button className="btn" onClick={openModal}>
         open modal
       </button>
-      <TambahMentee
+      <InputModal
         isOpen={isModalOpen}
         onClose={closeModal}
         title={titles}

@@ -1,7 +1,7 @@
 import Table from "../../Components/table/Index.jsx";
 import {editdelete} from "../../Components/table/threedotmenu.js";
 
-const exTitle = "Data Admin";
+const exTitle = "Data Universitas";
 const exField = ["Nama", "Email", "Alamat", "Nama PIC", "Nomor PIC", "Email PIC",""];
 const exData = [{
     id:1,
