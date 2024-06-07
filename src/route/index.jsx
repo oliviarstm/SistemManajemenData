@@ -26,6 +26,9 @@ import TesAddUser from "../Pages/admin/TesAddUser.jsx";
 import DetailUniv from "../Pages/admin/EditUniv.jsx";
 import EditUniv from "../Pages/admin/EditUniv.jsx";
 import {useSelector} from "react-redux";
+import DataAdmin from "../Pages/admin/DataAdmin.jsx";
+import DataMentor from "../Pages/admin/DataMentor.jsx";
+import DataUser from "../Pages/admin/DataUser.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -60,6 +63,9 @@ const Routing = ()=>{
                                 <Route path="" element={<DataMenteeMenu role={role} />} />
                                 <Route path="detail" element={<DataMentee />} />
                             </Route>
+                            <Route path="admin" element={<DataAdmin />}/>
+                            <Route path="mentor" element={<DataMentor />}/>
+                            <Route path="user" element={<DataUser />}/>
                             <Route path="pengunduran" element={<ValidasiPengunduran />}/>
                             <Route path="profile" element={<EditProfilAdmin />} />
                             {/*<Route path="pengajuan" element={<ValidasiPengajuan />}/>*/}

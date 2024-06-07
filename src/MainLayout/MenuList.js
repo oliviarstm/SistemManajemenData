@@ -36,15 +36,15 @@ export const menuAdmin = [
   },
   {
     title: "Data User",
-    path: "/admin/",
+    path: "/admin/user",
   },
   {
     title: "Data Universitas",
-    path: "/admin/",
+    path: "/admin/universitas",
   },
   {
     title: "Validasi",
-    path: "/admin/",
+    path: "/admin/validasi",
   },
 ];
 
