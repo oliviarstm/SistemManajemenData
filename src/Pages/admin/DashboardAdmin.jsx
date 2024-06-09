@@ -14,8 +14,8 @@ const DashboardAdmin = () => {
             </div>
             <div className="flex gap-24 justify-center mt-8">
                 <DashboardButton title="Data Mentee" image={gambar15} path="/admin/mentee"/>
-                <DashboardButton title="Data User" image={gambar13} />
-                <DashboardButton title="Validasi" image={gambar12} />
+                <DashboardButton title="Data User" image={gambar13} path="/admin/user"/>
+                <DashboardButton title="Validasi" image={gambar12} path="/admin/validasi"/>
             </div>
         </div>
     );

@@ -14,7 +14,7 @@ const App = () => {
         {/*  <Route element={<MainLayout />}>*/}
         {/*    /!*ADMIN*!/*/}
         {/*    <Route path="/admin" element={<DashboardAdmin />} />*/}
-        {/*    <Route path="/validasipengunduran" element={<ValidasiPengunduran />} />*/}
+        {/*    <Route path="/validasipengunduran" element={<DetailValidasi />} />*/}
         {/*    <Route path="/validasipengajuan" element={<ValidasiPengajuan />} />*/}
 
 

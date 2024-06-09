@@ -11,7 +11,7 @@ import MainLayout from "../MainLayout/MainLayout.jsx";
 import DashboardAdmin from "../Pages/admin/DashboardAdmin.jsx";
 import DashboardMentor from "../Pages/mentor/DashboardMentor.jsx";
 import DashboardMentee from "../Pages/mentee/DashboardMentee.jsx";
-import ValidasiPengunduran from "../Pages/admin/ValidasiPengunduran.jsx";
+import DetailValidasi from "../Pages/admin/DetailValidasi.jsx";
 import DataMenteeMenu from "../Pages/mentor/DataMenteeMenu.jsx";
 import DataMentee from "../Pages/mentor/DataMentee.jsx";
 import EditUserModal from "../Components/EditUserModal.jsx";
@@ -30,6 +30,8 @@ import DataAdmin from "../Pages/admin/DataAdmin.jsx";
 import DataMentor from "../Pages/admin/DataMentor.jsx";
 import DataUser from "../Pages/admin/DataUser.jsx";
 import DataUniv from "../Pages/admin/DataUniv.jsx";
+import ValidasiPengajuan from "../Pages/admin/ValidasiPengajuan.jsx";
+import Validasi from "../Pages/admin/Validasi.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -68,9 +70,11 @@ const Routing = ()=>{
                             <Route path="mentor" element={<DataMentor />}/>
                             <Route path="user" element={<DataUser />}/>
                             <Route path="universitas" element={<DataUniv />}/>
-                            <Route path="pengunduran" element={<ValidasiPengunduran />}/>
+                            <Route path="validasi">
+                                <Route path="" element={<Validasi />}/>
+                                <Route path="detail" element={<DetailValidasi />}/>
+                            </Route>
                             <Route path="profile" element={<EditProfilAdmin />} />
-                            {/*<Route path="pengajuan" element={<ValidasiPengajuan />}/>*/}
                         </Route>
                     </Route>
                     <Route element={<MentorRoute role={role}/>}>

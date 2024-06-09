@@ -2,15 +2,15 @@ import {useState} from "react";
 import FormCard from "../../Components/FormCard.jsx";
 
 
-const ValidasiPengunduran = ()=>{
+const DetailValidasi = ()=>{
     // State untuk menyimpan data formulir
     const [formData, setFormData] = useState({
-        "Nama":"Nama",
-        "Universitas":"Universitas",
-        "Kelas":"Kelas",
-        "Sesi":"Sesi",
-        "Individual Mentor":"Individual Mentor",
-        "Alasan":"Alasan",
+        "Nama":"Kelvin",
+        "Universitas":"Institut Teknologi Batam",
+        "Kelas":"A",
+        "Sesi":"Morning",
+        "Individual Mentor":"Olivia",
+        "Alasan":"Jadwal sudah tidak mendukung",
         "File":"File",
     });
 
@@ -36,12 +36,12 @@ const ValidasiPengunduran = ()=>{
                 formData={formData} // kirim data formData sebagai prop
             />
             <div className="mt-4 flex flex-row gap-5">
-                <button className="text-white py-0 px-5 rounded bg-[#235EAC] w-24">Terima</button>
-                <button className="text-white py-0 px-5 rounded bg-[#858585] w-24">Tolak</button>
+                <button className="text-white py-0 px-5 rounded bg-[#235EAC] w-24 ">Terima</button>
+                <button className="text-white py-0 px-5 rounded bg-[#858585] w-24 hover:bg-[#c2c2c2]">Tolak</button>
                 <button className="text-[#235EAC] py-0 px-5 rounded bg-white w-24 border border-[#235EAC]">Batal</button>
             </div>
         </div>
     )
 }
 
-export default ValidasiPengunduran
+export default DetailValidasi

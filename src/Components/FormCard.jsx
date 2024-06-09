@@ -21,17 +21,17 @@ const FormCard = ({
                 <span>:</span>
               </div>
               <div className="col-span-1 ">
-                {editable ? (
-                  <input
-                    type="text"
-                    placeholder={`Masukkan ${field.toLowerCase()}`}
-                    name={field.toLowerCase()}
-                    className="input input-bordered h-8"
-                    value={formData[field] || ""}
-                    onChange={(e) => onChange(e, field.toLowerCase())}
-                  />
+                {field ==="File"? <button className="text-[#858585] py-0 px-5 rounded border border-[#858585] hover:bg-[#c2c2c2] hover:text-white hover:border-white">Lihat File</button>:editable ? (
+                    <input
+                        type="text"
+                        placeholder={`Masukkan ${field.toLowerCase()}`}
+                        name={field.toLowerCase()}
+                        className="input input-bordered h-8"
+                        value={formData[field] || ""}
+                        onChange={(e) => onChange(e, field.toLowerCase())}
+                    />
                 ) : (
-                  <span>{formData[field]}</span>
+                    <span>{formData[field]}</span>
                 )}
               </div>
             </div>
