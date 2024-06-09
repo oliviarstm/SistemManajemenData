@@ -41,7 +41,7 @@ const TableData=({field, data, isEnable, options, buttonLabel})=>{
                             })
 
                         }
-                        <td className="px-5 text-black text-right">{buttonLabel?<button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded rounded-xl" onClick={()=>navigate('detail')}>Tambahkan</button>:<ThreeDot options={options} dataId={val.id}/>}</td>
+                        <td className="px-5 text-black text-right">{buttonLabel?<button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>navigate('detail')}>{buttonLabel}</button>:<ThreeDot options={options} dataId={val.id}/>}</td>
                     </tr>
 
                 })
