@@ -3,6 +3,7 @@ import {useLocation} from "react-router-dom";
 import {editdelete} from "../../Components/table/threedotmenu.js";
 import {useState} from "react";
 import InputModal from "../../Components/InputModal.jsx";
+import {useSelector} from "react-redux";
 
 const exTitle = "Data Mentee";
 const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
@@ -24,6 +25,8 @@ const DataMentee = () => {
   const location = useLocation()
   const filter = location.state?.filter
   const [isModalOpen, setModalOpen] = useState(false);
+  const {role} = useSelector(state=>state.Auth)
+
   const openModal = () => {
     console.log("OPEN")
     setModalOpen(true);
@@ -38,7 +41,7 @@ const DataMentee = () => {
     data:exData,
     isEnable:false,
     desc:filter==="Individual Mentor"?"Individual Mentee":filter,
-    isButton:true,
+    type: role==='admin'?'add':null,
     option:editdelete,
     handleAdd:openModal
   }

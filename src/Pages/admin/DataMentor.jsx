@@ -32,7 +32,7 @@ const DataMentor = () => {
         field:exField,
         data:exData,
         isEnable:false,
-        isButton:true,
+        type:'add',
         option:editdelete,
         handleAdd:openModal
     }
