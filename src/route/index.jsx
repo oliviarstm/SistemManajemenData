@@ -39,6 +39,7 @@ import Tugas from "../Pages/mentor/tugas/Tugas.jsx";
 import DetailTugas from "../Pages/mentor/tugas/DetailTugas.jsx";
 import TempPengumpulanTugasMentor from "../Pages/mentor/tugas/TempPengumpulanTugasMentor.jsx";
 import TempPengumpulanTugasMentee from "../Pages/mentee/TempPengumpulanTugasMentee.jsx";
+import TempRekapAbsen from "../Pages/mentee/TempRekapAbsen.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -114,6 +115,7 @@ const Routing = ()=>{
                         <Route path="mentee">
                             <Route path="dashboard" element={<DashboardMentee/>}/>
                             <Route path="profile" element={<EditProfilMentee />} />
+                            <Route path="absen" element={<TempRekapAbsen />} />
                             <Route path="tugas">
                                 <Route path="" element={<TempPengumpulanTugasMentee/>}/>
                             </Route>

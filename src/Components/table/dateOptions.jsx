@@ -36,3 +36,25 @@ export const absenOptions = {
         year: "numeric"
     }
 }
+
+export const monthOptions = {
+    title: "Select Month",
+    autoHide: true,
+    todayBtn: false,
+    clearBtn: true,
+    theme: {
+        background: "bg-gray-700",
+        todayBtn: "bg-blue-500",
+        clearBtn: "bg-red-500",
+        icons: "bg-green-500",
+        text: "text-white",
+        disabledText: "text-gray-400",
+        input: "text-gray-900",
+        inputIcon: "text-gray-500"
+    },
+    datepickerOptions: {
+        changeMonth: true, // Enable month selection
+        changeYear: false, // Disable year selection to limit to month only
+        showCalendar: false, // Hide days view in calendar
+    }
+};
