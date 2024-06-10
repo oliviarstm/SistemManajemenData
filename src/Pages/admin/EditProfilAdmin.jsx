@@ -24,6 +24,7 @@ const EditProfilAdmin = () => {
           <label>
             Nama:
             <input
+              className="rounded"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -35,6 +36,7 @@ const EditProfilAdmin = () => {
           <label>
             Email:
             <input
+              className="rounded"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -46,6 +48,7 @@ const EditProfilAdmin = () => {
           <label>
             Password Lama:
             <input
+              className="rounded"
               type="password"
               value={oldPassword}
               onChange={(e) => setOldPassword(e.target.value)}
@@ -57,6 +60,7 @@ const EditProfilAdmin = () => {
           <label>
             Password Baru:
             <input
+              className="rounded"
               type="password"
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
@@ -68,6 +72,7 @@ const EditProfilAdmin = () => {
           <label>
             Konfirmasi Password Baru:
             <input
+              className="rounded"
               type="password"
               value={confirmNewPassword}
               onChange={(e) => setConfirmNewPassword(e.target.value)}
