@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {editdelete} from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";
-import InputModal from "../../../Components/InputModal.jsx";
 import TugasModal from "../../../Components/TugasModal.jsx";
 
 const exTitle = "Tugas";
@@ -30,7 +29,7 @@ const Tugas = () => {
         title:exTitle,
         field:exField,
         data:exData,
-        isEnable:false,
+        isEnable:true,
         type:'add',
         option:editdelete,
         handleAdd:openModal
