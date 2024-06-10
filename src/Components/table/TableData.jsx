@@ -13,18 +13,23 @@
 
 
 import ThreeDot from "./ThreeDot.jsx";
-import {useNavigate} from "react-router-dom";
+import AbsenButton from "../AbsenButton.jsx";
 
 const TableData=({field, data, isEnable, options, buttonLabel})=>{
     // Temporary
-    const navigate = useNavigate()
 
     return <div className="bg-white mx-10 my-5 flex flex-row justify-between items-center text-black">
         <table className="w-full min-w-max table-auto text-left">
             <tr className="bg-[#FCFCFD] text-gray-600 text-sm h-12">
                 {
-                    field.map((field, index)=> <td key={index} className="px-5 font-semibold w-1">{field}</td>)
-                }
+                    field.map((field, index, array) => {
+                        const isLast = index === array.length - 1;
+                        return (
+                            <td key={index} className={`px-5 font-semibold w- ${isLast ? "text-right pe-8" : ""}`}>
+                                {field}
+                            </td>
+                        );
+                    })                }
             </tr>
             {
                 data.map((val, index) => {
@@ -41,7 +46,7 @@ const TableData=({field, data, isEnable, options, buttonLabel})=>{
                             })
 
                         }
-                        <td className="px-5 text-black text-right">{buttonLabel?<button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>navigate('detail')}>{buttonLabel}</button>:<ThreeDot options={options} dataId={val.id}/>}</td>
+                        <td className="px-5 text-black text-right">{buttonLabel?<AbsenButton buttonLabel={buttonLabel} options={options} dataId={val.id}/>:<ThreeDot options={options} dataId={val.id}/>}</td>
                     </tr>
 
                 })

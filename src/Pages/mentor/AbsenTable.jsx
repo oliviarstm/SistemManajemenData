@@ -1,7 +1,5 @@
 import Table from "../../Components/table/Index.jsx";
-import {editdelete} from "../../Components/table/threedotmenu.js";
-import {useState} from "react";
-import InputModal from "../../Components/InputModal.jsx";
+import {absen} from "../../Components/table/threedotmenu.js";
 
 const exTitle = "Absensi";
 const exField = ["Nama", "Kelas", "Sesi","Kehadiran"];
@@ -24,7 +22,7 @@ const AbsenTable = () => {
         data:exData,
         isEnable:false,
         type:'date',
-        option:editdelete,
+        option:absen,
         buttonLabel: "Absen"
     }
 
