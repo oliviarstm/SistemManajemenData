@@ -22,10 +22,9 @@ const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown})=
         <table className="w-full min-w-max table-auto text-left">
             <tr className="bg-[#FCFCFD] text-gray-600 text-sm h-12">
                 {
-                    field.map((field, index, array) => {
-                        const isLast = index === array.length - 1;
+                    field.map((field, index) => {
                         return (
-                            <td key={index} className={`px-5 font-semibold ${isLast ? "text-right pe-8" : ""}`}>
+                            <td key={index} className="px-5 font-semibold">
                                 {field}
                             </td>
                         );

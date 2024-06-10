@@ -18,7 +18,7 @@ import EditUserModal from "../Components/EditUserModal.jsx";
 import EditProfilAdmin from "../Pages/admin/EditProfilAdmin.jsx";
 import EditProfilMentee from "../Pages/mentee/EditProfilMentee.jsx";
 import EditProfilMentor from "../Pages/mentor/EditProfilMentor.jsx";
-import PengumpulanTugas from "../Pages/mentor/PengumpulanTugas.jsx";
+import PengumpulanTugas from "../Pages/mentor/tugas/PengumpulanTugas.jsx";
 import AbsenMentee from "../Pages/mentor/AbsenMentee.jsx";
 import TestHapus from "../Pages/admin/TestHapus.jsx";
 import TesAddMentee from "../Pages/admin/TesAddMentee.jsx";
@@ -35,6 +35,7 @@ import Validasi from "../Pages/admin/Validasi.jsx";
 import AbsenTable from "../Pages/mentor/AbsenTable.jsx";
 import NilaiMenu from "../Pages/mentor/nilai/NilaiMenu.jsx";
 import DataNilai from "../Pages/mentor/nilai/DataNilai.jsx";
+import Tugas from "../Pages/mentor/tugas/Tugas.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -94,6 +95,9 @@ const Routing = ()=>{
                             <Route path="nilai">
                                 <Route path="" element={<NilaiMenu/>}/>
                                 <Route path="data" element={<DataNilai/>}/>
+                            </Route>
+                            <Route path="tugas">
+                                <Route path="" element={<Tugas/>}/>
                             </Route>
                             <Route path="profile" element={<EditProfilMentor />} />
                             <Route path="tugas" element={<PengumpulanTugas />} />

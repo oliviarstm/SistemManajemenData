@@ -1,9 +1,9 @@
-import semuaMentee from "../../../public/semuaMentee.png";
-import kelasA from "../../../public/kelasA.png";
-import kelasB from "../../../public/kelasB.png";
-import kelasC from "../../../public/kelasC.png";
-import menteeIndividual from "../../../public/menteeIndividual.png";
-import DashboardButton from "../../Components/DashboardButton";
+import semuaMentee from "../../../../public/semuaMentee.png";
+import kelasA from "../../../../public/kelasA.png";
+import kelasB from "../../../../public/kelasB.png";
+import kelasC from "../../../../public/kelasC.png";
+import menteeIndividual from "../../../../public/menteeIndividual.png";
+import DashboardButton from "../../../Components/DashboardButton.jsx";
 
 const PengumpulanTugas = () => {
   return (
