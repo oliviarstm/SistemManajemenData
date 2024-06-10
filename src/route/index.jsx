@@ -33,6 +33,8 @@ import DataUniv from "../Pages/admin/DataUniv.jsx";
 import ValidasiPengajuan from "../Pages/admin/ValidasiPengajuan.jsx";
 import Validasi from "../Pages/admin/Validasi.jsx";
 import AbsenTable from "../Pages/mentor/AbsenTable.jsx";
+import NilaiMenu from "../Pages/mentor/nilai/NilaiMenu.jsx";
+import DataNilai from "../Pages/mentor/nilai/DataNilai.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -88,6 +90,10 @@ const Routing = ()=>{
                             <Route path="absen">
                                 <Route path="" element={<AbsenMentee role={role}/>} />
                                 <Route path="detail" element={<AbsenTable />} />
+                            </Route>
+                            <Route path="nilai">
+                                <Route path="" element={<NilaiMenu/>}/>
+                                <Route path="data" element={<DataNilai/>}/>
                             </Route>
                             <Route path="profile" element={<EditProfilMentor />} />
                             <Route path="tugas" element={<PengumpulanTugas />} />

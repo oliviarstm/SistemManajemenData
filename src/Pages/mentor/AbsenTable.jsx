@@ -23,7 +23,8 @@ const AbsenTable = () => {
         isEnable:false,
         type:'date',
         option:absen,
-        buttonLabel: "Absen"
+        buttonLabel: "Absen",
+        buttonDropDown:true
     }
 
     return (

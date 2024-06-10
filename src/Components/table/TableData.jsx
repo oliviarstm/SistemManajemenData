@@ -15,7 +15,7 @@
 import ThreeDot from "./ThreeDot.jsx";
 import AbsenButton from "../AbsenButton.jsx";
 
-const TableData=({field, data, isEnable, options, buttonLabel})=>{
+const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown})=>{
     // Temporary
 
     return <div className="bg-white mx-10 my-5 flex flex-row justify-between items-center text-black">
@@ -46,7 +46,7 @@ const TableData=({field, data, isEnable, options, buttonLabel})=>{
                             })
 
                         }
-                        <td className="px-5 text-black text-right">{buttonLabel?<AbsenButton buttonLabel={buttonLabel} options={options} dataId={val.id}/>:<ThreeDot options={options} dataId={val.id}/>}</td>
+                        <td className="px-5 text-black text-right">{buttonLabel? buttonDropDown?<AbsenButton buttonLabel={buttonLabel} options={options} dataId={val.id}/>:<button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>console.log("Detail ", val.id)}>{buttonLabel}</button>:<ThreeDot options={options} dataId={val.id}/>}</td>
                     </tr>
 
                 })
