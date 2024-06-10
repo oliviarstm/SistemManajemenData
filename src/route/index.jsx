@@ -36,6 +36,8 @@ import AbsenTable from "../Pages/mentor/AbsenTable.jsx";
 import NilaiMenu from "../Pages/mentor/nilai/NilaiMenu.jsx";
 import DataNilai from "../Pages/mentor/nilai/DataNilai.jsx";
 import Tugas from "../Pages/mentor/tugas/Tugas.jsx";
+import DetailTugas from "../Pages/mentor/tugas/DetailTugas.jsx";
+import TempPengumpulanTugasMentor from "../Pages/mentor/tugas/TempPengumpulanTugasMentor.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -98,9 +100,13 @@ const Routing = ()=>{
                             </Route>
                             <Route path="tugas">
                                 <Route path="" element={<Tugas/>}/>
+                                <Route path="menu" element={<PengumpulanTugas />} />
+                                {/*Not done, still problem*/}
+                                <Route path="detail" element={<DetailTugas />} />
                             </Route>
                             <Route path="profile" element={<EditProfilMentor />} />
-                            <Route path="tugas" element={<PengumpulanTugas />} />
+                        {/*    TEMP PATH*/}
+                            <Route path="pengumpulantugas_mentor" element={<TempPengumpulanTugasMentor />} />
                         </Route>
                     </Route>
                     <Route element={<MenteeRoute role={role}/>}>

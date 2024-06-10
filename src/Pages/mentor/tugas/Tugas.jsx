@@ -1,7 +1,10 @@
+// TODO edit show modal
+
 import {useState} from "react";
 import {editdelete} from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";
 import TugasModal from "../../../Components/TugasModal.jsx";
+import {useNavigate} from "react-router-dom";
 
 const exTitle = "Tugas";
 const exField = ["Nama Tugas", "Batas Pengumpulan", ""];
@@ -24,6 +27,7 @@ const Tugas = () => {
     const closeModal = () => {
         setModalOpen(false);
     };
+
     const titles = ["Nama", "Batas Pengumpulan"];
     const propsData={
         title:exTitle,
@@ -32,7 +36,8 @@ const Tugas = () => {
         isEnable:true,
         type:'add',
         option:editdelete,
-        handleAdd:openModal
+        handleAdd:openModal,
+        dataClick:"moveToMenu"
     }
 
     return (
