@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const FormBody =({titleTugas, batas})=>{
+const FormTugas =({titleTugas, batas})=>{
     const [formValues, setFormValues] = useState({});
     const handleInputChange = (title, value) => {
         setFormValues({ ...formValues, [title]: value });
@@ -28,8 +28,6 @@ const FormBody =({titleTugas, batas})=>{
                 <input
                     type="text"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
-                    value={batas}
-                    disabled
                     onChange={(e) => handleInputChange('batasPengumpulan', e.target.value)}
                 />
             </label>
@@ -67,4 +65,4 @@ const FormBody =({titleTugas, batas})=>{
     </div>
 }
 
-export default FormBody
+export default FormTugas

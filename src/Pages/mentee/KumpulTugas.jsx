@@ -1,5 +1,5 @@
-import FormHead from "../../Components/TugasMentee/FormHead.jsx";
-import FormBody from "../../Components/TugasMentee/FormBody.jsx";
+import FormHead from "../../Components/Form/FormHead.jsx";
+import FormTugas from "../../Components/Form/FormTugas.jsx";
 import {useLocation} from "react-router-dom";
 
 const data = {
@@ -14,7 +14,7 @@ const KumpulTugas=()=>{
     console.log(id_tugas)
     return <>
         <FormHead title="Pengumpulan Tugas"/>
-        <FormBody titleTugas={data.nama} batas={data.batas_waktu}/>
+        <FormTugas titleTugas={data.nama} batas={data.batas_waktu}/>
     </>
 
 }

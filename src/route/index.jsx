@@ -42,6 +42,7 @@ import DetailNilai from "../Pages/mentor/nilai/DetailNilai.jsx";
 import FormAbsensi from "../Pages/mentor/Absen/FormAbsensi.jsx";
 import DataKelas from "../Pages/mentee/DataKelas.jsx";
 import Absen from "../Pages/mentee/Absen.jsx";
+import Izin from "../Pages/mentee/Izin.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -125,6 +126,7 @@ const Routing = ()=>{
                             <Route path="profile" element={<EditProfilMentee />} />
                             <Route path="kelas" element={<DataKelas />} />
                             <Route path="absen" element={<Absen />} />
+                            <Route path="izin" element={<Izin />} />
                             {/*<Route path="tempabsen" element={<TempRekapAbsen />} />*/}
                             <Route path="tugas">
                                 <Route path="" element={<Tugas/>}/>

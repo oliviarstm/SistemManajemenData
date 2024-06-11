@@ -63,7 +63,7 @@ export const menuMentee = [
   },
   {
     title: "Pengajuan Izin",
-    path: "/mentee/",
+    path: "/mentee/izin",
   },
   {
     title: "Tugas",
@@ -71,6 +71,6 @@ export const menuMentee = [
   },
   {
     title: "Pengunduran Diri",
-    path: "/mentee/",
+    path: "/mentee/pengunduran",
   },
 ];
