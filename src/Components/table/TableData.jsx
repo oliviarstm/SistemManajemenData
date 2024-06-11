@@ -16,7 +16,7 @@ import ThreeDot from "./ThreeDot.jsx";
 import AbsenButton from "../AbsenButton.jsx";
 import {useNavigate} from "react-router-dom";
 
-const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, dataClick, type})=>{
+const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, dataClick, type, buttonClick})=>{
     const navigate = useNavigate()
     const moveToMenuPage=(id)=>{
         console.log(id)
@@ -66,7 +66,17 @@ const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, d
                                 <td className="px-5 text-black"><input className="border border-gray-200 p-2" placeholder="Masukkan Nilai"/></td>
                             </>
                             :
-                            <td className="px-5 text-black text-right">{buttonLabel? buttonDropDown?<AbsenButton buttonLabel={buttonLabel} options={options} dataId={val.id}/>:<button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>console.log("Detail ", val.id)}>{buttonLabel}</button>:<ThreeDot options={options} dataId={val.id}/>}</td>
+                            type==="none"?
+                                null
+                                :
+                                <td className="px-5 text-black text-right">{buttonLabel?
+                                    buttonDropDown?
+                                        <AbsenButton buttonLabel={buttonLabel} options={options} dataId={val.id}/>
+                                        :
+                                        <button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>buttonClick(val.id)}>{buttonLabel}</button>
+                                    :
+                                    <ThreeDot options={options} dataId={val.id}/>}
+                                </td>
                         }
 
                     </tr>

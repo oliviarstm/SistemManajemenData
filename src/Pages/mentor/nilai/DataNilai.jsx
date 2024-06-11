@@ -1,4 +1,4 @@
-import {useLocation} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {editdelete} from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";
@@ -16,7 +16,11 @@ const exData = [{
 const DataNilai=()=>{
     const location = useLocation()
     const filter = location.state?.filter
-    const {role} = useSelector(state=>state.Auth)
+    const navigate = useNavigate()
+
+    const toDetail = (id)=>{
+        navigate('detail', {state:{id_mentee:id}})
+    }
 
     const propsData={
         title:exTitle,
@@ -25,7 +29,8 @@ const DataNilai=()=>{
         isEnable:false,
         desc:filter==="Individual Mentor"?"Individual Mentee":filter,
         option:editdelete,
-        buttonLabel:"Detail"
+        buttonLabel:"Detail",
+        buttonClick:toDetail
     }
 
     return (

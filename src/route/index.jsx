@@ -40,6 +40,7 @@ import DetailTugas from "../Pages/mentor/tugas/DetailTugas.jsx";
 import TempPengumpulanTugasMentor from "../Pages/mentor/tugas/TempPengumpulanTugasMentor.jsx";
 import TempPengumpulanTugasMentee from "../Pages/mentee/TempPengumpulanTugasMentee.jsx";
 import TempRekapAbsen from "../Pages/mentee/TempRekapAbsen.jsx";
+import DetailNilai from "../Pages/mentor/nilai/DetailNilai.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -98,7 +99,11 @@ const Routing = ()=>{
                             </Route>
                             <Route path="nilai">
                                 <Route path="" element={<NilaiMenu/>}/>
-                                <Route path="data" element={<DataNilai/>}/>
+                                <Route path="data">
+                                    <Route path="" element={<DataNilai/>}/>
+                                    <Route path="detail" element={<DetailNilai/>}/>
+                                </Route>
+
                             </Route>
                             <Route path="tugas">
                                 <Route path="" element={<Tugas/>}/>
