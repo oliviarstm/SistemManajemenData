@@ -43,6 +43,7 @@ const DataMentee = () => {
     desc:filter==="Individual Mentor"?"Individual Mentee":filter,
     type: role==='admin'?'add':null,
     option:editdelete,
+    tableType:role==="mentor"?"none":null,
     handleAdd:openModal
   }
 
