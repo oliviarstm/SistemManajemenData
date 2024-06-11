@@ -1,4 +1,4 @@
-import Table from "../../../Components/tempTablePengumpulan/Index.jsx";
+import Table from "../../../Components/table/PengumpulanMentor/Index.jsx";
 
 const exTitle = "Crazy 8";
 const exField = ["Nama", "Kelas", "Sesi", "File", "Nilai"];

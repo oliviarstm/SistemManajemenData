@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLogin: true,
-  role: "mentee",
+  role: "mentor",
 };
 
 const Auth = createSlice({

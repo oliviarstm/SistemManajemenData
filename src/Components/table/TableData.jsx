@@ -16,7 +16,7 @@ import ThreeDot from "./ThreeDot.jsx";
 import AbsenButton from "../AbsenButton.jsx";
 import {useNavigate} from "react-router-dom";
 
-const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, dataClick})=>{
+const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, dataClick, type})=>{
     const navigate = useNavigate()
     const moveToMenuPage=(id)=>{
         console.log(id)
@@ -30,10 +30,20 @@ const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, d
                     field.map((field, index, array) => {
                         const isLast = index === array.length - 1;
                         return (
-                            <td key={index} className={`px-5 font-semibold ${isLast ? "text-right pe-8" : ""}`}>
-                                {field}
-                            </td>
-                        );
+                            !type?
+                                <td key={index} className={`px-5 font-semibold ${isLast ? "text-right pe-8" : ""}`}>
+                                    {field}
+                                </td>
+                                :
+                                <td key={index} className={`px-5 font-semibold`}>
+                                    {field}
+                                </td>
+                        )
+                        // return (
+                        //     <td key={index} className={`px-5 font-semibold ${isLast ? "text-right pe-8" : ""}`}>
+                        //         {field}
+                        //     </td>
+                        // );
                     })                }
             </tr>
             {
@@ -42,16 +52,23 @@ const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, d
                         {
                             Object.entries(val).slice(1).map(([key, value], innerIndex) => {
                                 if (innerIndex===0){
-                                    return <td key={innerIndex} className="px-5 text-black">
+                                    return <td key={key} className="px-5 text-black">
                                         {isEnable?<button className="hover:underline" onClick={dataClick==="moveToMenu"?()=>moveToMenuPage(val.id):()=>console.log("hello")}>{value}</button>:value}
                                     </td>
                                 } else {
-                                    return <td key={innerIndex} className="px-5 text-black">{value}</td>
+                                    return <td key={key} className="px-5 text-black">{value}</td>
                                 }
                             })
 
                         }
-                        <td className="px-5 text-black text-right">{buttonLabel? buttonDropDown?<AbsenButton buttonLabel={buttonLabel} options={options} dataId={val.id}/>:<button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>console.log("Detail ", val.id)}>{buttonLabel}</button>:<ThreeDot options={options} dataId={val.id}/>}</td>
+                        {type==='score'?<>
+                                <td className="px-5 text-black"><button className=" border border-gray-700 hover:border-gray-500 text-gray-700 hover:text-gray-500 py-2 px-4 rounded-xl">Lihat File</button></td>
+                                <td className="px-5 text-black"><input className="border border-gray-200 p-2" placeholder="Masukkan Nilai"/></td>
+                            </>
+                            :
+                            <td className="px-5 text-black text-right">{buttonLabel? buttonDropDown?<AbsenButton buttonLabel={buttonLabel} options={options} dataId={val.id}/>:<button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>console.log("Detail ", val.id)}>{buttonLabel}</button>:<ThreeDot options={options} dataId={val.id}/>}</td>
+                        }
+
                     </tr>
 
                 })

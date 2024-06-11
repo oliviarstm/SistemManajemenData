@@ -102,22 +102,23 @@ const Routing = ()=>{
                             </Route>
                             <Route path="tugas">
                                 <Route path="" element={<Tugas/>}/>
-                                <Route path="menu" element={<PengumpulanTugas />} />
+                                <Route path="menu">
+                                    <Route path="" element={<PengumpulanTugas />} />
+                                    <Route path="detail" element={<DetailTugas />} />
+                                </Route>
                                 {/*Not done, still problem*/}
-                                <Route path="detail" element={<DetailTugas />} />
                             </Route>
                             <Route path="profile" element={<EditProfilMentor />} />
                         {/*    TEMP PATH*/}
-                            <Route path="pengumpulantugas_mentor" element={<TempPengumpulanTugasMentor />} />
                         </Route>
                     </Route>
                     <Route element={<MenteeRoute role={role}/>}>
                         <Route path="mentee">
                             <Route path="dashboard" element={<DashboardMentee/>}/>
                             <Route path="profile" element={<EditProfilMentee />} />
-                            <Route path="absen" element={<TempRekapAbsen />} />
+                            <Route path="tempabsen" element={<TempRekapAbsen />} />
                             <Route path="tugas">
-                                <Route path="" element={<TempPengumpulanTugasMentee/>}/>
+                                <Route path="temp" element={<TempPengumpulanTugasMentee/>}/>
                             </Route>
                         </Route>
                     </Route>
