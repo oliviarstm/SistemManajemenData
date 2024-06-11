@@ -59,7 +59,7 @@ export const menuMentee = [
   },
   {
     title: "Data Kelas",
-    path: "/mentee/",
+    path: "/mentee/kelas",
   },
   {
     title: "Pengajuan Izin",
@@ -67,7 +67,7 @@ export const menuMentee = [
   },
   {
     title: "Tugas",
-    path: "/mentee/",
+    path: "/mentee/tugas",
   },
   {
     title: "Pengunduran Diri",

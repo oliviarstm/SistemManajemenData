@@ -4,6 +4,7 @@ import {useState} from "react";
 import {editdelete} from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";
 import TugasModal from "../../../Components/TugasModal.jsx";
+import {useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 
 const exTitle = "Tugas";
@@ -11,14 +12,16 @@ const exField = ["Nama Tugas", "Batas Pengumpulan", ""];
 const exData = [{
     id: 1,
     subyek: "Crazy 8",
-    batas_waktu: "2024-10-21",
+    batas_waktu: "8-10-2024",
 },{
     id: 2,
     subyek: "Portofolio",
-    batas_waktu: "2024-10-25",
+    batas_waktu: "25-10-2024",
 }]
 
 const Tugas = () => {
+    const navigate=useNavigate()
+    const {role} = useSelector(state=>state.Auth)
     const [isModalOpen, setModalOpen] = useState(false);
     const openModal = () => {
         console.log("OPEN")
@@ -27,6 +30,9 @@ const Tugas = () => {
     const closeModal = () => {
         setModalOpen(false);
     };
+    const toKumpul = (id)=>{
+        navigate('kumpul', {state:{id_tugas:id}})
+    }
 
     const titles = ["Nama", "Batas Pengumpulan"];
     const propsData={
@@ -34,10 +40,12 @@ const Tugas = () => {
         field:exField,
         data:exData,
         isEnable:true,
-        type:'add',
-        option:editdelete,
+        type:role==="mentee"?null:'add',
+        option:role==="mentee"?null:editdelete,
         handleAdd:openModal,
-        dataClick:"moveToMenu"
+        dataClick:"moveToMenu",
+        buttonLabel:role==="mentee"?"Kumpul":null,
+        buttonClick: toKumpul
     }
 
     return (

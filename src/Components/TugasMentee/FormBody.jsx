@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const FormBody =()=>{
+const FormBody =({titleTugas, batas})=>{
     const [formValues, setFormValues] = useState({});
     const handleInputChange = (title, value) => {
         setFormValues({ ...formValues, [title]: value });
@@ -18,7 +18,7 @@ const FormBody =()=>{
                 <input
                     type="text"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
-                    value="Crazy 8"
+                    value={titleTugas}
                     disabled
                     onChange={(e) => handleInputChange('nama', e.target.value)}
                 />
@@ -28,7 +28,7 @@ const FormBody =()=>{
                 <input
                     type="text"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
-                    value="2024-10-8"
+                    value={batas}
                     disabled
                     onChange={(e) => handleInputChange('batasPengumpulan', e.target.value)}
                 />

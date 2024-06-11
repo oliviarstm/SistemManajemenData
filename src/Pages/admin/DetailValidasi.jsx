@@ -37,7 +37,7 @@ const DetailValidasi = ()=>{
             />
             <div className="mt-4 flex flex-row gap-5">
                 <button className="text-white py-0 px-5 rounded bg-[#235EAC] w-24 ">Terima</button>
-                <button className="text-white py-0 px-5 rounded bg-[#858585] w-24 hover:bg-[#c2c2c2]">Tolak</button>
+                {/*<button className="text-white py-0 px-5 rounded bg-[#858585] w-24 hover:bg-[#c2c2c2]">Tolak</button>*/}
                 <button className="text-[#235EAC] py-0 px-5 rounded bg-white w-24 border border-[#235EAC]">Batal</button>
             </div>
         </div>

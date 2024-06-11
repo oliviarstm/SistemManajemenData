@@ -36,11 +36,12 @@ import NilaiMenu from "../Pages/mentor/nilai/NilaiMenu.jsx";
 import DataNilai from "../Pages/mentor/nilai/DataNilai.jsx";
 import Tugas from "../Pages/mentor/tugas/Tugas.jsx";
 import DetailTugas from "../Pages/mentor/tugas/DetailTugas.jsx";
-import TempPengumpulanTugasMentee from "../Pages/mentee/TempPengumpulanTugasMentee.jsx";
+import KumpulTugas from "../Pages/mentee/KumpulTugas.jsx";
 import TempRekapAbsen from "../Pages/mentee/TempRekapAbsen.jsx";
 import DetailNilai from "../Pages/mentor/nilai/DetailNilai.jsx";
 import FormAbsensi from "../Pages/mentor/Absen/FormAbsensi.jsx";
 import DataKelas from "../Pages/mentee/DataKelas.jsx";
+import Absen from "../Pages/mentee/Absen.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -123,9 +124,11 @@ const Routing = ()=>{
                             <Route path="dashboard" element={<DashboardMentee/>}/>
                             <Route path="profile" element={<EditProfilMentee />} />
                             <Route path="kelas" element={<DataKelas />} />
-                            <Route path="tempabsen" element={<TempRekapAbsen />} />
+                            <Route path="absen" element={<Absen />} />
+                            {/*<Route path="tempabsen" element={<TempRekapAbsen />} />*/}
                             <Route path="tugas">
-                                <Route path="temp" element={<TempPengumpulanTugasMentee/>}/>
+                                <Route path="" element={<Tugas/>}/>
+                                <Route path="kumpul" element={<KumpulTugas/>}/>
                             </Route>
                         </Route>
                     </Route>

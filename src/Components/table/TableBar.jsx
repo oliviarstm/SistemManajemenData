@@ -1,6 +1,7 @@
 import Datepicker from "tailwind-datepicker-react"
 import {absenOptions} from "./dateOptions.jsx";
 import {useState} from "react";
+import MonthSelector from "../tempTabelRekap/MonthSelector.jsx";
 const TableBar=({title, desc, type, handleAdd})=>{
     const [show, setShow] = useState(false)
     const handleChange = (selectedDate) => {
@@ -21,7 +22,11 @@ const TableBar=({title, desc, type, handleAdd})=>{
                 </svg>
                 <p>Tambahkan</p>
             </button>:null}
-            {type==='date'?<Datepicker classNames="px-10" options={absenOptions} onChange={handleChange} show={show} setShow={handleClose} />:null}
+            {type==='date'?
+                <Datepicker classNames="px-10" options={absenOptions} onChange={handleChange} show={show} setShow={handleClose} />
+                :
+                null}
+            {type==="month"?<MonthSelector/>:null}
         </div>
     </div>
 }
