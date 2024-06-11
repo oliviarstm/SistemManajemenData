@@ -5,8 +5,8 @@ import DashboardButton from "../../Components/DashboardButton";
 
 const DashboardAdmin = () => {
     return (
-        <div className="relative z-0">
-            <div className="max-w-6xl bg-white rounded-lg mx-auto mt-12 h-40 p-5 shadow drop-shadow-xl">
+        <>
+            <div className="max-w-6xl bg-white rounded-lg mx-auto mt-12 h-40 p-5 shadow-xl ">
                 <h1 className=" text-[#6D737A] font-semibold text-4xl pt-4">
                     Selamat Datang, Admin!
                 </h1>
@@ -16,7 +16,7 @@ const DashboardAdmin = () => {
                 <DashboardButton title="Data User" image={gambar13} path="/admin/user"/>
                 <DashboardButton title="Validasi" image={gambar12} path="/admin/validasi"/>
             </div>
-        </div>
+        </>
     );
 };
 
