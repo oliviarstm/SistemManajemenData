@@ -1,10 +1,26 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 
 const EditProfilMentee = () => {
+  const [formData, setFormData]=useState({
+    "nim":null,
+    "nama":null,
+    "universitas":null,
+    "email":null,
+    "phone":null,
+    "kategori":null,
+    "kelas":null,
+    "sesi":null,
+    "individual_mentor":null,
+    "jurusan":null,
+
+  })
   const [name, setName] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const {username} = useSelector(state => state.Auth)
+  useEffect(()=>setName(username),[])
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -39,7 +55,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
+              value={formData.nim}
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -51,7 +67,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
+              value={formData.nama}
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -63,7 +79,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
+              value={formData.universitas}
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -75,7 +91,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
+              value={formData.email}
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -87,7 +103,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
+              value={formData.phone}
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -97,9 +113,10 @@ const EditProfilMentee = () => {
           <label>
             Kategori:
             <input
-              className="rounded"
+              className="bg-gray-200 rounded"
               type="text"
-              value={name}
+              value={formData.kategori}
+              disabled
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -109,9 +126,10 @@ const EditProfilMentee = () => {
           <label>
             Kelas:
             <input
-              className="rounded"
+              className="bg-gray-200 rounded"
               type="text"
-              value={name}
+              value={formData.kelas}
+              disabled
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -121,9 +139,10 @@ const EditProfilMentee = () => {
           <label>
             Sesi:
             <input
-              className="rounded"
+              className="bg-gray-200 rounded"
               type="text"
-              value={name}
+              value={formData.sesi}
+              disabled
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -136,7 +155,7 @@ const EditProfilMentee = () => {
               className="bg-gray-200 rounded"
               disabled
               type="text"
-              value={name}
+              value={formData.individual_mentor}
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
@@ -148,7 +167,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
+              value={formData.jurusan}
               onChange={(e) => setName(e.target.value)}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />

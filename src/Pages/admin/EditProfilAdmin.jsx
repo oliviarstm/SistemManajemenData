@@ -1,10 +1,13 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 
 const EditProfilAdmin = () => {
   const [name, setName] = useState("");
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const {username} = useSelector(state => state.Auth)
+  useEffect(()=>setName(username),[])
 
   const handleSave = (e) => {
     e.preventDefault();
@@ -21,6 +24,17 @@ const EditProfilAdmin = () => {
     <div style={{ maxWidth: "700px", margin: "auto", paddingTop: "100px" }}>
       <form onSubmit={handleSave}>
         <div style={{ marginBottom: "10px" }}>
+          <label>
+            Username:
+            <input
+                className="bg-gray-200 rounded"
+                disabled
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+            />
+          </label>
           <label>
             Nama:
             <input
