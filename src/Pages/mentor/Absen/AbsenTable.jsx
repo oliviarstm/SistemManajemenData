@@ -1,5 +1,5 @@
-import Table from "../../Components/table/Index.jsx";
-import {absen} from "../../Components/table/threedotmenu.js";
+import Table from "../../../Components/table/Index.jsx";
+import {absen} from "../../../Components/table/threedotmenu.js";
 
 const exTitle = "Absensi";
 const exField = ["Nama", "Kelas", "Sesi","Kehadiran"];

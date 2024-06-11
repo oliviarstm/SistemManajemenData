@@ -16,8 +16,6 @@ const exData = [{
     Nilai:"91"
 }]
 
-
-
 const DetailNilai=()=>{
     const location = useLocation()
     const id_mentee = location.state?.id_mentee

@@ -19,7 +19,7 @@ import EditProfilAdmin from "../Pages/admin/EditProfilAdmin.jsx";
 import EditProfilMentee from "../Pages/mentee/EditProfilMentee.jsx";
 import EditProfilMentor from "../Pages/mentor/EditProfilMentor.jsx";
 import PengumpulanTugas from "../Pages/mentor/tugas/PengumpulanTugas.jsx";
-import AbsenMentee from "../Pages/mentor/AbsenMentee.jsx";
+import AbsenMentee from "../Pages/mentor/Absen/AbsenMentee.jsx";
 import TestHapus from "../Pages/admin/TestHapus.jsx";
 import TesAddMentee from "../Pages/admin/TesAddMentee.jsx";
 import TesAddUser from "../Pages/admin/TesAddUser.jsx";
@@ -30,17 +30,16 @@ import DataAdmin from "../Pages/admin/DataAdmin.jsx";
 import DataMentor from "../Pages/admin/DataMentor.jsx";
 import DataUser from "../Pages/admin/DataUser.jsx";
 import DataUniv from "../Pages/admin/DataUniv.jsx";
-import ValidasiPengajuan from "../Pages/admin/ValidasiPengajuan.jsx";
 import Validasi from "../Pages/admin/Validasi.jsx";
-import AbsenTable from "../Pages/mentor/AbsenTable.jsx";
+import AbsenTable from "../Pages/mentor/Absen/AbsenTable.jsx";
 import NilaiMenu from "../Pages/mentor/nilai/NilaiMenu.jsx";
 import DataNilai from "../Pages/mentor/nilai/DataNilai.jsx";
 import Tugas from "../Pages/mentor/tugas/Tugas.jsx";
 import DetailTugas from "../Pages/mentor/tugas/DetailTugas.jsx";
-import TempPengumpulanTugasMentor from "../Pages/mentor/tugas/TempPengumpulanTugasMentor.jsx";
 import TempPengumpulanTugasMentee from "../Pages/mentee/TempPengumpulanTugasMentee.jsx";
 import TempRekapAbsen from "../Pages/mentee/TempRekapAbsen.jsx";
 import DetailNilai from "../Pages/mentor/nilai/DetailNilai.jsx";
+import FormAbsensi from "../Pages/mentor/Absen/FormAbsensi.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -96,6 +95,7 @@ const Routing = ()=>{
                             <Route path="absen">
                                 <Route path="" element={<AbsenMentee role={role}/>} />
                                 <Route path="detail" element={<AbsenTable />} />
+                                <Route path="form" element={<FormAbsensi />} />
                             </Route>
                             <Route path="nilai">
                                 <Route path="" element={<NilaiMenu/>}/>

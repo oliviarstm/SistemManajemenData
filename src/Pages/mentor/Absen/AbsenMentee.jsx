@@ -1,10 +1,10 @@
-import semuaMentee from "../../../public/semuaMentee.png";
-import kelasA from "../../../public/kelasA.png";
-import kelasB from "../../../public/kelasB.png";
-import kelasC from "../../../public/kelasC.png";
-import absen from "../../../public/absen.png";
-import DashboardButton from "../../Components/DashboardButton";
-import menteeIndividual from "../../../public/menteeIndividual.png";
+import semuaMentee from "../../../../public/semuaMentee.png";
+import kelasA from "../../../../public/kelasA.png";
+import kelasB from "../../../../public/kelasB.png";
+import kelasC from "../../../../public/kelasC.png";
+import absen from "../../../../public/absen.png";
+import DashboardButton from "../../../Components/DashboardButton.jsx";
+import menteeIndividual from "../../../../public/menteeIndividual.png";
 import {useNavigate} from "react-router-dom";
 
 const AbsenMentee = ({role}) => {
@@ -25,7 +25,7 @@ const AbsenMentee = ({role}) => {
         navigate('detail', {state:{filter:"Mentee Individual"}})
     }
     const handleClickForm = ()=>{
-        navigate('detail', {state:{filter:"Form"}})
+        navigate('form')
     }
   return (
     <div>
@@ -38,7 +38,7 @@ const AbsenMentee = ({role}) => {
         <DashboardButton title="Kelas B" image={kelasB} onClick={handleClickB}/>
         <DashboardButton title="Kelas C" image={kelasC} onClick={handleClickC}/>
           {role==='mentor'?<DashboardButton title="Mentee Individual" image={menteeIndividual} onClick={handleClickIndividual}/>:null}
-          {role==='mentor'?<DashboardButton title="Form Absensi" image={absen} onClick={handleClickIndividual}/>:null}
+          {role==='mentor'?<DashboardButton title="Form Absensi" image={absen} onClick={handleClickForm()}/>:null}
       </div>
     </div>
   );
