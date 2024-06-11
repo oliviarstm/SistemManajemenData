@@ -18,7 +18,7 @@ const FormBody =()=>{
                 <input
                     type="text"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
-                    value="Olivia Ristami Nainggolan"
+                    value="Crazy 8"
                     disabled
                     onChange={(e) => handleInputChange('nama', e.target.value)}
                 />
