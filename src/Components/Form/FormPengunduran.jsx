@@ -1,8 +1,6 @@
-import {useEffect, useState} from "react";
-import {absenOptions} from "../table/dateOptions.jsx";
-import Datepicker from "tailwind-datepicker-react";
+import {useState} from "react";
 
-const FormIzin =()=>{
+const FormPengunduran =()=>{
     const [formValues, setFormValues] = useState({});
     const handleInputChange = (title, value) => {
         setFormValues({ ...formValues, [title]: value });
@@ -13,15 +11,6 @@ const FormIzin =()=>{
         // Process form submission here
         console.log("Form values:", formValues);
     };
-    const [show, setShow] = useState(false)
-    const handleChange = (selectedDate) => {
-        handleInputChange("Tanggal", selectedDate)
-        console.log(selectedDate)
-    }
-    const handleClose = (state) => {
-        setShow(state)
-    }
-    useEffect(()=>{handleInputChange("Tanggal", new Date())},[] )
 
     return <div className="bg-white mx-10 my-5 p-5">
         <form onSubmit={handleSubmit}>
@@ -32,17 +21,6 @@ const FormIzin =()=>{
                     className="w-[75%] grow py-2 px-3 rounded-md border"
                     onChange={(e) => handleInputChange('alasan', e.target.value)}
                 />
-            </label>
-            <label className="flex items-center mt-5">
-                <h1 className="w-[25%] font-semibold text-lg">Tanggal</h1>
-                <Datepicker classNames="w-[75%] grow rounded-md border" options={absenOptions} onChange={handleChange} show={show} setShow={handleClose} />
-                {/*<input*/}
-                {/*    type="text"*/}
-                {/*    className="w-[75%] grow py-2 px-3 rounded-md border"*/}
-                {/*    value={batas}*/}
-                {/*    disabled*/}
-                {/*    onChange={(e) => handleInputChange('batasPengumpulan', e.target.value)}*/}
-                {/*/>*/}
             </label>
             <label className="flex items-center mt-5">
                 <h1 className="w-[25%] font-semibold text-lg">Lampiran</h1>
@@ -72,4 +50,4 @@ const FormIzin =()=>{
     </div>
 }
 
-export default FormIzin
+export default FormPengunduran

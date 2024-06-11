@@ -37,12 +37,12 @@ import DataNilai from "../Pages/mentor/nilai/DataNilai.jsx";
 import Tugas from "../Pages/mentor/tugas/Tugas.jsx";
 import DetailTugas from "../Pages/mentor/tugas/DetailTugas.jsx";
 import KumpulTugas from "../Pages/mentee/KumpulTugas.jsx";
-import TempRekapAbsen from "../Pages/mentee/TempRekapAbsen.jsx";
 import DetailNilai from "../Pages/mentor/nilai/DetailNilai.jsx";
 import FormAbsensi from "../Pages/mentor/Absen/FormAbsensi.jsx";
 import DataKelas from "../Pages/mentee/DataKelas.jsx";
 import Absen from "../Pages/mentee/Absen.jsx";
 import Izin from "../Pages/mentee/Izin.jsx";
+import Pengunduran from "../Pages/mentee/Pengunduran.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -114,10 +114,8 @@ const Routing = ()=>{
                                     <Route path="" element={<PengumpulanTugas />} />
                                     <Route path="detail" element={<DetailTugas />} />
                                 </Route>
-                                {/*Not done, still problem*/}
                             </Route>
                             <Route path="profile" element={<EditProfilMentor />} />
-                        {/*    TEMP PATH*/}
                         </Route>
                     </Route>
                     <Route element={<MenteeRoute role={role}/>}>
@@ -127,7 +125,7 @@ const Routing = ()=>{
                             <Route path="kelas" element={<DataKelas />} />
                             <Route path="absen" element={<Absen />} />
                             <Route path="izin" element={<Izin />} />
-                            {/*<Route path="tempabsen" element={<TempRekapAbsen />} />*/}
+                            <Route path="pengunduran" element={<Pengunduran />} />
                             <Route path="tugas">
                                 <Route path="" element={<Tugas/>}/>
                                 <Route path="kumpul" element={<KumpulTugas/>}/>

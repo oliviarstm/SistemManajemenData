@@ -1,6 +1,3 @@
-import Datepicker from "tailwind-datepicker-react"
-import {absenOptions} from "./dateOptions.jsx";
-import {useState} from "react";
 const TableBar=({title, desc})=>{
     return <div className="bg-white mx-10 my-5 p-5 flex flex-row justify-between items-center">
         <div className="flex flex-col">

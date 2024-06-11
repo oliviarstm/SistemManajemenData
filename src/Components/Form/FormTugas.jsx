@@ -28,6 +28,8 @@ const FormTugas =({titleTugas, batas})=>{
                 <input
                     type="text"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
+                    value={batas}
+                    disabled
                     onChange={(e) => handleInputChange('batasPengumpulan', e.target.value)}
                 />
             </label>

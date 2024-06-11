@@ -1,5 +1,4 @@
 import {useEffect, useRef, useState} from "react";
-import {useNavigate} from "react-router-dom";
 
 const AbsenButton= ({ buttonLabel, options, dataId })=>{
     const [isOpen, setIsOpen] = useState(false);

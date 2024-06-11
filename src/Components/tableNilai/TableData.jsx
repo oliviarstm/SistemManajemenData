@@ -12,8 +12,8 @@
 // }]
 
 
-import ThreeDot from "./ThreeDot.jsx";
 import AbsenButton from "../AbsenButton.jsx";
+import ThreeDot from "../table/ThreeDot.jsx";
 
 const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown})=>{
     // Temporary
@@ -36,11 +36,11 @@ const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown})=
                         {
                             Object.entries(val).slice(1).map(([key, value], innerIndex) => {
                                 if (innerIndex===0){
-                                    return <td key={innerIndex} className="px-5 text-black">
+                                    return <td key={key} className="px-5 text-black">
                                         {isEnable?<button className="hover:underline" onClick={()=>console.log("CLICKED")}>{value}</button>:value}
                                     </td>
                                 } else {
-                                    return <td key={innerIndex} className="px-5 text-black">{value}</td>
+                                    return <td key={key} className="px-5 text-black">{value}</td>
                                 }
                             })
 

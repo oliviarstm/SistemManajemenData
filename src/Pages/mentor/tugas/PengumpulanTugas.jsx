@@ -2,7 +2,6 @@ import semuaMentee from "../../../../public/semuaMentee.png";
 import kelasA from "../../../../public/kelasA.png";
 import kelasB from "../../../../public/kelasB.png";
 import kelasC from "../../../../public/kelasC.png";
-import menteeIndividual from "../../../../public/menteeIndividual.png";
 import DashboardButton from "../../../Components/DashboardButton.jsx";
 import {useLocation, useNavigate} from "react-router-dom";
 
