@@ -41,9 +41,9 @@ const DashboardMentee = () => {
         </div>
       </div>
       <div className="flex gap-24 justify-center mt-8">
-        <DashboardButton title="Data Kelas" image={gambar15} />
-        <DashboardButton title="Absensi" image={gambar17} />
-        <DashboardButton title="Tugas" image={gambar16} />
+        <DashboardButton title="Data Kelas" image={gambar15} path="/mentee/kelas"/>
+        <DashboardButton title="Absensi" image={gambar17} path="/mentee/absen"/>
+        <DashboardButton title="Tugas" image={gambar16} path="/mentee/tugas"/>
       </div>
     </div>
   );

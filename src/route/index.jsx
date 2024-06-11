@@ -40,6 +40,7 @@ import TempPengumpulanTugasMentee from "../Pages/mentee/TempPengumpulanTugasMent
 import TempRekapAbsen from "../Pages/mentee/TempRekapAbsen.jsx";
 import DetailNilai from "../Pages/mentor/nilai/DetailNilai.jsx";
 import FormAbsensi from "../Pages/mentor/Absen/FormAbsensi.jsx";
+import DataKelas from "../Pages/mentee/DataKelas.jsx";
 
 const Routing = ()=>{
     // const isLogin = true
@@ -121,6 +122,7 @@ const Routing = ()=>{
                         <Route path="mentee">
                             <Route path="dashboard" element={<DashboardMentee/>}/>
                             <Route path="profile" element={<EditProfilMentee />} />
+                            <Route path="kelas" element={<DataKelas />} />
                             <Route path="tempabsen" element={<TempRekapAbsen />} />
                             <Route path="tugas">
                                 <Route path="temp" element={<TempPengumpulanTugasMentee/>}/>
