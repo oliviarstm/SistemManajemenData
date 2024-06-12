@@ -1,8 +1,16 @@
-import {mentee, absen as absenAcion} from "./optionAction.js";
+import {mentee, absen as absenAcion, mentor, admin} from "./optionAction.js";
 
 export const editdelete = [
-    {label:"Edit", value:"edit", onClick:(id)=>mentee.edit(id)},
-    {label:"Delete", value:"delete", onClick: (id)=>mentee.delete(id)},
+    {label:"Edit", value:"edit", onClick:(id, handleRefresh)=>mentee.edit(id)},
+    {label:"Delete", value:"delete", onClick: (id, handleRefresh)=>mentee.delete(id)},
+]
+export const admineditdelete = [
+    {label:"Edit", value:"edit", onClick:(id, handleRefresh)=>admin.edit(id)},
+    {label:"Delete", value:"delete", onClick: (id, handleRefresh)=>admin.delete(id, handleRefresh)},
+]
+export const mentoreditdelete = [
+    {label:"Edit", value:"edit", onClick:(id, handleRefresh)=>mentor.edit(id)},
+    {label:"Delete", value:"delete", onClick: (id, handleRefresh)=>mentor.delete(id, handleRefresh)},
 ]
 export const absen = [
     {label:"On Cam", value:"oncam", onClick:(id)=>absenAcion.oncam(id)},

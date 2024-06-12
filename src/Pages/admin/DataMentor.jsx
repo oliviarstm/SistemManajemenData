@@ -1,5 +1,5 @@
 import Table from "../../Components/table/Index.jsx";
-import {editdelete} from "../../Components/table/threedotmenu.js";
+import {editdelete, mentoreditdelete} from "../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
 import InputModal from "../../Components/InputModal.jsx";
 import axios from "../../utils/axios.js";
@@ -21,6 +21,8 @@ const exData = [{
 const DataMentor = () => {
     const [isModalOpen, setModalOpen] = useState(false);
     const [mentorData, setMentorData]=useState([])
+    const [refresh, setRefresh] = useState(false); // State variable for managing refresh
+
 
     const openModal = () => {
         console.log("OPEN")
@@ -39,15 +41,21 @@ const DataMentor = () => {
             .catch(err=>{
                 console.log(err)
             })
-    }, []);
+    }, [refresh]);
+    const handleRefresh = () => {
+        setRefresh(!refresh); // Toggle refresh state to trigger re-fetching data
+    };
+
     const propsData={
         title:exTitle,
         field:exField,
         data:mentorData,
         isEnable:false,
         type:'add',
-        option:editdelete,
-        handleAdd:openModal
+        option:mentoreditdelete,
+        handleAdd:openModal,
+        handleRefresh:handleRefresh
+
     }
 
     return (

@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 
-const ThreeDot = ({ options, dataId }) => {
+const ThreeDot = ({ options, dataId, handleRefresh}) => {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef();
 
@@ -38,7 +38,7 @@ const ThreeDot = ({ options, dataId }) => {
                 <div className="z-10 origin-top absolute left-1/2 transform -translate-x-1/2 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         {options.map((option)=>(
-                            <button key={option.label} className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left" role="menuitem" onClick={()=>option.onClick(dataId)}>{option.label}</button>
+                            <button key={option.label} className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left" role="menuitem" onClick={()=>option.onClick(dataId, handleRefresh)}>{option.label}</button>
                         ))}
                     </div>
                 </div>

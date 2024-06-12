@@ -13,15 +13,16 @@ import TableData from "./TableData.jsx";
 //     buttonDropDown: true false ,
 //     dataClick:,
 //     tableType: "score"/null
-//     buttonClick: onClick when data button is clicked
+//     buttonClick: onClick when data button is clicked,
+//     handleRefresh:
 // }
 
 
 const Table =({props})=>{
-    const {title, field, data, isEnable, desc, type, option, handleAdd, buttonLabel, buttonDropDown, dataClick, tableType, buttonClick}=props
+    const {title, field, data, isEnable, desc, type, option, handleAdd, buttonLabel, buttonDropDown, dataClick, tableType, buttonClick, handleRefresh}=props
     return <>
         <TableBar title={title} desc={desc} type={type} handleAdd={handleAdd}/>
-        <TableData field={field} data={data} isEnable={isEnable} options={option} buttonLabel={buttonLabel} buttonDropDown={buttonDropDown} dataClick={dataClick} type={tableType} buttonClick={buttonClick}/>
+        <TableData field={field} data={data} isEnable={isEnable} options={option} buttonLabel={buttonLabel} buttonDropDown={buttonDropDown} dataClick={dataClick} type={tableType} buttonClick={buttonClick} handleRefresh={handleRefresh}/>
     </>
 }
 

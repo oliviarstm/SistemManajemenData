@@ -16,7 +16,7 @@ import ThreeDot from "./ThreeDot.jsx";
 import AbsenButton from "../AbsenButton.jsx";
 import {useNavigate} from "react-router-dom";
 
-const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, dataClick, type, buttonClick})=>{
+const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, dataClick, type, buttonClick, handleRefresh})=>{
     const navigate = useNavigate()
     const moveToMenuPage=(id)=>{
         console.log(id)
@@ -75,7 +75,7 @@ const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, d
                                         :
                                         <button className="bg-[#0070FF] hover:bg-[#4593f7] text-white py-2 px-4 rounded-xl" onClick={()=>buttonClick(val.id)}>{buttonLabel}</button>
                                     :
-                                    <ThreeDot options={options} dataId={val.id}/>}
+                                    <ThreeDot options={options} dataId={val.id} handleRefresh={handleRefresh}/>}
                                 </td>
                         }
 
