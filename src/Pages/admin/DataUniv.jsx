@@ -1,7 +1,8 @@
 import Table from "../../Components/table/Index.jsx";
 import {editdelete} from "../../Components/table/threedotmenu.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import InputModal from "../../Components/InputModal.jsx";
+import axios from "../../utils/axios.js";
 
 const exTitle = "Data Universitas";
 const exField = ["Nama", "Email", "Alamat", "Nama PIC", "Nomor PIC", "Email PIC",""];
@@ -25,6 +26,8 @@ const exData = [{
 
 const DataUniv = () => {
     const [isModalOpen, setModalOpen] = useState(false);
+    const [univData, setUnivData]=useState([])
+
     const openModal = () => {
         console.log("OPEN")
         setModalOpen(true);
@@ -33,10 +36,20 @@ const DataUniv = () => {
         setModalOpen(false);
     };
     const titles = ["Nama Universitas", "Email Universitas", "Alamat", "Nama PIC", "Nomor Telepon PIC", "Email PIC"];
+    useEffect(() => {
+        axios.get('/universitas')
+            .then(res=>{
+                const result = res.data.data
+                setUnivData(result)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }, []);
     const propsData={
         title:exTitle,
         field:exField,
-        data:exData,
+        data:univData,
         isEnable:false,
         type:'add',
         option:editdelete,

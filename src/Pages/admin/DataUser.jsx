@@ -1,7 +1,8 @@
 import Table from "../../Components/table/Index.jsx";
 import {editdelete} from "../../Components/table/threedotmenu.js";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import InputModal from "../../Components/InputModal.jsx";
+import axios from "../../utils/axios.js";
 
 const exTitle = "Data User";
 const exField = ["Username", "Role", "Email",""];
@@ -19,6 +20,8 @@ const exData = [{
 
 const DataUser = () => {
     const [isModalOpen, setModalOpen] = useState(false);
+    const [adminData, setAdminData]=useState([])
+
     const openModal = () => {
         console.log("OPEN")
         setModalOpen(true);
@@ -27,10 +30,21 @@ const DataUser = () => {
         setModalOpen(false);
     };
     const titles = ["Username", "Role", "Password", "Confirm Password"];
+    useEffect(() => {
+        axios.get('/user')
+            .then(res=>{
+                const result = res.data.data
+                setAdminData(result)
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+    }, []);
+
     const propsData={
         title:exTitle,
         field:exField,
-        data:exData,
+        data:adminData,
         isEnable:false,
         type:'add',
         option:editdelete,

@@ -50,6 +50,7 @@ const Routing = ()=>{
     // console.log("ROUTING")
     // const dispatch = useDispatch()
     const {role, isLogin} = useSelector(state=>state.Auth)
+    console.log(role)
     // useEffect(() => {
     //     console.log("USE EFFECT")
     //     const getToken = localStorage.getItem("Authorization")

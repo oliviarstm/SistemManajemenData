@@ -1,22 +1,56 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
+import {useNavigate} from "react-router-dom";
+import axiosInstance from "../../utils/axios.js";
 
 const EditProfilAdmin = () => {
+  const navigate = useNavigate()
+  const [formData, setFormData]=useState({})
   const [name, setName] = useState("");
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
-  const {username} = useSelector(state => state.Auth)
+  const {username, accountId} = useSelector(state => state.Auth)
   useEffect(()=>setName(username),[])
+  useEffect(()=> {
+    axiosInstance.get(`/admin/${accountId}`)
+        .then(res => {
+          const data = res.data.data;
+          setFormData({
+            nama: data.nama,
+            email: data.email,
+          });
+        })
+        .catch(err => {
+          console.log(err)
+        })
+  }, [])
 
   const handleSave = (e) => {
     e.preventDefault();
-    // Tambahkan logika untuk menyimpan perubahan profil
     console.log("Profil Disimpan");
+    console.log(formData)
+    if (formData.password===undefined){
+      axiosInstance.put(`/admin/${accountId}`, formData)
+          .then(res=>{
+            console.log(res.data.msg)
+
+          })
+          .catch(err => {
+            console.log(err.response.data.msg)
+          })
+    }else{
+      axiosInstance.put(`/admin_pass/${accountId}`, formData)
+          .then(res=>{
+            console.log(res.data.msg)
+
+          })
+          .catch(err => {
+            console.log(err.response.data.msg)
+          })
+    }
+    navigate('/admin/dashboard')
   };
 
   const handleCancel = () => {
-    // Tambahkan logika untuk membatalkan perubahan
+    navigate('/admin/dashboard')
     console.log("Edit Dibatalkan");
   };
 
@@ -40,8 +74,8 @@ const EditProfilAdmin = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={formData.nama}
+              onChange={(e) => setFormData({ ...formData, nama: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
@@ -52,8 +86,8 @@ const EditProfilAdmin = () => {
             <input
               className="rounded"
               type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
@@ -64,8 +98,7 @@ const EditProfilAdmin = () => {
             <input
               className="rounded"
               type="password"
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
@@ -76,8 +109,7 @@ const EditProfilAdmin = () => {
             <input
               className="rounded"
               type="password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
+              onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
@@ -88,8 +120,7 @@ const EditProfilAdmin = () => {
             <input
               className="rounded"
               type="password"
-              value={confirmNewPassword}
-              onChange={(e) => setConfirmNewPassword(e.target.value)}
+              onChange={(e) => setFormData({ ...formData, confNewPassword: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>

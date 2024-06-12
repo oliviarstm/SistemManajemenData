@@ -1,29 +1,44 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  isLogin: true,
-  // role: "admin",
-  // role: "mentor",
-  role: "mentee",
-  userId:1,
-  username:"Olivia",
-  name:"Olivia Ristami Nainggolan"
+const isLoggedIn = () => {
+  return localStorage.getItem("token") !== null;
 };
+
+const initialState = {
+  isLogin: isLoggedIn(),
+  role: null,
+  accountId:null,
+  username:null,
+  name:null,
+};
+
+console.log(initialState)
+
 
 const Auth = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    logout:(state)=>{
-      state.isLogin=false
-      state.role=null
-    }
-    // toggleDarkMode(state){
-    //     state.isDark = !state.isDark
-    // }
+    logout: (state) => {
+      state.isLogin = false;
+      state.role = null;
+      state.accountId = null;
+      state.username = null;
+      state.name = null;
+      // Clear token from localStorage
+      localStorage.removeItem("token");
+    },
+    login: (state, action) => {
+      // Extract user data from action payload (decoded token)
+      state.isLogin = true;
+      state.role = action.payload.role;
+      state.accountId = action.payload.accountId;
+      state.username = action.payload.username;
+      state.name = action.payload.name;
+    },
   },
 });
 
-export const {logout} =Auth.actions
+export const {logout, login} =Auth.actions
 // export const {toggleDarkMode} =auth.actions
 export default Auth.reducer;

@@ -1,11 +1,35 @@
 import gambar9 from "../../public/gambar9.png";
 import { useNavigate } from "react-router-dom";
+import {useState} from "react";
+import axios from "../utils/axios.js";
+import {useDispatch} from "react-redux";
+import {login} from "../store/reducer/auth.js";
+import {jwtDecode} from "jwt-decode";
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch()
   const handleBack = () => {
     navigate("/");
   };
+  const handleLogin = (e)=>{
+    e.preventDefault();
+    axios.post("/login", formData)
+        .then((res) => {
+          console.log(res.data);
+          const decodedToken = jwtDecode(res.data.token);
+          dispatch(login(decodedToken));
+          localStorage.setItem("token", res.data.token);
+          navigate("/login");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+
+    navigate("/login")
+  }
+  const [formData, setFormData]=useState({})
   return (
     <div className="flex flex-row h-screen">
       <div className="w-1/2  flex flex-col justify-center">
@@ -23,10 +47,11 @@ const Login = () => {
               <span className="label-text">Email</span>
             </label>
             <input
-              type="email"
-              placeholder="Masukkan Email"
+              type="text"
+              placeholder="Masukkan Username"
               className="input input-bordered"
               required
+              onChange={(e) => setFormData({ ...formData, username: e.target.value })}
             />
           </div>
           <div className="form-control">
@@ -38,15 +63,11 @@ const Login = () => {
               placeholder="Masukkan Password"
               className="input input-bordered"
               required
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
             />
-            <label className="label">
-              <a href="#" className="label-text-alt link link-hover">
-                Lupa password?
-              </a>
-            </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-[#235EAC] text-white">Login</button>
+            <button className="btn bg-[#235EAC] text-white" onClick={handleLogin}>Login</button>
           </div>
         </form>
         <p className="text-center text-gray-500">Atau</p>

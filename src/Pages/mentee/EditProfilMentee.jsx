@@ -1,35 +1,65 @@
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
+import axiosInstance from "../../utils/axios.js";
+import {useNavigate} from "react-router-dom";
 
 const EditProfilMentee = () => {
-  const [formData, setFormData]=useState({
-    "nim":null,
-    "nama":null,
-    "universitas":null,
-    "email":null,
-    "phone":null,
-    "kategori":null,
-    "kelas":null,
-    "sesi":null,
-    "individual_mentor":null,
-    "jurusan":null,
-
-  })
+  const navigate = useNavigate()
+  const [formData, setFormData]=useState({})
   const [name, setName] = useState("");
-  const [oldPassword, setOldPassword] = useState("");
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmNewPassword, setConfirmNewPassword] = useState("");
-  const {username} = useSelector(state => state.Auth)
+  const {username, accountId} = useSelector(state => state.Auth)
   useEffect(()=>setName(username),[])
+  useEffect(()=> {
+    axiosInstance.get(`/mentee/${accountId}`)
+        .then(res => {
+          const data = res.data.data;
+          setFormData({
+            nim: data.nim,
+            name: data.name,
+            university_name: data.university_name,
+            email: data.email,
+            phone_number: data.phone_number,
+            category: data.category,
+            class: data.class,
+            session: data.session,
+            mentor_name: data.mentor_name,
+            major: data.major,
+          });
+        })
+        .catch(err => {
+          console.log(err)
+        })
+  }, [])
 
   const handleSave = (e) => {
     e.preventDefault();
     // Tambahkan logika untuk menyimpan perubahan profil
     console.log("Profil Disimpan");
+    console.log(formData)
+    if (formData.password===undefined){
+      axiosInstance.put(`/mentee/${accountId}`, formData)
+          .then(res=>{
+            console.log(res.data.msg)
+
+          })
+          .catch(err => {
+            console.log(err.response.data.msg)
+          })
+    }else{
+      axiosInstance.put(`/mentee_pass/${accountId}`, formData)
+          .then(res=>{
+            console.log(res.data.msg)
+
+          })
+          .catch(err => {
+            console.log(err.response.data.msg)
+          })
+    }
+    navigate('/mentee/dashboard')
   };
 
   const handleCancel = () => {
-    // Tambahkan logika untuk membatalkan perubahan
+    navigate('/mentee/dashboard')
     console.log("Edit Dibatalkan");
   };
 
@@ -56,7 +86,7 @@ const EditProfilMentee = () => {
               className="rounded"
               type="text"
               value={formData.nim}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setFormData({ ...formData, nim: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
@@ -65,11 +95,11 @@ const EditProfilMentee = () => {
           <label>
             Nama:
             <input
-              className="rounded"
-              type="text"
-              value={formData.nama}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="rounded"
+                type="text"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -77,11 +107,12 @@ const EditProfilMentee = () => {
           <label>
             Universitas:
             <input
-              className="rounded"
-              type="text"
-              value={formData.universitas}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="bg-gray-200 rounded"
+                type="text"
+                value={formData.university_name}
+                disabled
+                onChange={(e) => setFormData({ ...formData, university_name: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -89,11 +120,11 @@ const EditProfilMentee = () => {
           <label>
             Email:
             <input
-              className="rounded"
-              type="text"
-              value={formData.email}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="rounded"
+                type="text"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -101,11 +132,11 @@ const EditProfilMentee = () => {
           <label>
             No. HP:
             <input
-              className="rounded"
-              type="text"
-              value={formData.phone}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="rounded"
+                type="text"
+                value={formData.phone_number}
+                onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -113,12 +144,12 @@ const EditProfilMentee = () => {
           <label>
             Kategori:
             <input
-              className="bg-gray-200 rounded"
-              type="text"
-              value={formData.kategori}
-              disabled
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="bg-gray-200 rounded"
+                type="text"
+                value={formData.category}
+                disabled
+                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -126,12 +157,12 @@ const EditProfilMentee = () => {
           <label>
             Kelas:
             <input
-              className="bg-gray-200 rounded"
-              type="text"
-              value={formData.kelas}
-              disabled
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="bg-gray-200 rounded"
+                type="text"
+                value={formData.class}
+                disabled
+                onChange={(e) => setFormData({ ...formData, class: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -139,12 +170,12 @@ const EditProfilMentee = () => {
           <label>
             Sesi:
             <input
-              className="bg-gray-200 rounded"
-              type="text"
-              value={formData.sesi}
-              disabled
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="bg-gray-200 rounded"
+                type="text"
+                value={formData.session}
+                disabled
+                onChange={(e) => setFormData({ ...formData, session: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -152,12 +183,12 @@ const EditProfilMentee = () => {
           <label>
             Individual Mentor:
             <input
-              className="bg-gray-200 rounded"
-              disabled
-              type="text"
-              value={formData.individual_mentor}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="bg-gray-200 rounded"
+                disabled
+                type="text"
+                value={formData.mentor_name}
+                onChange={(e) => setFormData({ ...formData, mentor_name: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -165,11 +196,11 @@ const EditProfilMentee = () => {
           <label>
             Jurusan:
             <input
-              className="rounded"
-              type="text"
-              value={formData.jurusan}
-              onChange={(e) => setName(e.target.value)}
-              style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
+                className="rounded"
+                type="text"
+                value={formData.major}
+                onChange={(e) => setFormData({ ...formData, major: e.target.value })}
+                style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
         </div>
@@ -179,8 +210,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="password"
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
@@ -191,8 +221,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="password"
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
+              onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
@@ -203,8 +232,7 @@ const EditProfilMentee = () => {
             <input
               className="rounded"
               type="password"
-              value={confirmNewPassword}
-              onChange={(e) => setConfirmNewPassword(e.target.value)}
+              onChange={(e) => setFormData({ ...formData, confNewPassword: e.target.value })}
               style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
           </label>
