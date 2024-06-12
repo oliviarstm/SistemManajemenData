@@ -44,6 +44,23 @@ export const mentor={
         console.log("edit ",id)
     }
 }
+export const universitas={
+    delete:(id, handleRefresh)=>{
+        console.log("delete ",id)
+        axios.delete(`/universitas/${id}`)
+            .then(res=>{
+                console.log(res.data.msg)
+                handleRefresh()
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+
+    },
+    edit:(id)=>{
+        console.log("edit ",id)
+    }
+}
 
 
 export const absen={
