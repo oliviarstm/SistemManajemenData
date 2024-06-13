@@ -7,10 +7,10 @@ export const menuMentor = [
     title: "Data Mentee",
     path: "/mentor/mentee",
   },
-  {
-    title: "Data Nilai",
-    path: "/mentor/nilai",
-  },
+  // {
+  //   title: "Data Nilai",
+  //   path: "/mentor/nilai",
+  // },
   {
     title: "Absensi",
     path: "/mentor/absen",
@@ -26,10 +26,10 @@ export const menuAdmin = [
     title: "Dashboard",
     path: "/admin/dashboard",
   },
-  {
-    title: "Data Admin",
-    path: "/admin/admin",
-  },
+  // {
+  //   title: "Data Admin",
+  //   path: "/admin/admin",
+  // },
   {
     title: "Data Mentor",
     path: "/admin/mentor",
@@ -38,10 +38,10 @@ export const menuAdmin = [
     title: "Data Mentee",
     path: "/admin/mentee",
   },
-  {
-    title: "Data User",
-    path: "/admin/user",
-  },
+  // {
+  //   title: "Data User",
+  //   path: "/admin/user",
+  // },
   {
     title: "Data Universitas",
     path: "/admin/universitas",
