@@ -1,10 +1,12 @@
 import {useEffect, useState} from "react";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import axiosInstance from "../../utils/axios.js";
 import {useNavigate} from "react-router-dom";
+import {setMentee} from "../../store/reducer/mentee.js";
 
 const EditProfilMentee = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [formData, setFormData]=useState({})
   const [name, setName] = useState("");
   const {username, accountId} = useSelector(state => state.Auth)
@@ -55,6 +57,7 @@ const EditProfilMentee = () => {
             console.log(err.response.data.msg)
           })
     }
+    dispatch(setMentee(formData))
     navigate('/mentee/dashboard')
   };
 
@@ -120,9 +123,10 @@ const EditProfilMentee = () => {
           <label>
             Email:
             <input
-                className="rounded"
+                className="bg-gray-200 rounded"
                 type="text"
                 value={formData.email}
+                disabled
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 style={{ width: "100%", padding: "8px", boxSizing: "border-box" }}
             />
