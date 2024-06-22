@@ -43,31 +43,36 @@ const ProfilButton = () => {
             >
                 <Menu.Items className="absolute z-50 right-0 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
-                        <Menu.Item>
-                            {() => (
-                                <p
-                                    className={classNames(
-                                        "text-gray-700",
-                                        "block px-4 py-2 text-sm mb-2 font-semibold"
+                        {role !== "admin"?
+                            <>
+                                <Menu.Item>
+                                    {() => (
+                                        <p
+                                            className={classNames(
+                                                "text-gray-700",
+                                                "block px-4 py-2 text-sm mb-2 font-semibold"
+                                            )}
+                                        >
+                                            {name}
+                                        </p>
                                     )}
-                                >
-                                    {name}
-                                </p>
-                            )}
-                        </Menu.Item>
-                        <Menu.Item>
-                            {({ active }) => (
-                                <button
-                                    className={classNames(
-                                        active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                                        "block w-full px-4 py-2 text-left text-sm"
+                                </Menu.Item>
+                                <Menu.Item>
+                                    {({ active }) => (
+                                        <button
+                                            className={classNames(
+                                                active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                                                "block w-full px-4 py-2 text-left text-sm"
+                                            )}
+                                            onClick={handleEditProfile}
+                                        >
+                                            Edit Profil
+                                        </button>
                                     )}
-                                    onClick={handleEditProfile}
-                                >
-                                    Edit Profil
-                                </button>
-                            )}
-                        </Menu.Item>
+                                </Menu.Item>
+                            </>
+                        :
+                        null}
                         <Menu.Item>
                             {({ active }) => (
                                 <button

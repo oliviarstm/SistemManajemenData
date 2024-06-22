@@ -86,7 +86,7 @@ const Routing = () => {
                     <Route path="" element={<Validasi />} />
                     <Route path="detail" element={<DetailValidasi />} />
                   </Route>
-                  <Route path="profile" element={<EditProfilAdmin />} />
+                  {/*<Route path="profile" element={<EditProfilAdmin />} />*/}
                 </Route>
               </Route>
               <Route element={<MentorRoute role={role} />}>

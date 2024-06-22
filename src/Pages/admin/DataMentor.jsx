@@ -33,7 +33,7 @@ const DataMentor = () => {
     };
     const titles = ["Nama", "Email", "Username"];
     useEffect(() => {
-        axios.get('/mentoradmin')
+        axios.get('/mentor')
             .then(res=>{
                 const result = res.data.data
                 setMentorData(result)
