@@ -36,7 +36,7 @@ export const menuAdmin = [
   },
   {
     title: "Data Mentee",
-    path: "/admin/mentee",
+    path: "/admin/mentee/detail",
   },
   // {
   //   title: "Data User",
@@ -68,6 +68,10 @@ export const menuMentee = [
   {
     title: "Tugas",
     path: "/mentee/tugas",
+  },
+  {
+    title: "Absensi",
+    path: "/mentee/absensi",
   },
   {
     title: "Pengunduran Diri",

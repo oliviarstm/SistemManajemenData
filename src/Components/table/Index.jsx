@@ -17,13 +17,46 @@ import TableData from "./TableData.jsx";
 //     handleRefresh:
 // }
 
-
-const Table =({props})=>{
-    const {title, field, data, isEnable, desc, type, option, handleAdd, buttonLabel, buttonDropDown, dataClick, tableType, buttonClick, handleRefresh}=props
-    return <>
-        <TableBar title={title} desc={desc} type={type} handleAdd={handleAdd}/>
-        <TableData field={field} data={data} isEnable={isEnable} options={option} buttonLabel={buttonLabel} buttonDropDown={buttonDropDown} dataClick={dataClick} type={tableType} buttonClick={buttonClick} handleRefresh={handleRefresh}/>
+const Table = ({ props }) => {
+  const {
+    title,
+    field,
+    data,
+    isEnable,
+    desc,
+    type,
+    option,
+    handleAdd,
+    buttonLabel,
+    buttonDropDown,
+    dataClick,
+    tableType,
+    buttonClick,
+    handleRefresh,
+  } = props;
+  return (
+    <>
+      <TableBar
+        title={title}
+        desc={desc}
+        type={type}
+        handleAdd={handleAdd}
+        buttonDropDown={buttonDropDown}
+      />
+      <TableData
+        field={field}
+        data={data}
+        isEnable={isEnable}
+        options={option}
+        buttonLabel={buttonLabel}
+        buttonDropDown={buttonDropDown}
+        dataClick={dataClick}
+        type={tableType}
+        buttonClick={buttonClick}
+        handleRefresh={handleRefresh}
+      />
     </>
-}
+  );
+};
 
-export default Table
+export default Table;

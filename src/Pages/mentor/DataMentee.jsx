@@ -1,4 +1,5 @@
 import Table from "../../Components/table/Index.jsx";
+import Select from "react-select";
 import { useLocation } from "react-router-dom";
 import { editdelete } from "../../Components/table/threedotmenu.js";
 import { useEffect, useState } from "react";
@@ -8,38 +9,22 @@ import axios from "../../utils/axios.js";
 
 const exTitle = "Data Mentee";
 const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
-const exData = [
-  {
-    id: 1,
-    Name: "Olivia",
-    Universty: "Poltek",
-    Class: "A",
-    Session: "Pagi",
-  },
-  {
-    id: 2,
-    Name: "Kelvin",
-    Universty: "ITEBA",
-    Class: "B",
-    Session: "Siang",
-  },
-];
 
 const DataMentee = () => {
   const location = useLocation();
-  const filter = location.state?.filter;
+  // const filter = location.state?.filter;
   const [isModalOpen, setModalOpen] = useState(false);
   const { role } = useSelector((state) => state.Auth);
   const [menteeData, setMenteeData] = useState([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let result;
         if (
-          filter === "Kelas A" ||
-          filter === "Kelas B" ||
-          filter === "Kelas C"
+          filter &&
+          (filter === "Kelas A" || filter === "Kelas B" || filter === "Kelas C")
         ) {
           const kelas =
             filter === "Kelas A" ? "A" : filter === "Kelas B" ? "B" : "C";
@@ -58,6 +43,10 @@ const DataMentee = () => {
 
     fetchData();
   }, [filter]);
+
+  const handleFilterChange = (selectedOption) => {
+    setFilter(selectedOption.value);
+  };
 
   const openModal = () => {
     console.log("OPEN");
@@ -82,12 +71,23 @@ const DataMentee = () => {
   const toDetail = (id) => {
     navigate("nilai", { state: { id_mentee: id } });
   };
+
+  const options = [
+    { value: "", label: "Semua Kelas" },
+    { value: "Kelas A", label: "Kelas A" },
+    { value: "Kelas B", label: "Kelas B" },
+    { value: "Kelas C", label: "Kelas C" },
+  ];
+
   const propsData = {
     title: exTitle,
     field: exField,
     data: menteeData,
     isEnable: false,
-    desc: filter === "Individual Mentor" ? "Individual Mentee" : filter,
+    desc:
+      filter === "Individual Mentor"
+        ? "Individual Mentee"
+        : filter || "Semua Kelas",
     type: role === "admin" ? "add" : null,
     option: editdelete,
     tableType: role === "mentor" ? "none" : null,
@@ -98,6 +98,15 @@ const DataMentee = () => {
 
   return (
     <>
+      <div className="flex justify-end mt-4 mr-8">
+        <Select
+          className="w-48"
+          value={options.find((option) => option.value === filter)}
+          onChange={handleFilterChange}
+          options={options}
+          placeholder="Filter Kelas"
+        />
+      </div>
       <Table props={propsData} />
       <InputModal
         isOpen={isModalOpen}

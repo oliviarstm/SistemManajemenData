@@ -124,7 +124,7 @@ const Routing = () => {
                 <Route path="dashboard" element={<DashboardMentee />} />
                 <Route path="profile" element={<EditProfilMentee />} />
                 <Route path="kelas" element={<DataKelas />} />
-                <Route path="absen" element={<Absen />} />
+                <Route path="absensi" element={<Absen />} />
                 <Route path="izin" element={<Izin />} />
                 <Route path="pengunduran" element={<Pengunduran />} />
                 <Route path="tugas">
