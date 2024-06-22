@@ -48,7 +48,7 @@ const Login = () => {
             </label>
             <input
               type="text"
-              placeholder="Masukkan Username"
+              placeholder="Masukkan Username atau Email"
               className="input input-bordered"
               required
               onChange={(e) => setFormData({ ...formData, username: e.target.value })}
