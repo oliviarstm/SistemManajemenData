@@ -85,29 +85,22 @@ const DataMentee = () => {
     field: exField,
     data: menteeData,
     isEnable: false,
-    desc:
-      filter === "Individual Mentor"
-        ? "Individual Mentee"
-        : filter || "Semua Kelas",
+    // desc:
+    //   filter === "Individual Mentor"
+    //     ? "Individual Mentee"
+    //     : filter || "Semua Kelas",
     type: role === "admin" ? "add" : null,
     option: editdelete,
     tableType: null,
     handleAdd: openModal,
     buttonLabel: role === "mentor" ? "Detail" : null,
     buttonClick: toDetail,
+    classFilter:true,
+    classFilterFunction:handleFilterChange
   };
 
   return (
     <>
-      <div className="flex justify-end mt-4 mr-8">
-        <Select
-          className="w-48"
-          value={options.find((option) => option.value === filter)}
-          onChange={handleFilterChange}
-          options={options}
-          placeholder="Filter Kelas"
-        />
-      </div>
       <Table props={propsData} />
       <InputModal
         isOpen={isModalOpen}

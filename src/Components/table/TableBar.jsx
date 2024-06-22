@@ -4,7 +4,14 @@ import { absenOptions } from "./dateOptions.jsx";
 import { useState } from "react";
 import MonthSelector from "../tempTabelRekap/MonthSelector.jsx";
 
-const TableBar = ({ title, desc, type, handleAdd }) => {
+const options = [
+    { value: "", label: "Semua Kelas" },
+    { value: "Kelas A", label: "Kelas A" },
+    { value: "Kelas B", label: "Kelas B" },
+    { value: "Kelas C", label: "Kelas C" },
+];
+
+const TableBar = ({ title, desc, type, handleAdd, classFilter, classFilterFunction }) => {
   const [showDropdown, setShowDropdown] = useState(false);
   const [filter, setFilter] = useState(null);
 
@@ -26,7 +33,16 @@ const TableBar = ({ title, desc, type, handleAdd }) => {
         <h1 className="text-black font-medium text-2xl">{title}</h1>
         <h1 className="text-gray-700 font-normal">{desc}</h1>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center gap-4">
+          {classFilter?
+              <Select
+                  className="w-48"
+                  value={options.find((option) => option.value === filter)}
+                  onChange={classFilterFunction}
+                  options={options}
+                  placeholder="Filter Kelas"
+              />
+              :null}
         {type === "add" ? (
           <button
             className="bg-[#0070FF] hover:bg-[#4593f7] text-white font-bold py-2 px-4 rounded inline-flex items-center"

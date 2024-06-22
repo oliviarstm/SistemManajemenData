@@ -33,29 +33,33 @@ const Table = ({ props }) => {
     tableType,
     buttonClick,
     handleRefresh,
+    classFilter,
+    classFilterFunction
   } = props;
   return (
-    <>
-      <TableBar
-        title={title}
-        desc={desc}
-        type={type}
-        handleAdd={handleAdd}
-        buttonDropDown={buttonDropDown}
-      />
-      <TableData
-        field={field}
-        data={data}
-        isEnable={isEnable}
-        options={option}
-        buttonLabel={buttonLabel}
-        buttonDropDown={buttonDropDown}
-        dataClick={dataClick}
-        type={tableType}
-        buttonClick={buttonClick}
-        handleRefresh={handleRefresh}
-      />
-    </>
+      <>
+        <TableBar
+            title={title}
+            desc={desc}
+            type={type}
+            handleAdd={handleAdd}
+            buttonDropDown={buttonDropDown}
+            classFilter={classFilter}
+            classFilterFunction={classFilterFunction}
+        />
+        <TableData
+            field={field}
+            data={data}
+            isEnable={isEnable}
+            options={option}
+            buttonLabel={buttonLabel}
+            buttonDropDown={buttonDropDown}
+            dataClick={dataClick}
+            type={tableType}
+            buttonClick={buttonClick}
+            handleRefresh={handleRefresh}
+        />
+      </>
   );
 };
 
