@@ -63,92 +63,94 @@ const Routing = () => {
   // console.log(isLogin + role)
 
   return (
-    <>
-      <Routes>
-        {/*public route*/}
-        <Route element={<PublicRoute isLogin={isLogin} />}>
-          <Route path="login" element={<Login />} />
-        </Route>
-        {/*auth route*/}
-        <Route element={<AuthRoute isLogin={isLogin} />}>
-          <Route element={<MainLayout role={role} />}>
-            <Route element={<AdminRoute role={role} />}>
-              <Route path="admin">
-                <Route path="dashboard" element={<DashboardAdmin />} />
-                <Route path="mentee">
-                  <Route path="" element={<DataMenteeMenu role={role} />} />
-                  <Route path="detail" element={<DataMentee />} />
-                </Route>
-                <Route path="mentor" element={<DataMentor />} />
-                <Route path="user" element={<DataUser />} />
-                <Route path="universitas" element={<DataUniv />} />
-                <Route path="validasi">
-                  <Route path="" element={<Validasi />} />
-                  <Route path="detail" element={<DetailValidasi />} />
-                </Route>
-                <Route path="profile" element={<EditProfilAdmin />} />
-              </Route>
-            </Route>
-            <Route element={<MentorRoute role={role} />}>
-              <Route path="mentor">
-                <Route path="dashboard" element={<DashboardMentor />} />
-                <Route path="mentee">
-                  <Route path="" element={<DataMenteeMenu role={role} />} />
-                  <Route path="detail" element={<DataMentee />} />
-                  <Route path="nilai" element={<DetailNilai />} />
-                </Route>
-                <Route path="absen">
-                  <Route path="" element={<AbsenMentee role={role} />} />
-                  <Route path="detail" element={<AbsenTable />} />
-                  <Route path="form" element={<FormAbsensi />} />
-                </Route>
-                <Route path="nilai">
-                  <Route path="" element={<NilaiMenu />} />
-                  <Route path="data">
-                    <Route path="" element={<DataNilai />} />
-                    <Route path="detail" element={<DetailNilai />} />
+      <>
+        <Routes>
+          {/*public route*/}
+          <Route element={<PublicRoute isLogin={isLogin} />}>
+            <Route path="login" element={<Login />} />
+          </Route>
+          {/*auth route*/}
+          <Route element={<AuthRoute isLogin={isLogin} />}>
+            <Route element={<MainLayout role={role} />}>
+              <Route element={<AdminRoute role={role} />}>
+                <Route path="admin">
+                  <Route path="dashboard" element={<DashboardAdmin />} />
+                  <Route path="mentee">
+                    <Route path="" element={<DataMenteeMenu role={role} />} />
+                    <Route path="detail" element={<DataMentee />} />
                   </Route>
-                </Route>
-                <Route path="tugas">
-                  <Route path="" element={<Tugas />} />
-                  <Route path="menu">
-                    <Route path="" element={<PengumpulanTugas />} />
-                    <Route path="detail" element={<DetailTugas />} />
+                  <Route path="mentor" element={<DataMentor />} />
+                  <Route path="user" element={<DataUser />} />
+                  <Route path="universitas" element={<DataUniv />} />
+                  <Route path="validasi">
+                    <Route path="" element={<Validasi />} />
+                    <Route path="detail" element={<DetailValidasi />} />
                   </Route>
+                  <Route path="profile" element={<EditProfilAdmin />} />
                 </Route>
-                <Route path="profile" element={<EditProfilMentor />} />
               </Route>
-            </Route>
-            <Route element={<MenteeRoute role={role} />}>
-              <Route path="mentee">
-                <Route path="dashboard" element={<DashboardMentee />} />
-                <Route path="profile" element={<EditProfilMentee />} />
-                <Route path="kelas" element={<DataKelas />} />
-                <Route path="absensi" element={<Absen />} />
-                <Route path="izin" element={<Izin />} />
-                <Route path="pengunduran" element={<Pengunduran />} />
-                <Route path="tugas">
-                  <Route path="" element={<Tugas />} />
-                  <Route path="kumpul" element={<KumpulTugas />} />
+              <Route element={<MentorRoute role={role} />}>
+                <Route path="mentor">
+                  <Route path="dashboard" element={<DashboardMentor />} />
+                  <Route path="mentee">
+                    <Route path="" element={<DataMenteeMenu role={role} />} />
+                    <Route path="detail" >
+                      <Route path="" element={<DataMentee />} />
+                      <Route path="nilai" element={<DetailNilai />} />
+                    </Route>
+                  </Route>
+                  <Route path="absen">
+                    <Route path="" element={<AbsenMentee role={role} />} />
+                    <Route path="detail" element={<AbsenTable />} />
+                    <Route path="form" element={<FormAbsensi />} />
+                  </Route>
+                  <Route path="nilai">
+                    <Route path="" element={<NilaiMenu />} />
+                    <Route path="data">
+                      <Route path="" element={<DataNilai />} />
+                      <Route path="detail" element={<DetailNilai />} />
+                    </Route>
+                  </Route>
+                  <Route path="tugas">
+                    <Route path="" element={<Tugas />} />
+                    <Route path="menu">
+                      <Route path="" element={<PengumpulanTugas />} />
+                      <Route path="detail" element={<DetailTugas />} />
+                    </Route>
+                  </Route>
+                  <Route path="profile" element={<EditProfilMentor />} />
+                </Route>
+              </Route>
+              <Route element={<MenteeRoute role={role} />}>
+                <Route path="mentee">
+                  <Route path="dashboard" element={<DashboardMentee />} />
+                  <Route path="profile" element={<EditProfilMentee />} />
+                  <Route path="kelas" element={<DataKelas />} />
+                  <Route path="absensi" element={<Absen />} />
+                  <Route path="izin" element={<Izin />} />
+                  <Route path="pengunduran" element={<Pengunduran />} />
+                  <Route path="tugas">
+                    <Route path="" element={<Tugas />} />
+                    <Route path="kumpul" element={<KumpulTugas />} />
+                  </Route>
                 </Route>
               </Route>
             </Route>
           </Route>
-        </Route>
-        <Route path="/" element={<Landing />} />
-        <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Landing />} />
+          <Route path="*" element={<NotFound />} />
 
-        <Route element={<MainLayout role="admin" />}>
-          <Route path="test" element={<EditUserModal />} />
+          <Route element={<MainLayout role="admin" />}>
+            <Route path="test" element={<EditUserModal />} />
 
-          <Route path="testhapus" element={<TestHapus />} />
-          <Route path="tesaddmentee" element={<TesAddMentee />} />
-          <Route path="tesadduser" element={<TesAddUser />} />
-          <Route path="detailuniv" element={<DetailUniv />} />
-          <Route path="edituniv" element={<EditUniv />} />
-        </Route>
-      </Routes>
-    </>
+            <Route path="testhapus" element={<TestHapus />} />
+            <Route path="tesaddmentee" element={<TesAddMentee />} />
+            <Route path="tesadduser" element={<TesAddUser />} />
+            <Route path="detailuniv" element={<DetailUniv />} />
+            <Route path="edituniv" element={<EditUniv />} />
+          </Route>
+        </Routes>
+      </>
   );
 };
 

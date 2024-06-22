@@ -1,6 +1,6 @@
 import Table from "../../Components/table/Index.jsx";
 import Select from "react-select";
-import { useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import { editdelete } from "../../Components/table/threedotmenu.js";
 import { useEffect, useState } from "react";
 import InputModal from "../../Components/InputModal.jsx";
@@ -12,6 +12,7 @@ const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
 
 const DataMentee = () => {
   const location = useLocation();
+  const navigate = useNavigate()
   // const filter = location.state?.filter;
   const [isModalOpen, setModalOpen] = useState(false);
   const { role } = useSelector((state) => state.Auth);
@@ -90,7 +91,7 @@ const DataMentee = () => {
         : filter || "Semua Kelas",
     type: role === "admin" ? "add" : null,
     option: editdelete,
-    tableType: role === "mentor" ? "none" : null,
+    tableType: null,
     handleAdd: openModal,
     buttonLabel: role === "mentor" ? "Detail" : null,
     buttonClick: toDetail,
