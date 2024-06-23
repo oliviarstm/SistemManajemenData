@@ -79,7 +79,7 @@ const DataMentee = () => {
     { value: "Kelas B", label: "Kelas B" },
     { value: "Kelas C", label: "Kelas C" },
   ];
-
+  // FOR TABLE SETTINGS
   const propsData = {
     title: exTitle,
     field: exField,
