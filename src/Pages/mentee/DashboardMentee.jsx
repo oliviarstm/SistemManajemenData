@@ -9,8 +9,8 @@ import {useSelector} from "react-redux";
 const DashboardMentee = () => {
     const [data,setData]=useState({})
     const {accountId} = useSelector(state => state.Auth)
-    const menteeData = useSelector(state => state.Mentee)
-    console.log(menteeData)
+    const menteeProfil = useSelector(state => state.Mentee)
+    console.log(menteeProfil)
         useEffect(() => {
         axios.get(`/mentee/${accountId}`)
             .then(res=>{
@@ -20,7 +20,7 @@ const DashboardMentee = () => {
             .catch(err => {
                 console.log(err)
             })
-    }, [menteeData]);
+    }, [menteeProfil]);
     // const data = {
     //   nama: "Olivia",
     //   univ: "Universitas Terbuka",

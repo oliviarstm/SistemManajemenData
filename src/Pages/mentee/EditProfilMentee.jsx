@@ -67,7 +67,7 @@ const EditProfilMentee = () => {
   };
 
   return (
-    <div style={{ maxWidth: "700px", margin: "auto", paddingTop: "100px" }}>
+    <div style={{ maxWidth: "700px", margin: "auto", paddingTop: "100px" , paddingBottom: "100px" }}>
       <form onSubmit={handleSave}>
         <div style={{ marginBottom: "10px" }}>
           <label>

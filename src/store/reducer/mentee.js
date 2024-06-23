@@ -1,20 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  menteeData: [],
+  menteeProfil: [],
+  listMentee: [],
 };
 
 const Mentee = createSlice({
-  name: "metee",
+  name: "mentee",
   initialState,
   reducers: {
     setMentee: (state, action) => {
       console.log(action)
-      state.menteeData = action.payload;
+      state.menteeProfil = action.payload;
+    },
+    setListMentee: (state, action) => {
+      console.log(action)
+      state.listMentee = action.payload;
     },
   },
 });
 
-export const {setMentee} =Mentee.actions
+export const {setMentee, setListMentee} =Mentee.actions
 // export const {toggleDarkMode} =auth.actions
 export default Mentee.reducer;

@@ -2,6 +2,9 @@ import {useEffect, useState} from "react";
 import Select from "react-select";
 import axios from "../utils/axios.js";
 import Swal from "sweetalert2";
+import {tempPassword} from "../utils/helper.js";
+import {useDispatch} from "react-redux";
+import {setListMentee} from "../store/reducer/mentee.js";
 
 // Options for Select
 // let universitasOptions = [];
@@ -10,9 +13,9 @@ const kategoriOptions = [
   { value: "1", label: "IT" },
 ];
 const kelasOptions = [
-  { value: "A", label: "Kelas A" },
-  { value: "B", label: "Kelas B" },
-  { value: "C", label: "Kelas C" },
+  { value: "a", label: "Kelas A" },
+  { value: "b", label: "Kelas B" },
+  { value: "c", label: "Kelas C" },
 ];
 const sesiOptions = [
   { value: "Pagi", label: "Pagi" },
@@ -20,6 +23,7 @@ const sesiOptions = [
 ];
 
 const InputModal = ({ isOpen, onClose, title, isButton }) => {
+  const dispatch = useDispatch()
   const [formValues, setFormValues] = useState({});
   const [universitas, setUniversitas]=useState({})
   const [mentor, setMentor]=useState({})
@@ -87,8 +91,38 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const createMentee = async ()=>{
+    const userData = {
+      username:formValues["Username"].toLowerCase(),
+      role:"mentee",
+      password:tempPassword(formValues["Email"], formValues["No. Hp"]),
+      email:formValues["Email"].toLowerCase()
+    }
+    const menteeData = {
+      "nim": formValues["NIM"].toLowerCase(),
+      "name": formValues["Nama"].toLowerCase(),
+      "class": formValues["Kelas"]["value"],
+      "session": formValues["Sesi"]["value"],
+      "phone_number": formValues["No. Hp"],
+      "category": formValues["Kategori"]["value"],
+      "major": formValues["Jurusan"].toLowerCase(),
+      // "id_user": 16,
+      "id_mentor": formValues["Individual Mentor"]["value"],
+      "id_university": formValues["Universitas"]["value"]
+    }
+    try {
+      console.log(userData)
+      const {data}=await axios.post("/user", userData)
+      console.log({...menteeData, id_user:data.result})
+      await axios.post("/mentee", {...menteeData, id_user:data.result})
+    }catch (e) {
+      console.log(e)
+    }
+  }
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    await createMentee()
     for (let titles of title) {
       if (!formValues[titles]) {
         Swal.fire({
@@ -99,9 +133,9 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
         return;
       }
     }
-    console.log("Form values:", formValues);
+    dispatch(setListMentee(formValues))
     setFormValues({})
-    Swal.fire({
+    await Swal.fire({
       position: "center",
       icon: "success",
       title: "Data mentee berhasil ditambahkan",

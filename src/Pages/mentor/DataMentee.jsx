@@ -18,6 +18,7 @@ const DataMentee = () => {
   const { role } = useSelector((state) => state.Auth);
   const [menteeData, setMenteeData] = useState([]);
   const [filter, setFilter] = useState("");
+  const menteeProfil = useSelector(state => state.Mentee)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,7 +44,7 @@ const DataMentee = () => {
     };
 
     fetchData();
-  }, [filter]);
+  }, [filter, menteeProfil]);
 
   const handleFilterChange = (selectedOption) => {
     setFilter(selectedOption.value);
