@@ -1,5 +1,5 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import {editdelete} from "../../../Components/table/threedotmenu.js";
+import {menteeeditdelete} from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";
 
 const exTitle = "Data Nilai";
@@ -27,7 +27,7 @@ const DataNilai=()=>{
         data:exData,
         isEnable:false,
         desc:filter==="Individual Mentor"?"Individual Mentee":filter,
-        option:editdelete,
+        option:menteeeditdelete,
         buttonLabel:"Detail",
         buttonClick:toDetail
     }

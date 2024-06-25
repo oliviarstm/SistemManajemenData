@@ -1,11 +1,12 @@
 import Table from "../../Components/table/Index.jsx";
 import Select from "react-select";
 import {useLocation, useNavigate} from "react-router-dom";
-import { editdelete } from "../../Components/table/threedotmenu.js";
+import { menteeeditdelete } from "../../Components/table/threedotmenu.js";
 import { useEffect, useState } from "react";
-import InputModal from "../../Components/InputModal.jsx";
-import { useSelector } from "react-redux";
+import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
+import {useDispatch, useSelector} from "react-redux";
 import axios from "../../utils/axios.js";
+import {removeMenteeEditId} from "../../store/reducer/mentee.js";
 
 const exTitle = "Data Mentee";
 const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
@@ -19,6 +20,7 @@ const DataMentee = () => {
   const [menteeData, setMenteeData] = useState([]);
   const [filter, setFilter] = useState("");
   const menteeProfil = useSelector(state => state.Mentee)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,7 +38,6 @@ const DataMentee = () => {
           const res = await axios.get("/mentee");
           result = res.data.data;
         }
-        console.log("API Response:", result); // Log the entire response
         setMenteeData(result); // Set menteeData
       } catch (error) {
         console.error("Error fetching mentee data:", error); // Log any errors
@@ -56,6 +57,7 @@ const DataMentee = () => {
   };
   const closeModal = () => {
     setModalOpen(false);
+    dispatch(removeMenteeEditId())
   };
   const titles = [
     "Username",
@@ -91,7 +93,7 @@ const DataMentee = () => {
     //     ? "Individual Mentee"
     //     : filter || "Semua Kelas",
     type: role === "admin" ? "add" : null,
-    option: editdelete,
+    option: menteeeditdelete,
     tableType: null,
     handleAdd: openModal,
     buttonLabel: role === "mentor" ? "Detail" : null,
@@ -103,7 +105,7 @@ const DataMentee = () => {
   return (
     <>
       <Table props={propsData} />
-      <InputModal
+      <MenteeInputModal
         isOpen={isModalOpen}
         onClose={closeModal}
         title={titles}

@@ -1,8 +1,10 @@
 import {useEffect, useRef, useState} from 'react';
+import {useDispatch} from "react-redux";
 
-const ThreeDot = ({ options, dataId, handleRefresh}) => {
+const ThreeDot = ({ options, dataId, handleRefresh, openInputModal}) => {
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef();
+    const dispatch = useDispatch()
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -38,7 +40,7 @@ const ThreeDot = ({ options, dataId, handleRefresh}) => {
                 <div className="z-10 origin-top absolute left-1/2 transform -translate-x-1/2 mt-2 w-36 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         {options.map((option)=>(
-                            <button key={option.label} className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left" role="menuitem" onClick={()=>option.onClick(dataId, handleRefresh)}>{option.label}</button>
+                            <button key={option.label} className="w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 text-left" role="menuitem" onClick={()=>option.onClick(dataId, handleRefresh, dispatch, openInputModal)}>{option.label}</button>
                         ))}
                     </div>
                 </div>

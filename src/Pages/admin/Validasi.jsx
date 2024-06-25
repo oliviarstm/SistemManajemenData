@@ -1,5 +1,5 @@
 import Table from "../../Components/table/Index.jsx";
-import {editdelete} from "../../Components/table/threedotmenu.js";
+import {menteeeditdelete} from "../../Components/table/threedotmenu.js";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "../../utils/axios.js";
@@ -39,7 +39,7 @@ const Validasi = () => {
         field:exField,
         data:pengunduranData,
         isEnable:false,
-        option:editdelete,
+        option:menteeeditdelete,
         buttonLabel:"Detail",
         buttonClick:handleDetail
     }

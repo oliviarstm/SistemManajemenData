@@ -58,6 +58,7 @@ const Table = ({ props }) => {
             type={tableType}
             buttonClick={buttonClick}
             handleRefresh={handleRefresh}
+            openInputModal={handleAdd}
         />
       </>
   );

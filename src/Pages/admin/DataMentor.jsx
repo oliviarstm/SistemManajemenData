@@ -1,7 +1,7 @@
 import Table from "../../Components/table/Index.jsx";
-import {editdelete, mentoreditdelete} from "../../Components/table/threedotmenu.js";
+import {mentoreditdelete} from "../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
-import InputModal from "../../Components/InputModal.jsx";
+import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
 import axios from "../../utils/axios.js";
 
 const exTitle = "Data Mentor";
@@ -61,7 +61,7 @@ const DataMentor = () => {
     return (
         <>
             <Table props={propsData}/>
-            <InputModal
+            <MenteeInputModal
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 title={titles}

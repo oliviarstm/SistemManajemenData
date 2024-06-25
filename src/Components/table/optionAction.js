@@ -1,11 +1,17 @@
 import axios from "../../utils/axios.js";
+import {useDispatch} from "react-redux";
+import {setMenteeEditId} from "../../store/reducer/mentee.js";
+
+
 
 export const mentee={
     delete:(id)=>{
         console.log("delete ",id)
     },
-    edit:(id)=>{
+    edit:(id, dispatch, openInputModal)=>{
         console.log("edit ",id)
+        openInputModal()
+        dispatch(setMenteeEditId(id))
     }
 }
 

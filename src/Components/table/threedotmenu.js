@@ -6,11 +6,11 @@ import {
   universitas,
 } from "./optionAction.js";
 
-export const editdelete = [
+export const menteeeditdelete = [
   {
     label: "Edit",
     value: "edit",
-    onClick: (id, handleRefresh) => mentee.edit(id),
+    onClick: (id, handleRefresh, dispatch, openInputModal) => mentee.edit(id, dispatch, openInputModal),
   },
   {
     label: "Delete",

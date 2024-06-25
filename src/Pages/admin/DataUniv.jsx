@@ -1,7 +1,7 @@
 import Table from "../../Components/table/Index.jsx";
-import {editdelete, universitaseditdelete} from "../../Components/table/threedotmenu.js";
+import { universitaseditdelete} from "../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
-import InputModal from "../../Components/InputModal.jsx";
+import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
 import axios from "../../utils/axios.js";
 
 const exTitle = "Data Universitas";
@@ -66,7 +66,7 @@ const DataUniv = () => {
     return (
         <>
             <Table props={propsData}/>
-            <InputModal
+            <MenteeInputModal
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 title={titles}

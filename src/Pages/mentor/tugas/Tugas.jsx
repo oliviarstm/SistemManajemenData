@@ -1,7 +1,7 @@
 // TODO edit show modal
 
 import { useState } from "react";
-import { editdelete } from "../../../Components/table/threedotmenu.js";
+import { menteeeditdelete } from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";
 import TugasModal from "../../../Components/TugasModal.jsx";
 import { useSelector } from "react-redux";
@@ -44,7 +44,7 @@ const Tugas = () => {
     data: exData,
     isEnable: true,
     type: role === "mentee" ? null : "add",
-    option: role === "mentee" ? null : editdelete,
+    option: role === "mentee" ? null : menteeeditdelete,
     handleAdd: openModal,
     dataClick: "moveToMenu",
     buttonLabel: role === "mentee" ? "Kumpul" : null,

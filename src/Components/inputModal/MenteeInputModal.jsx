@@ -1,16 +1,16 @@
 import {useEffect, useState} from "react";
 import Select from "react-select";
-import axios from "../utils/axios.js";
+import axios from "../../utils/axios.js";
 import Swal from "sweetalert2";
-import {tempPassword} from "../utils/helper.js";
-import {useDispatch} from "react-redux";
-import {setListMentee} from "../store/reducer/mentee.js";
+import {tempPassword} from "../../utils/helper.js";
+import {useDispatch, useSelector} from "react-redux";
+import {setListMentee} from "../../store/reducer/mentee.js";
 
 // Options for Select
 // let universitasOptions = [];
 const kategoriOptions = [
-  { value: "0", label: "Non-It" },
-  { value: "1", label: "IT" },
+  { value: 0, label: "Non-It" },
+  { value: 1, label: "IT" },
 ];
 const kelasOptions = [
   { value: "a", label: "Kelas A" },
@@ -22,13 +22,15 @@ const sesiOptions = [
   { value: "Siang", label: "Siang" },
 ];
 
-const InputModal = ({ isOpen, onClose, title, isButton }) => {
+const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
   const dispatch = useDispatch()
   const [formValues, setFormValues] = useState({});
   const [universitas, setUniversitas]=useState({})
   const [mentor, setMentor]=useState({})
   const [universitasOptions, setUniversitasOptions]=useState([])
   const [mentorOptions, setMentorOptions]=useState([])
+  const editId = useSelector(state => state.Mentee.editId)
+  console.log(editId)
 
   useEffect(() => {
     const callOptions = async ()=>{
@@ -37,7 +39,6 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
         const univ = await axios.get("/universitas")
         setMentor(mentorData.data.data)
         setUniversitas(univ.data.data)
-
       }catch (e) {
         console.log(e)
       }
@@ -65,11 +66,41 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
     }
   },[mentor])
 
+  useEffect(() => {
+    const callData = async ()=>{
+      try {
+        if (editId!==""){
+          const response = await axios.get(`/mentee/${editId}`)
+          // setFormValues((await axios.get(`/mentee/1`)).response)
+          const data = response.data.data
+          setFormValues({
+            "Username":data.username,
+            "NIM":data.nim,
+            "Nama":data.name,
+            "Universitas":universitasOptions.filter(item=>item.value === data.id_university)[0],
+            "Email":data.email,
+            "No. Hp":data.phone_number,
+            "Kategori":kategoriOptions.filter(item=>item.value === data.category)[0],
+            "Kelas":kelasOptions.filter(item => item.value === data.class.toLowerCase())[0],
+            "Sesi":sesiOptions.filter(item=>item.value === data.session)[0],
+            "Individual Mentor":mentorOptions.filter(item=>item.value === data.id_mentor)[0],
+            "Jurusan":data.major,
+          })
+        }
+
+      }catch (e) {
+        console.log(e)
+      }
+    }
+    callData()
+  }, [editId]);
+
   const handleInputChange = (title, value) => {
     setFormValues({ ...formValues, [title]: value });
   };
 
   const handleChange = (title, selectedOption) => {
+    console.log({[title]: selectedOption })
     setFormValues({ ...formValues, [title]: selectedOption });
   };
 
@@ -117,12 +148,33 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
       await axios.post("/mentee", {...menteeData, id_user:data.result})
     }catch (e) {
       console.log(e)
+      throw e
+    }
+  }
+
+  const editMentee = async ()=>{
+    const menteeData = {
+      "nim": formValues["NIM"].toLowerCase(),
+      "name": formValues["Nama"].toLowerCase(),
+      "class": formValues["Kelas"]["value"],
+      "session": formValues["Sesi"]["value"],
+      "phone_number": formValues["No. Hp"],
+      "category": formValues["Kategori"]["value"],
+      "major": formValues["Jurusan"].toLowerCase(),
+      "id_mentor": formValues["Individual Mentor"]["value"],
+      "id_university": formValues["Universitas"]["value"]
+    }
+    try {
+      await axios.put(`/mentee_admin/${editId}`, menteeData)
+    }catch (e) {
+      console.log(e)
+      throw e
     }
   }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await createMentee()
+    editId===""?await createMentee():await editMentee()
     for (let titles of title) {
       if (!formValues[titles]) {
         Swal.fire({
@@ -138,15 +190,20 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
     await Swal.fire({
       position: "center",
       icon: "success",
-      title: "Data mentee berhasil ditambahkan",
+      title: `Data mentee berhasil ${editId===""?"ditambahkan":"diubah"}`,
       showConfirmButton: false,
       timer: 1500
     });
-    onClose(); // Close modal after form submission
+    closeModal(); // Close modal after form submission
   };
 
+  const closeModal = ()=>{
+    setFormValues({})
+    onClose()
+  }
+
   return (
-    <dialog className="modal" open={isOpen} onClick={onClose}>
+    <dialog className="modal" open={isOpen} onClick={closeModal}>
       <div
         className="modal-box flex flex-col gap-3"
         onClick={(e) => e.stopPropagation()}
@@ -182,6 +239,9 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
                         pattern={title === "No. Hp" ? "[0-9]*" : undefined}
                         title={title === "No. Hp" ? "Please enter a valid phone number" : ""}
                         required
+                        disabled={
+                            (title === "Username" || title === "Email") && editId !== ""
+                        }
                     />
                 )}
               </label>
@@ -191,7 +251,7 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
                 <div style={{ textAlign: "center" }}>
                   <button
                       type="button"
-                      onClick={onClose}
+                      onClick={closeModal}
                       className="text-[#235EAC] border border-[#235EAC] py-1 px-5 rounded bg-white mr-6"
                   >
                     Batal
@@ -211,4 +271,4 @@ const InputModal = ({ isOpen, onClose, title, isButton }) => {
   );
 };
 
-export default InputModal;
+export default MenteeInputModal;
