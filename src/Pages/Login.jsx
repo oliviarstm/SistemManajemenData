@@ -5,6 +5,7 @@ import axios from "../utils/axios.js";
 import {useDispatch} from "react-redux";
 import {login} from "../store/reducer/auth.js";
 import {jwtDecode} from "jwt-decode";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,7 +24,12 @@ const Login = () => {
           navigate("/login");
         })
         .catch((err) => {
-          console.log(err);
+          console.log(err.response.data.msg);
+          Swal.fire({
+            icon: "error",
+            title: "Login Failed",
+            text: err.response.data.msg,
+          })
         });
 
 
