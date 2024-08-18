@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import {tempPassword} from "../../utils/helper.js";
 import {useDispatch, useSelector} from "react-redux";
 import {setListMentee} from "../../store/reducer/mentee.js";
+import {setListMentor} from "../../store/reducer/mentor.js";
 
 // Options for Select
 // let universitasOptions = [];
@@ -30,7 +31,9 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
   const [universitasOptions, setUniversitasOptions]=useState([])
   const [mentorOptions, setMentorOptions]=useState([])
   const editId = useSelector(state => state.Mentee.editId)
+  const mentorEditId = useSelector(state => state.Mentor.editId)
   console.log(editId)
+  console.log(mentorEditId)
 
   useEffect(() => {
     const callOptions = async ()=>{
@@ -67,6 +70,7 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
   },[mentor])
 
   useEffect(() => {
+    console.log("THIS EFFECT RUNSSS")
     const callData = async ()=>{
       try {
         if (editId!==""){
@@ -87,13 +91,35 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
             "Jurusan":data.major,
           })
         }
-
       }catch (e) {
         console.log(e)
       }
     }
     callData()
   }, [editId]);
+
+  useEffect(() => {
+    console.log("MENTOR EFFECT RUNSSS")
+    const callData = async ()=>{
+      try {
+        if (mentorEditId!==""){
+          console.log("MENTOR GET")
+          const response = await axios.get(`/mentor/${mentorEditId}`)
+          // setFormValues((await axios.get(`/mentee/1`)).response)
+          const data = response.data.data
+          setFormValues({
+            "Username":data.username,
+            "Nama":data.nama,
+            "Email":data.email,
+          })
+        }
+
+      }catch (e) {
+        console.log(e)
+      }
+    }
+    callData()
+  }, [mentorEditId]);
 
   const handleInputChange = (title, value) => {
     setFormValues({ ...formValues, [title]: value });
@@ -123,7 +149,6 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
   };
 
   const createMentee = async ()=>{
-    console.log("CREATEEE")
     const userData = {
       username:formValues["Username"].toLowerCase(),
       role:"mentee",
@@ -150,12 +175,11 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
     }catch (e) {
       console.log(e)
       await createMentor()
-      throw e
+      // throw e
     }
   }
 
   const createMentor =async ()=>{
-    console.log("CREATE MENTOR")
     const userData = {
       username:formValues["Username"].toLowerCase(),
       role:"mentee",
@@ -177,19 +201,34 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
   }
 
   const editMentee = async ()=>{
+    console.log("EDITTTT")
+    try {
+      const menteeData = {
+        "nim": formValues["NIM"].toLowerCase(),
+        "name": formValues["Nama"].toLowerCase(),
+        "class": formValues["Kelas"]["value"],
+        "session": formValues["Sesi"]["value"],
+        "phone_number": formValues["No. Hp"],
+        "category": formValues["Kategori"]["value"],
+        "major": formValues["Jurusan"].toLowerCase(),
+        "id_mentor": formValues["Individual Mentor"]["value"],
+        "id_university": formValues["Universitas"]["value"]
+      }
+      await axios.put(`/mentee_admin/${editId}`, menteeData)
+    }catch (e) {
+      console.log(e)
+      await editMentor()
+      // throw e
+    }
+  }
+  const editMentor = async ()=>{
+    console.log("EDIT MENTORRR")
     const menteeData = {
-      "nim": formValues["NIM"].toLowerCase(),
-      "name": formValues["Nama"].toLowerCase(),
-      "class": formValues["Kelas"]["value"],
-      "session": formValues["Sesi"]["value"],
-      "phone_number": formValues["No. Hp"],
-      "category": formValues["Kategori"]["value"],
-      "major": formValues["Jurusan"].toLowerCase(),
-      "id_mentor": formValues["Individual Mentor"]["value"],
-      "id_university": formValues["Universitas"]["value"]
+      "nama": formValues["Nama"].toLowerCase(),
+      "email":formValues["Email"]
     }
     try {
-      await axios.put(`/mentee_admin/${editId}`, menteeData)
+      await axios.put(`/mentor/${mentorEditId}`, menteeData)
     }catch (e) {
       console.log(e)
       throw e
@@ -198,7 +237,8 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    editId===""?await createMentee():await editMentee()
+    editId===""&&mentorEditId===""?await createMentee():await editMentee()
+    console.log("THIS RUNSS")
     for (let titles of title) {
       if (!formValues[titles]) {
         Swal.fire({
@@ -210,11 +250,12 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
       }
     }
     dispatch(setListMentee(formValues))
+    dispatch(setListMentor(formValues))
     setFormValues({})
     await Swal.fire({
       position: "center",
       icon: "success",
-      title: `Data mentee berhasil ${editId===""?"ditambahkan":"diubah"}`,
+      title: `Data berhasil ${editId===""||mentorEditId===""?"ditambahkan":"diubah"}`,
       showConfirmButton: false,
       timer: 1500
     });
@@ -264,7 +305,7 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
                           title={title === "No. Hp" ? "Please enter a valid phone number" : ""}
                           required
                           disabled={
-                              (title === "Username" || title === "Email") && editId !== ""
+                              ((title === "Username" || title === "Email") && editId !== "") || ((title === "Username" || title === "Email") && mentorEditId !== "")
                           }
                       />
                   )}

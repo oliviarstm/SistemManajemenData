@@ -34,7 +34,7 @@ export const mentoreditdelete = [
   {
     label: "Edit",
     value: "edit",
-    onClick: (id, handleRefresh) => mentor.edit(id),
+    onClick: (id, handleRefresh, dispatch, openInputModal) => mentor.edit(id, dispatch, openInputModal),
   },
   {
     label: "Delete",

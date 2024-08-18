@@ -3,6 +3,9 @@ import {mentoreditdelete} from "../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
 import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
 import axios from "../../utils/axios.js";
+import {removeMenteeEditId} from "../../store/reducer/mentee.js";
+import {removeMentorEditId} from "../../store/reducer/mentor.js";
+import {useDispatch} from "react-redux";
 
 const exTitle = "Data Mentor";
 const exField = ["Nama", "Email", "Username",""];
@@ -19,6 +22,7 @@ const exData = [{
 }]
 
 const DataMentor = () => {
+    const dispatch = useDispatch()
     const [isModalOpen, setModalOpen] = useState(false);
     const [mentorData, setMentorData]=useState([])
     const [refresh, setRefresh] = useState(false); // State variable for managing refresh
@@ -29,7 +33,9 @@ const DataMentor = () => {
         setModalOpen(true);
     };
     const closeModal = () => {
+        dispatch(removeMentorEditId())
         setModalOpen(false);
+        setRefresh(!refresh)
     };
     const titles = ["Nama", "Email", "Username"];
     useEffect(() => {

@@ -1,6 +1,7 @@
 import axios from "../../utils/axios.js";
 import {useDispatch} from "react-redux";
 import {setMenteeEditId} from "../../store/reducer/mentee.js";
+import {setMentorEditId} from "../../store/reducer/mentor.js";
 
 
 
@@ -46,8 +47,10 @@ export const mentor={
             })
 
     },
-    edit:(id)=>{
+    edit:(id, dispatch, openInputModal)=>{
         console.log("edit ",id)
+        openInputModal()
+        dispatch(setMentorEditId(id))
     }
 }
 export const universitas={
