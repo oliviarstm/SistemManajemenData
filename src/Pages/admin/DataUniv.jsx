@@ -3,6 +3,10 @@ import { universitaseditdelete} from "../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
 import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
 import axios from "../../utils/axios.js";
+import UnivInputModal from "../../Components/inputModal/UnivInputModal.jsx";
+import {removeMentorEditId} from "../../store/reducer/mentor.js";
+import {removeUnivEditId} from "../../store/reducer/univ.js";
+import {useDispatch} from "react-redux";
 
 const exTitle = "Data Universitas";
 const exField = ["Nama", "Email", "Alamat", "Nama PIC", "Nomor PIC", "Email PIC",""];
@@ -25,17 +29,19 @@ const exData = [{
 }]
 
 const DataUniv = () => {
+    const dispatch = useDispatch()
     const [isModalOpen, setModalOpen] = useState(false);
     const [univData, setUnivData]=useState([])
     const [refresh, setRefresh] = useState(false); // State variable for managing refresh
-
 
     const openModal = () => {
         console.log("OPEN")
         setModalOpen(true);
     };
     const closeModal = () => {
+        dispatch(removeUnivEditId())
         setModalOpen(false);
+        setRefresh(!refresh)
     };
     const titles = ["Nama Universitas", "Email Universitas", "Alamat", "Nama PIC", "Nomor Telepon PIC", "Email PIC"];
     useEffect(() => {
@@ -47,10 +53,10 @@ const DataUniv = () => {
             .catch(err=>{
                 console.log(err)
             })
-    }, [refresh]);
+    }, [refresh])
     const handleRefresh = () => {
         setRefresh(!refresh); // Toggle refresh state to trigger re-fetching data
-    };
+    }
 
     const propsData={
         title:exTitle,
@@ -66,7 +72,7 @@ const DataUniv = () => {
     return (
         <>
             <Table props={propsData}/>
-            <MenteeInputModal
+            <UnivInputModal
                 isOpen={isModalOpen}
                 onClose={closeModal}
                 title={titles}

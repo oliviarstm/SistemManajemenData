@@ -46,7 +46,7 @@ export const universitaseditdelete = [
   {
     label: "Edit",
     value: "edit",
-    onClick: (id, handleRefresh) => universitas.edit(id),
+    onClick: (id, handleRefresh, dispatch, openInputModal) => universitas.edit(id, dispatch, openInputModal),
   },
   {
     label: "Delete",
