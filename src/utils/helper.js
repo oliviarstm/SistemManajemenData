@@ -1,4 +1,4 @@
-const tempPassword = (email, phoneNumber) => {
+const tempPassword = (email, phoneNumber=1234) => {
     // Extract the email name (everything before the @)
     const emailName = email.split('@')[0];
 

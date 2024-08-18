@@ -123,6 +123,39 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
   };
 
   const createMentee = async ()=>{
+    console.log("CREATEEE")
+    const userData = {
+      username:formValues["Username"].toLowerCase(),
+      role:"mentee",
+      password:tempPassword(formValues["Email"], formValues["No. Hp"]),
+      email:formValues["Email"].toLowerCase()
+    }
+    try {
+      const menteeData = {
+        "nim": formValues["NIM"].toLowerCase(),
+        "name": formValues["Nama"].toLowerCase(),
+        "class": formValues["Kelas"]["value"],
+        "session": formValues["Sesi"]["value"],
+        "phone_number": formValues["No. Hp"],
+        "category": formValues["Kategori"]["value"],
+        "major": formValues["Jurusan"].toLowerCase(),
+        // "id_user": 16,
+        "id_mentor": formValues["Individual Mentor"]["value"],
+        "id_university": formValues["Universitas"]["value"]
+      }
+      console.log(userData)
+      const {data}=await axios.post("/user", userData)
+      console.log({...menteeData, id_user:data.result})
+      await axios.post("/mentee", {...menteeData, id_user:data.result})
+    }catch (e) {
+      console.log(e)
+      await createMentor()
+      throw e
+    }
+  }
+
+  const createMentor =async ()=>{
+    console.log("CREATE MENTOR")
     const userData = {
       username:formValues["Username"].toLowerCase(),
       role:"mentee",
@@ -130,22 +163,13 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
       email:formValues["Email"].toLowerCase()
     }
     const menteeData = {
-      "nim": formValues["NIM"].toLowerCase(),
       "name": formValues["Nama"].toLowerCase(),
-      "class": formValues["Kelas"]["value"],
-      "session": formValues["Sesi"]["value"],
-      "phone_number": formValues["No. Hp"],
-      "category": formValues["Kategori"]["value"],
-      "major": formValues["Jurusan"].toLowerCase(),
-      // "id_user": 16,
-      "id_mentor": formValues["Individual Mentor"]["value"],
-      "id_university": formValues["Universitas"]["value"]
     }
     try {
       console.log(userData)
       const {data}=await axios.post("/user", userData)
       console.log({...menteeData, id_user:data.result})
-      await axios.post("/mentee", {...menteeData, id_user:data.result})
+      await axios.post("/mentor", {...menteeData, id_user:data.result})
     }catch (e) {
       console.log(e)
       throw e
@@ -203,71 +227,71 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
   }
 
   return (
-    <dialog className="modal" open={isOpen} onClick={closeModal}>
-      <div
-        className="modal-box flex flex-col gap-3"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <form onSubmit={handleSubmit}>
-          {title.map((title, index) => (
-              <label key={index} className="flex items-center gap-2 mt-5">
-                <h1 className="w-[25%]">{title}</h1>
-                {[
-                  "Universitas",
-                  "Kategori",
-                  "Kelas",
-                  "Sesi",
-                  "Individual Mentor",
-                ].includes(title) ? (
-                    <Select
-                        className="w-[75%] rounded-md"
-                        value={formValues[title] || null}
-                        onChange={(selectedOption) =>
-                            handleChange(title, selectedOption)
-                        }
-                        options={handleOption(title)}
-                        isClearable
-                        isRequired
-                    />
-                ) : (
-                    <input
-                        type={title === "Email" ? "email" : title === "No. Hp" ? "tel" : "text"}
-                        className="w-[75%] grow py-2 px-3 rounded-md border border-gray-300"
-                        placeholder={`Enter ${title}`}
-                        value={formValues[title] || ""}
-                        onChange={(e) => handleInputChange(title, e.target.value)}
-                        pattern={title === "No. Hp" ? "[0-9]*" : undefined}
-                        title={title === "No. Hp" ? "Please enter a valid phone number" : ""}
-                        required
-                        disabled={
-                            (title === "Username" || title === "Email") && editId !== ""
-                        }
-                    />
-                )}
-              </label>
-          ))}
-          {isButton && (
-              <div className="modal-action justify-center">
-                <div style={{ textAlign: "center" }}>
-                  <button
-                      type="button"
-                      onClick={closeModal}
-                      className="text-[#235EAC] border border-[#235EAC] py-1 px-5 rounded bg-white mr-6"
-                  >
-                    Batal
-                  </button>
-                  <button
-                      type="submit"
-                      className="text-white py-1 px-5 ml-6 rounded bg-[#235EAC]"
-                  >
-                    Simpan
-                  </button>
+      <dialog className="modal" open={isOpen} onClick={closeModal}>
+        <div
+            className="modal-box flex flex-col gap-3"
+            onClick={(e) => e.stopPropagation()}
+        >
+          <form onSubmit={handleSubmit}>
+            {title.map((title, index) => (
+                <label key={index} className="flex items-center gap-2 mt-5">
+                  <h1 className="w-[25%]">{title}</h1>
+                  {[
+                    "Universitas",
+                    "Kategori",
+                    "Kelas",
+                    "Sesi",
+                    "Individual Mentor",
+                  ].includes(title) ? (
+                      <Select
+                          className="w-[75%] rounded-md"
+                          value={formValues[title] || null}
+                          onChange={(selectedOption) =>
+                              handleChange(title, selectedOption)
+                          }
+                          options={handleOption(title)}
+                          isClearable
+                          isRequired
+                      />
+                  ) : (
+                      <input
+                          type={title === "Email" ? "email" : title === "No. Hp" ? "tel" : "text"}
+                          className="w-[75%] grow py-2 px-3 rounded-md border border-gray-300"
+                          placeholder={`Enter ${title}`}
+                          value={formValues[title] || ""}
+                          onChange={(e) => handleInputChange(title, e.target.value)}
+                          pattern={title === "No. Hp" ? "[0-9]*" : undefined}
+                          title={title === "No. Hp" ? "Please enter a valid phone number" : ""}
+                          required
+                          disabled={
+                              (title === "Username" || title === "Email") && editId !== ""
+                          }
+                      />
+                  )}
+                </label>
+            ))}
+            {isButton && (
+                <div className="modal-action justify-center">
+                  <div style={{ textAlign: "center" }}>
+                    <button
+                        type="button"
+                        onClick={closeModal}
+                        className="text-[#235EAC] border border-[#235EAC] py-1 px-5 rounded bg-white mr-6"
+                    >
+                      Batal
+                    </button>
+                    <button
+                        type="submit"
+                        className="text-white py-1 px-5 ml-6 rounded bg-[#235EAC]"
+                    >
+                      Simpan
+                    </button>
+                  </div>
                 </div>
-              </div>
-          )}
-        </form>
-      </div>
-    </dialog>
+            )}
+          </form>
+        </div>
+      </dialog>
   );
 };
 
