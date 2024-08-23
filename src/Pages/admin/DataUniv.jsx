@@ -1,10 +1,8 @@
 import Table from "../../Components/table/Index.jsx";
 import { universitaseditdelete} from "../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
-import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
 import axios from "../../utils/axios.js";
 import UnivInputModal from "../../Components/inputModal/UnivInputModal.jsx";
-import {removeMentorEditId} from "../../store/reducer/mentor.js";
 import {removeUnivEditId} from "../../store/reducer/univ.js";
 import {useDispatch} from "react-redux";
 
@@ -32,7 +30,7 @@ const DataUniv = () => {
     const dispatch = useDispatch()
     const [isModalOpen, setModalOpen] = useState(false);
     const [univData, setUnivData]=useState([])
-    const [refresh, setRefresh] = useState(false); // State variable for managing refresh
+    const [refresh, setRefresh] = useState(false)
 
     const openModal = () => {
         console.log("OPEN")

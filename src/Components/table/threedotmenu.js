@@ -3,7 +3,7 @@ import {
   absen as absenAcion,
   mentor,
   admin,
-  universitas,
+  universitas, tugas,
 } from "./optionAction.js";
 
 export const menteeeditdelete = [
@@ -52,6 +52,18 @@ export const universitaseditdelete = [
     label: "Delete",
     value: "delete",
     onClick: (id, handleRefresh) => universitas.delete(id, handleRefresh),
+  },
+];
+export const tugaseditdelete = [
+  {
+    label: "Edit",
+    value: "edit",
+    onClick: (id, handleRefresh, dispatch, openInputModal) => tugas.edit(id, dispatch, openInputModal),
+  },
+  {
+    label: "Delete",
+    value: "delete",
+    onClick: (id, handleRefresh) => tugas.delete(id, handleRefresh),
   },
 ];
 export const absen = [

@@ -3,6 +3,7 @@ import {useDispatch} from "react-redux";
 import {setMenteeEditId} from "../../store/reducer/mentee.js";
 import {setMentorEditId} from "../../store/reducer/mentor.js";
 import {setUnivEditId} from "../../store/reducer/univ.js";
+import {setTugasEditId} from "../../store/reducer/tugas.js";
 
 
 
@@ -71,6 +72,25 @@ export const universitas={
         console.log("edit ",id)
         openInputModal()
         dispatch(setUnivEditId(id))
+    }
+}
+export const tugas={
+    delete:(id, handleRefresh)=>{
+        console.log("delete ",id)
+        axios.delete(`/tugas/${id}`)
+            .then(res=>{
+                console.log(res.data.msg)
+                handleRefresh()
+            })
+            .catch(err=>{
+                console.log(err)
+            })
+
+    },
+    edit:(id, dispatch, openInputModal)=>{
+        console.log("edit ",id)
+        openInputModal()
+        dispatch(setTugasEditId(id))
     }
 }
 
