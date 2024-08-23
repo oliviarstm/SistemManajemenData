@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 import Table from "../../../Components/table/Index.jsx";
+import {useEffect} from "react";
 
 const exField = ["Nama", "Kelas", "Sesi", "File", "Nilai"];
 const exData = [
@@ -18,6 +19,7 @@ const exData = [
 ];
 
 const DetailTugas = () => {
+  const navigate = useNavigate()
   const location = useLocation();
   const id = location.state?.id_tugas;
   const filter = location.state?.filter;
@@ -33,6 +35,14 @@ const DetailTugas = () => {
     isEnable: false,
     tableType: "score",
   };
+
+  useEffect(() => {
+    if (id===undefined){
+      navigate("/mentor/tugas")
+    }
+  }, [id, navigate]);
+
+
   return (
     <>
       <Table props={propsData} />

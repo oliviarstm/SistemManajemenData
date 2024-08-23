@@ -1,5 +1,3 @@
-// TODO edit show modal
-
 import {useEffect, useState} from "react";
 import {menteeeditdelete, tugaseditdelete} from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";

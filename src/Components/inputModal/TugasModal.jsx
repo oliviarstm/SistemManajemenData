@@ -14,7 +14,6 @@ const TugasModal = ({ isOpen, onClose, title, isButton }) => {
     console.log(editId)
 
     useEffect(() => {
-        console.log("THIS EFFECT RUNSSS")
         const callData = async ()=>{
             try {
                 if (editId!==""){
