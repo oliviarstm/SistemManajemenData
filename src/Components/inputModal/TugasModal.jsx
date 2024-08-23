@@ -60,7 +60,6 @@ const TugasModal = ({ isOpen, onClose, title, isButton }) => {
     }
 
     const editTugas = async ()=>{
-        console.log("EDITTTT")
         try {
             const tugasData = {
                 "subyek": formValues["Nama"],
@@ -78,7 +77,6 @@ const TugasModal = ({ isOpen, onClose, title, isButton }) => {
     const handleSubmit = async(event) => {
         event.preventDefault();
         editId===""?await createTugas():await editTugas()
-        console.log("THIS RUNSS")
         for (let titles of title) {
             if (!formValues[titles]) {
                 Swal.fire({
@@ -119,7 +117,6 @@ const TugasModal = ({ isOpen, onClose, title, isButton }) => {
                         {title.map((title, index) => {
                             {
                                 if (formValues[title]!==undefined){
-                                    // console.log(formValues[title].toLocaleDateString())
                                 }
                             }
                             return (
