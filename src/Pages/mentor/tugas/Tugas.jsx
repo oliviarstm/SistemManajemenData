@@ -61,7 +61,7 @@ const Tugas = () => {
     title: exTitle,
     field: exField,
     data: tugasData,
-    isEnable: true,
+    isEnable: role !== "mentee",
     type: role === "mentee" ? null : "add",
     option: role === "mentee" ? null : tugaseditdelete,
     handleAdd: openModal,

@@ -1,20 +1,15 @@
 import {useLocation, useNavigate} from "react-router-dom";
-import Table from "../../../Components/table/Index.jsx";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import Table from "../../../Components/table/detailTugas/Index.jsx";
+import axios from "../../../utils/axios.js";
 
 const exField = ["Nama", "Kelas", "Sesi", "File", "Nilai"];
 const exData = [
   {
     id: 1,
-    Name: "Olivia",
-    Class: "A",
-    Session: "Pagi",
-  },
-  {
-    id: 2,
-    Name: "Kelvin",
-    Class: "B",
-    Session: "Siang",
+    Name: "Loading",
+    Class: "Loading",
+    Session: "Loading",
   },
 ];
 
@@ -24,15 +19,15 @@ const DetailTugas = () => {
   const id = location.state?.id_tugas;
   const filter = location.state?.filter;
   const exTitle = "id tugas" + id;
+  const [listPengumpulan, setListPengumpulan] = useState([])
   console.log(id);
   console.log(filter);
 
   const propsData = {
-    title: exTitle,
+    title: listPengumpulan.length > 0 ? listPengumpulan[0].subyek : "Loading...",
     desc: filter,
     field: exField,
-    data: exData,
-    isEnable: false,
+    data: listPengumpulan.length > 0 ? listPengumpulan: exData,
     tableType: "score",
   };
 
@@ -40,9 +35,17 @@ const DetailTugas = () => {
     if (id===undefined){
       navigate("/mentor/tugas")
     }
+    axios.post('/pengumpulan-tugas', {id})
+        .then(res=>{
+          const result = res.data.data
+          setListPengumpulan(result)
+        })
+        .catch(err=>{
+          console.log(err)
+        })
   }, [id, navigate]);
 
-
+  console.log(listPengumpulan)
   return (
     <>
       <Table props={propsData} />
