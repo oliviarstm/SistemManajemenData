@@ -18,28 +18,30 @@ import TableData from "./TableData.jsx";
 // }
 
 const Table = ({ props }) => {
-  const {
-    title,
-    field,
-    data,
-    desc,
-    tableType,
-    handleRefresh,
-  } = props;
-  return (
-      <>
-        <TableBar
-            title={title}
-            desc={desc}
-        />
-        <TableData
-            field={field}
-            data={data}
-            type={tableType}
-            handleRefresh={handleRefresh}
-        />
-      </>
-  );
+    const {
+        title,
+        field,
+        data,
+        desc,
+        tableType,
+        handleRefresh,
+        handleScoreChange
+    } = props;
+    return (
+        <>
+            <TableBar
+                title={title}
+                desc={desc}
+            />
+            <TableData
+                field={field}
+                data={data}
+                type={tableType}
+                handleRefresh={handleRefresh}
+                handleScoreChange={handleScoreChange}
+            />
+        </>
+    );
 };
 
 export default Table;

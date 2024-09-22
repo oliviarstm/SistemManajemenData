@@ -1,10 +1,10 @@
-import {useLocation, useNavigate} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Table from "../../../Components/table/detailTugas/Index.jsx";
 import axios from "../../../utils/axios.js";
 
-const exField = ["Nama", "Kelas", "Sesi", "File", "Nilai"];
-const exData = [
+const exField = ["Nama", "Kelas", "Sesi", "File", "Nilai", "Aksi"];
+const loadingData = [
   {
     id: 1,
     Name: "Loading",
@@ -14,42 +14,57 @@ const exData = [
 ];
 
 const DetailTugas = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const location = useLocation();
   const id = location.state?.id_tugas;
-  const filter = location.state?.filter;
-  const exTitle = "id tugas" + id;
-  const [listPengumpulan, setListPengumpulan] = useState([])
-  console.log(id);
-  console.log(filter);
+  const [listPengumpulan, setListPengumpulan] = useState([]);
+  const [refresh, setRefresh] = useState(false);
 
-  const propsData = {
-    title: listPengumpulan.length > 0 ? listPengumpulan[0].subyek : "Loading...",
-    desc: filter,
-    field: exField,
-    data: listPengumpulan.length > 0 ? listPengumpulan: exData,
-    tableType: "score",
+  const handleRefresh = () => {
+    console.log("REFRESS")
+    setRefresh(prev => !prev); // Toggle refresh state
+  };
+
+  const fetchData = () => {
+    if (id !== undefined) {
+      axios.post('/pengumpulan-tugas', { id })
+          .then(res => {
+            const result = res.data.data;
+            setListPengumpulan(result);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+    }
   };
 
   useEffect(() => {
-    if (id===undefined){
-      navigate("/mentor/tugas")
-    }
-    axios.post('/pengumpulan-tugas', {id})
-        .then(res=>{
-          const result = res.data.data
-          setListPengumpulan(result)
-        })
-        .catch(err=>{
-          console.log(err)
-        })
-  }, [id, navigate]);
+    if (id === undefined) {
+      navigate("/mentor/tugas");
+}
+}, [id, navigate]);
+
+useEffect(() => {
+  fetchData();
+}, [id]); // Fetch data when id changes
+
+useEffect(() => {
+    fetchData();
+  }, [refresh]); // Refetch data when refresh changes
 
   console.log(listPengumpulan)
+  const propsData = {
+    title: listPengumpulan.length > 0 ? listPengumpulan[0].subyek : "Loading...",
+    field: exField,
+    data: listPengumpulan.length > 0 ? listPengumpulan : loadingData,
+    tableType: "score",
+    handleRefresh: handleRefresh,
+  };
+
   return (
-    <>
-      <Table props={propsData} />
-    </>
+      <>
+        <Table props={propsData} />
+      </>
   );
 };
 
