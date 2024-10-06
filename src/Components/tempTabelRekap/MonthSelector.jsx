@@ -8,8 +8,8 @@ const MonthSelector = ({ onSelect }) => {
     const dropdownRef = useRef(null);
 
     const monthNames = [
-        "January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
+        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
     ];
 
     const handleSelect = (monthIndex) => {
@@ -18,6 +18,7 @@ const MonthSelector = ({ onSelect }) => {
         if (onSelect) {
             onSelect(monthIndex);
         }
+        console.log(monthIndex+1)
     };
 
     const handleClickOutside = (event) => {
