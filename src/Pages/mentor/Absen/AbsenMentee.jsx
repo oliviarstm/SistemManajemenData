@@ -41,18 +41,18 @@ const AbsenMentee = ({ role }) => {
         {/* <DashboardButton title="Kelas A" image={kelasA} onClick={handleClickA}/>
         <DashboardButton title="Kelas B" image={kelasB} onClick={handleClickB}/>
         <DashboardButton title="Kelas C" image={kelasC} onClick={handleClickC}/> */}
-        {role === "mentor" ? (
-          <DashboardButton
-            title="Mentee Individual"
-            image={menteeIndividual}
-            onClick={handleClickIndividual}
-          />
-        ) : null}
+        {/*{role === "mentor" ? (*/}
+        {/*  <DashboardButton*/}
+        {/*    title="Mentee Individual"*/}
+        {/*    image={menteeIndividual}*/}
+        {/*    onClick={handleClickIndividual}*/}
+        {/*  />*/}
+        {/*) : null}*/}
         {role === "mentor" ? (
           <DashboardButton
             title="Form Absensi"
             image={absen}
-            onClick={handleClickForm()}
+            onClick={handleClickForm}
           />
         ) : null}
       </div>

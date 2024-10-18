@@ -9,6 +9,7 @@ const options = [
     { value: "Kelas A", label: "Kelas A" },
     { value: "Kelas B", label: "Kelas B" },
     { value: "Kelas C", label: "Kelas C" },
+    { value: "Mentor", label: "Individual Mentee" },
 ];
 
 const TableBar = ({ title, desc, classFilterFunction, dateFilterFunction }) => {

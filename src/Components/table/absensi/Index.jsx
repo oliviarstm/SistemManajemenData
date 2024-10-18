@@ -22,45 +22,25 @@ const Table = ({ props }) => {
         title,
         field,
         data,
-        isEnable,
         desc,
-        type,
-        option,
-        handleAdd,
-        buttonLabel,
-        buttonDropDown,
-        dataClick,
-        tableType,
-        buttonClick,
         handleRefresh,
-        classFilter,
         classFilterFunction,
-        dateFilterFunction
+        dateFilterFunction,
+        date
     } = props;
     return (
         <>
             <TableBar
                 title={title}
                 desc={desc}
-                type={type}
-                handleAdd={handleAdd}
-                buttonDropDown={buttonDropDown}
-                classFilter={classFilter}
                 classFilterFunction={classFilterFunction}
                 dateFilterFunction={dateFilterFunction}
             />
             <TableData
                 field={field}
                 data={data}
-                isEnable={isEnable}
-                options={option}
-                buttonLabel={buttonLabel}
-                buttonDropDown={buttonDropDown}
-                dataClick={dataClick}
-                type={tableType}
-                buttonClick={buttonClick}
                 handleRefresh={handleRefresh}
-                openInputModal={handleAdd}
+                date={date}
             />
         </>
     );
