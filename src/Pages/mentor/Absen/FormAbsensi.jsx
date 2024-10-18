@@ -1,34 +1,48 @@
 import Table from "../../../Components/table/Index.jsx";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "../../../utils/axios.js";
 
 const exTitle = "Form Absensi";
 const exField = ["Nama", "Kelas", "Sesi", "Tanggal", "Alasan"];
-const exData = [{
-    id:1,
-    Name:"Olivia",
-    Class:"A",
-    Session:"Pagi",
-    Tanggal:"14/10/2024",
-    Alasan:"Sakit Perut"
-}, {
-    id:2,
-    Name:"Kelvin",
-    Class:"C",
-    Session:"Siang",
-    Tanggal:"18/10/2024",
-    Alasan:"Kucing Melahirkan"
-}]
-const FormAbsensi = ()=>{
-    const propsData={
-        title:exTitle,
-        field:exField,
-        data:exData,
-        isEnable:false,
-        tableType:"none"
-    }
+
+const FormAbsensi = () => {
+    const [izinData, setIzinData] = useState([]);
+
+    useEffect(() => {
+        axios.get('/izin')
+            .then(res => {
+                const result = res.data.data;
+
+                // Format the date field in each result
+                const formattedData = result.map(item => {
+                    const formattedDate = new Date(item.Tanggal).toLocaleDateString('en-GB'); // 'en-GB' for DD/MM/YYYY format
+                    return {
+                        ...item,
+                        Tanggal: formattedDate // Replace Tanggal with the formatted date
+                    };
+                });
+
+                setIzinData(formattedData);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }, []);
+
+    const propsData = {
+        title: exTitle,
+        field: exField,
+        data: izinData,
+        isEnable: false,
+        tableType: "none"
+    };
+
     return (
         <>
-            <Table props={propsData}/>
+            <Table props={propsData} />
         </>
     );
-}
-export default FormAbsensi
+};
+
+export default FormAbsensi;
