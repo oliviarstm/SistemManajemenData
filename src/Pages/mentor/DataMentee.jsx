@@ -1,5 +1,4 @@
 import Table from "../../Components/table/Index.jsx";
-import Select from "react-select";
 import {useLocation, useNavigate} from "react-router-dom";
 import { menteeeditdelete } from "../../Components/table/threedotmenu.js";
 import { useEffect, useState } from "react";
@@ -14,37 +13,56 @@ const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
 const DataMentee = () => {
   const location = useLocation();
   const navigate = useNavigate()
-  // const filter = location.state?.filter;
+  const filterMenu = location.state?.filter;
   const [isModalOpen, setModalOpen] = useState(false);
   const { role } = useSelector((state) => state.Auth);
   const [menteeData, setMenteeData] = useState([]);
   const [filter, setFilter] = useState("");
   const menteeProfil = useSelector(state => state.Mentee)
   const dispatch = useDispatch()
+  const {accountId} = useSelector(state => state.Auth)
+  const [classFilter, setClassFilter] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let result;
         if (
-          filter &&
-          (filter === "Kelas A" || filter === "Kelas B" || filter === "Kelas C")
+            filter &&
+            (filter === "Kelas A" || filter === "Kelas B" || filter === "Kelas C")
         ) {
           const kelas =
-            filter === "Kelas A" ? "A" : filter === "Kelas B" ? "B" : "C";
+              filter === "Kelas A" ? "A" : filter === "Kelas B" ? "B" : "C";
           const res = await axios.get(`/menteeclass/?class=${kelas}`);
           result = res.data.data;
         } else {
           const res = await axios.get("/mentee");
           result = res.data.data;
         }
+        setClassFilter(true)
         setMenteeData(result); // Set menteeData
       } catch (error) {
         console.error("Error fetching mentee data:", error); // Log any errors
       }
     };
+    const fetchIndividual = async ()=>{
+      try {
+        console.log(accountId)
+        let result
+        const res = await axios.get(`/menteeindividual/${accountId}`)
+        result = res.data.data
+        setClassFilter(false)
+        setMenteeData(result)
+      } catch (e) {
+        console.error("Error fetching mentee data:", e)
+      }
+    }
 
-    fetchData();
+    if (filterMenu!=="Mentor"){
+      fetchData();
+    } else {
+      fetchIndividual()
+    }
   }, [filter, menteeProfil]);
 
   const handleFilterChange = (selectedOption) => {
@@ -76,12 +94,6 @@ const DataMentee = () => {
     navigate("nilai", { state: { id_mentee: id } });
   };
 
-  const options = [
-    { value: "", label: "Semua Kelas" },
-    { value: "Kelas A", label: "Kelas A" },
-    { value: "Kelas B", label: "Kelas B" },
-    { value: "Kelas C", label: "Kelas C" },
-  ];
   // FOR TABLE SETTINGS
   const propsData = {
     title: exTitle,
@@ -98,20 +110,20 @@ const DataMentee = () => {
     handleAdd: openModal,
     buttonLabel: role === "mentor" ? "Detail" : null,
     buttonClick: toDetail,
-    classFilter:true,
+    classFilter:classFilter,
     classFilterFunction:handleFilterChange
   };
 
   return (
-    <>
-      <Table props={propsData} />
-      <MenteeInputModal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        title={titles}
-        isButton={true}
-      />
-    </>
+      <>
+        <Table props={propsData} />
+        <MenteeInputModal
+            isOpen={isModalOpen}
+            onClose={closeModal}
+            title={titles}
+            isButton={true}
+        />
+      </>
   );
 };
 
