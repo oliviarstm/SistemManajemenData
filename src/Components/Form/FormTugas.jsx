@@ -1,7 +1,9 @@
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const FormTugas =({titleTugas, batas})=>{
     const [formValues, setFormValues] = useState({});
+    const navigate = useNavigate()
     const handleInputChange = (title, value) => {
         setFormValues({ ...formValues, [title]: value });
     };
@@ -20,7 +22,6 @@ const FormTugas =({titleTugas, batas})=>{
                     className="w-[75%] grow py-2 px-3 rounded-md border"
                     value={titleTugas}
                     disabled
-                    onChange={(e) => handleInputChange('nama', e.target.value)}
                 />
             </label>
             <label className="flex items-center mt-5">
@@ -30,7 +31,15 @@ const FormTugas =({titleTugas, batas})=>{
                     className="w-[75%] grow py-2 px-3 rounded-md border"
                     value={batas}
                     disabled
-                    onChange={(e) => handleInputChange('batasPengumpulan', e.target.value)}
+                />
+            </label>
+            <label className="flex items-center mt-5">
+                <h1 className="w-[25%] font-semibold text-lg">Status</h1>
+                <input
+                    type="text"
+                    className="w-[75%] grow py-2 px-3 rounded-md border"
+                    value={"Belum Dikumpul"}
+                    disabled
                 />
             </label>
             <label className="flex items-center mt-5">
@@ -46,6 +55,7 @@ const FormTugas =({titleTugas, batas})=>{
                     <button
                         type="button"
                         className="text-[#235EAC] border border-[#235EAC] py-1 px-5 rounded bg-white ml-6"
+                        onClick={()=>navigate('/mentee/tugas')}
                     >
                         Batal
                     </button>

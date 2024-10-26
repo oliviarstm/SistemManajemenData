@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { absenOptions } from "../table/dateOptions.jsx";
 import Datepicker from "tailwind-datepicker-react";
+import {useNavigate} from "react-router-dom";
 
 const FormIzin = () => {
   const [formValues, setFormValues] = useState({});
   const [show, setShow] = useState(false);
+  const navigate = useNavigate()
   const handleInputChange = (title, value) => {
     setFormValues({ ...formValues, [title]: value });
   };
@@ -67,6 +69,7 @@ const FormIzin = () => {
             <button
               type="button"
               className="text-[#235EAC] border border-[#235EAC] py-1 px-5 rounded bg-white ml-6"
+              onClick={()=>navigate('/mentee/dashboard')}
             >
               Batal
             </button>

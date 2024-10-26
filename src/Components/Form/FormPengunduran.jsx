@@ -1,7 +1,9 @@
 import {useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 const FormPengunduran =()=>{
     const [formValues, setFormValues] = useState({});
+    const navigate = useNavigate()
     const handleInputChange = (title, value) => {
         setFormValues({ ...formValues, [title]: value });
     };
@@ -35,6 +37,7 @@ const FormPengunduran =()=>{
                     <button
                         type="button"
                         className="text-[#235EAC] border border-[#235EAC] py-1 px-5 rounded bg-white ml-6"
+                        onClick={()=>navigate('/mentee/dashboard')}
                     >
                         Batal
                     </button>
