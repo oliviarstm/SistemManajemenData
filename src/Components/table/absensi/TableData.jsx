@@ -1,50 +1,55 @@
 import { Checkbox } from "@material-tailwind/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "../../../utils/axios.js";
 
-const TableData = ({ field, data, date, handleRefresh}) => {
+const TableData = ({ field, data, date, handleRefresh }) => {
     const [checkedItems, setCheckedItems] = useState({});
-    console.log(data);
-
+    const hasInsertedForDate = useRef(null); // Track insertion for specific date
 
     useEffect(() => {
-        // Populate the checkedItems state based on the passed data
         const initialCheckedState = data.reduce((acc, item) => {
-            // Convert database values (1, 0) to boolean
-            acc[item.id] = item.checked === 1; // true if checked is 1, false otherwise
+            acc[item.id] = item.checked === 1;
             return acc;
         }, {});
         setCheckedItems(initialCheckedState);
     }, [data]);
 
+    useEffect(() => {
+        const insertAllUnchecked = async () => {
+            // Make a request to insert all unchecked data
+            await axios.post('/insertallabsensi', { date });
+            handleRefresh(); // Refresh data after insertion
+        };
+
+        // Only run if we haven't already run it for this date
+        if (hasInsertedForDate.current !== date) {
+            insertAllUnchecked();
+            hasInsertedForDate.current = date; // Update ref to prevent re-runs for this date
+        }
+    }, [data, date]);
+
     const handleCheckboxChange = async (id, idMentee, checked) => {
-        // Update the checkbox state based on id
         setCheckedItems({
             ...checkedItems,
-            [id]: checked, // Update the state for the clicked checkbox using id
+            [id]: checked,
         });
-        await axios.post('/insertabsensi',{date, id, id_mentee:idMentee})
-        handleRefresh()
-        console.log(`Checkbox for id: ${id}, idMentee: ${idMentee} is ${checked ? "checked" : "unchecked"} at ${date}`);
+        await axios.post('/insertabsensi', { date, id, id_mentee: idMentee });
+        handleRefresh();
     };
 
     return (
-        <div className="bg-white mx-10 my-5 flex flex-row justify-between items-center text-black">
+        <div className="bg-white mx-10 my-5 flex flex-col items-center text-black">
             <table className="w-full min-w-max table-auto text-left">
                 <tbody>
                 <tr className="bg-[#FCFCFD] text-gray-600 text-sm h-12">
-                    {field.map((field, index) => {
-                        return (
-                            <td key={index} className={`px-5 font-semibold`}>
-                                {field}
-                            </td>
-                        );
-                    })}
+                    {field.map((field, index) => (
+                        <td key={index} className="px-5 font-semibold">{field}</td>
+                    ))}
                 </tr>
                 </tbody>
                 <tbody>
                 {data.map((val, index) => {
-                    const itemKey = val.id ?? `item-${index}`; // Fallback to index if id is null
+                    const itemKey = val.id ?? `item-${index}`;
                     return (
                         <tr key={itemKey} className="h-12">
                             <td className="px-5 text-black">{val.Name}</td>
@@ -52,10 +57,10 @@ const TableData = ({ field, data, date, handleRefresh}) => {
                             <td className="px-5 text-black">{val.Sesi}</td>
                             <td className="px-5 text-black">
                                 <Checkbox
-                                    key={itemKey} // Use itemKey here
-                                    name={itemKey} // Use itemKey for the name as well
-                                    onChange={(e) => handleCheckboxChange(val.id, val.id_mentee,  e.target.checked)} // Pass both id and id_mentee
-                                    checked={checkedItems[itemKey] ?? false} // Fallback to false if undefined
+                                    key={itemKey}
+                                    name={itemKey}
+                                    onChange={(e) => handleCheckboxChange(val.id, val.id_mentee, e.target.checked)}
+                                    checked={checkedItems[itemKey] ?? false}
                                 />
                             </td>
                         </tr>
