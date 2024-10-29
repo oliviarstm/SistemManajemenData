@@ -1,11 +1,14 @@
 // src/MonthSelector.js
 
 import { useState, useRef, useEffect } from 'react';
+import {useDispatch} from "react-redux";
+import {setMonth} from "../../store/reducer/absensi.js";
 
 const MonthSelector = ({ onSelect }) => {
     const [selectedMonth, setSelectedMonth] = useState(null);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
+    const dispatch = useDispatch()
 
     const monthNames = [
         "Januari", "Februari", "Maret", "April", "Mei", "Juni",
@@ -18,6 +21,7 @@ const MonthSelector = ({ onSelect }) => {
         if (onSelect) {
             onSelect(monthIndex);
         }
+        dispatch(setMonth(monthIndex+1))
         console.log(monthIndex+1)
     };
 
@@ -26,7 +30,9 @@ const MonthSelector = ({ onSelect }) => {
             setShowDropdown(false);
         }
     };
-
+    useEffect(() => {
+        dispatch(setMonth(""))
+    }, []);
     useEffect(() => {
         if (showDropdown) {
             document.addEventListener('click', handleClickOutside);
@@ -64,4 +70,4 @@ const MonthSelector = ({ onSelect }) => {
     );
 };
 
-export default MonthSelector;
+export default MonthSelector
