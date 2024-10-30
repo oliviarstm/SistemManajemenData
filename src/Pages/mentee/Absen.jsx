@@ -45,15 +45,29 @@ const Absen = () => {
     const propsData = {
         title: Title,
         field: Field,
-        data: AbsensiMonth ? absen : emptyData,
+        data: absen,
         isEnable: false,
         tableType: "none",
         type: "month"
     };
 
+    console.log(absen.length)
+
     return (
         <>
             <Table props={propsData} />
+            {AbsensiMonth?null:
+                <div>
+                    <h1 className="text-2xl text-gray-400 text-center">Data Tidak Ada</h1>
+                    <h1 className="text-2xl text-gray-400 text-center">Silahkan Pilih Bulan</h1>
+                </div>
+            }
+            {absen.length!==0?null:
+                <div>
+                    <h1 className="text-2xl text-gray-400 text-center">Data Tidak Ada</h1>
+                    <h1 className="text-2xl text-gray-400 text-center">Silahkan Pilih Bulan</h1>
+                </div>
+            }
         </>
     );
 };
