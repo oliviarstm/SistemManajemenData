@@ -1,20 +1,36 @@
-import { useEffect, useState } from "react";
+import {useEffect, useRef, useState} from "react";
 import { absenOptions } from "../table/dateOptions.jsx";
 import Datepicker from "tailwind-datepicker-react";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import axios from "../../utils/axios.js";
 
 const FormIzin = () => {
-  const [formValues, setFormValues] = useState({});
+  const {accountId} = useSelector(state => state.Auth)
+  const [formValues, setFormValues] = useState({id:accountId});
   const [show, setShow] = useState(false);
   const navigate = useNavigate()
+  const fileInputRef = useRef(null)
+  const alasanInputRef = useRef(null)
   const handleInputChange = (title, value) => {
     setFormValues({ ...formValues, [title]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     // Process form submission here
     console.log("Form values:", formValues);
+    try {
+      await axios.post("/izin", formValues, {headers: {
+          'Content-Type': 'multipart/form-data'
+        }})
+      setFormValues({ id: accountId });
+      if (fileInputRef.current) fileInputRef.current.value = ""; // Clear file input
+      if (alasanInputRef.current) alasanInputRef.current.value = ""; // Clear file input
+      setShow(false);
+    }catch (e) {
+      console.log(e)
+    }
   };
   // const [show, setShow] = useState(false)
   const handleChange = (selectedDate) => {
@@ -36,6 +52,7 @@ const FormIzin = () => {
           <input
             type="text"
             className="w-[75%] grow py-2 px-3 rounded-md border"
+            ref={alasanInputRef}
             onChange={(e) => handleInputChange("alasan", e.target.value)}
           />
         </label>
@@ -48,20 +65,14 @@ const FormIzin = () => {
             show={show}
             setShow={handleClose}
           />
-          {/*<input*/}
-          {/*    type="text"*/}
-          {/*    className="w-[75%] grow py-2 px-3 rounded-md border"*/}
-          {/*    value={batas}*/}
-          {/*    disabled*/}
-          {/*    onChange={(e) => handleInputChange('batasPengumpulan', e.target.value)}*/}
-          {/*/>*/}
         </label>
         <label className="flex items-center mt-5">
           <h1 className="w-[25%] font-semibold text-lg">Lampiran</h1>
           <input
             type="file"
             className="w-[75%] grow py-2 px-3 rounded-md border"
-            onChange={(e) => handleInputChange("lampiran", e.target.value)}
+            ref={fileInputRef}
+            onChange={(e) => handleInputChange("lampiran", e.target.files[0])}
           />
         </label>
         <div className="m-8 justify-center">
