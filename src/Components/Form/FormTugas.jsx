@@ -1,18 +1,60 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import axios from "../../utils/axios.js";
+import {useSelector} from "react-redux";
 
-const FormTugas =({titleTugas, batas})=>{
-    const [formValues, setFormValues] = useState({});
+const FormTugas =({titleTugas, batas, idMentee, idTugas})=>{
+    const [formValues, setFormValues] = useState({id_tugas:idTugas, id_mentee:idMentee});
     const navigate = useNavigate()
+    const [isSubmit, setIsSubmit] = useState(false)
+    const [refresh, setRefresh] = useState(false)
+    const [pengumpulan, setPengumpulan] = useState("")
+
     const handleInputChange = (title, value) => {
         setFormValues({ ...formValues, [title]: value });
     };
+    const handleRefresh = () => {
+        console.log("REFRESS")
+        setRefresh(prev => !prev); // Toggle refresh state
+    }
+    const fetchData = async () =>{
+        const res = await axios.post("/pengumpulan-tugas-mentee", {id_tugas:idTugas, id_mentee:idMentee})
+        const data = res.data.data
+        if(data.length!==0){
+            setPengumpulan(data[0])
+        }
+        data.length===1?setIsSubmit(true):null
+    }
 
-    const handleSubmit = (event) => {
+    useEffect(() => {
+        setIsSubmit(false)
+        fetchData()
+    }, [refresh]);
+
+    console.log(idTugas)
+    console.log(idMentee)
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Process form submission here
-        console.log("Form values:", formValues);
+        try {
+            await axios.post("/kumpul-tugas", formValues, {headers: {
+                    'Content-Type': 'multipart/form-data'
+                }})
+            handleRefresh()
+        }catch (e) {
+            console.log(e)
+        }
     };
+
+    const handleDelete = async ()=>{
+        console.log(pengumpulan.id_pengumpulan)
+        try {
+            await axios.delete(`/kumpul-tugas/${pengumpulan.id_pengumpulan}`)
+            handleRefresh()
+        }catch (e) {
+            console.log(e)
+        }
+    }
+    console.log(pengumpulan.nilai)
     return <div className="bg-white mx-10 my-5 p-5">
         <form onSubmit={handleSubmit}>
             <label className="flex items-center mt-5">
@@ -38,7 +80,7 @@ const FormTugas =({titleTugas, batas})=>{
                 <input
                     type="text"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
-                    value={"Belum Dikumpul"}
+                    value={!isSubmit?"Belum Dikumpul":"Sudah Terkumpul"}
                     disabled
                 />
             </label>
@@ -47,7 +89,8 @@ const FormTugas =({titleTugas, batas})=>{
                 <input
                     type="file"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
-                    onChange={(e) => handleInputChange('lampiran', e.target.value)}
+                    onChange={(e) => handleInputChange('lampiran', e.target.files[0])}
+                    disabled={isSubmit}
                 />
             </label>
             <div className="m-8 justify-center">
@@ -61,13 +104,16 @@ const FormTugas =({titleTugas, batas})=>{
                     </button>
                     <button
                         type="submit"
-                        className="text-white py-1 px-5 ml-6 rounded bg-[#235EAC]"
+                        className={!isSubmit?"text-white py-1 px-5 ml-6 rounded bg-[#235EAC]":"text-white py-1 px-5 ml-6 rounded bg-gray-200"}
+                        disabled={isSubmit}
                     >
                         Simpan
                     </button>
                     <button
                         type="button"
-                        className="text-white py-1 px-5 ml-6 rounded bg-gray-500"
+                        className={isSubmit&&!pengumpulan.nilai?"text-white py-1 px-5 ml-6 rounded bg-gray-500":"text-white py-1 px-5 ml-6 rounded bg-gray-200"}
+                        disabled={!isSubmit||pengumpulan.nilai}
+                        onClick={handleDelete}
                     >
                         Hapus
                     </button>
