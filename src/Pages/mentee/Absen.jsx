@@ -1,22 +1,17 @@
 import Table from "../../Components/table/Index.jsx";
-import { useSelector } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { useEffect, useState } from "react";
 import axios from "../../utils/axios.js";
+import {setMonth} from "../../store/reducer/absensi.js";
 
 const Title = "Rekap Absen Mentee";
 const Field = ["Tanggal", "Status"];
-const emptyData = [
-    {
-        id: 0,
-        waktu: "Pilih bulan",
-        status: ""
-    }
-];
 
 const Absen = () => {
     const { AbsensiMonth } = useSelector((state) => state.Absen);
     const { accountId } = useSelector(state => state.Auth);
     const [absen, setAbsen] = useState([]);
+    const dispatch = useDispatch()
 
     const fetchData = async () => {
         try {
@@ -39,8 +34,15 @@ const Absen = () => {
     };
 
     useEffect(() => {
+        setAbsen([])
+        dispatch(setMonth(""))
+    }, []);
+
+    useEffect(() => {
         fetchData();
     }, [AbsensiMonth]);
+
+    console.log(absen)
 
     const propsData = {
         title: Title,
@@ -56,12 +58,6 @@ const Absen = () => {
     return (
         <>
             <Table props={propsData} />
-            {AbsensiMonth?null:
-                <div>
-                    <h1 className="text-2xl text-gray-400 text-center">Data Tidak Ada</h1>
-                    <h1 className="text-2xl text-gray-400 text-center">Silahkan Pilih Bulan</h1>
-                </div>
-            }
             {absen.length!==0?null:
                 <div>
                     <h1 className="text-2xl text-gray-400 text-center">Data Tidak Ada</h1>
