@@ -1,17 +1,31 @@
-import {useState} from "react";
+import {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
+import axios from "../../utils/axios.js";
 
 const FormPengunduran =()=>{
-    const [formValues, setFormValues] = useState({});
+    const {accountId} = useSelector(state => state.Auth)
+    const [formValues, setFormValues] = useState({id:accountId, tanggal:new Date()});
     const navigate = useNavigate()
+    const fileInputRef = useRef(null)
+    const alasanInputRef = useRef(null)
     const handleInputChange = (title, value) => {
         setFormValues({ ...formValues, [title]: value });
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault();
         // Process form submission here
-        console.log("Form values:", formValues);
+        try {
+            await axios.post("/pengunduran", formValues, {headers: {
+                    'Content-Type': 'multipart/form-data'
+                }})
+            setFormValues({ id: accountId });
+            if (fileInputRef.current) fileInputRef.current.value = ""; // Clear file input
+            if (alasanInputRef.current) alasanInputRef.current.value = ""; // Clear file input
+        }catch (e) {
+            console.log(e)
+        }
     };
 
     return <div className="bg-white mx-10 my-5 p-5">
@@ -21,6 +35,7 @@ const FormPengunduran =()=>{
                 <input
                     type="text"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
+                    ref={alasanInputRef}
                     onChange={(e) => handleInputChange('alasan', e.target.value)}
                 />
             </label>
@@ -29,7 +44,8 @@ const FormPengunduran =()=>{
                 <input
                     type="file"
                     className="w-[75%] grow py-2 px-3 rounded-md border"
-                    onChange={(e) => handleInputChange('lampiran', e.target.value)}
+                    ref={fileInputRef}
+                    onChange={(e) => handleInputChange('lampiran', e.target.files[0])}
                 />
             </label>
             <div className="m-8 justify-center">
