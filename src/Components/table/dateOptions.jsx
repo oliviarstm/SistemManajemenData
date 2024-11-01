@@ -60,7 +60,7 @@ export const absenFilter = {
     next: () => <span>Next</span>,
   },
   datepickerClassNames: "top-12",
-  defaultDate: new Date(),
+  defaultDate: new Date(new Date().getTime() + 3600 * 1000),
   language: "id",
   disabledDates: [],
   weekDays: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],

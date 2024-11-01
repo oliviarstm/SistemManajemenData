@@ -25,7 +25,7 @@ const exData = [
 
 const AbsenTable = () => {
   const [filter, setFilter] = useState("");
-  const [dateFilter, setDateFilter] = useState(formatDate(new Date()));
+  const [dateFilter, setDateFilter] = useState(formatDate(new Date(new Date().getTime() + 3600 * 1000)));
   const [absensiData,setAbsensiData]=useState([])
   const [refresh, setRefresh] = useState(false);
   const {accountId} = useSelector(state => state.Auth)
