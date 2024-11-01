@@ -44,6 +44,11 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
         setUniversitas(univ.data.data)
       }catch (e) {
         console.log(e)
+        await Swal.fire({
+          title: "Terjadi Kesalahan",
+          text: "Periksa Koneksi",
+          icon: "error"
+        })
       }
     }
     callOptions()

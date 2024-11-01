@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "../../utils/axios.js";
 import {useSelector} from "react-redux";
+import Swal from "sweetalert2";
 
 const FormTugas =({titleTugas, batas, idMentee, idTugas})=>{
     const [formValues, setFormValues] = useState({id_tugas:idTugas, id_mentee:idMentee});
@@ -39,20 +40,50 @@ const FormTugas =({titleTugas, batas, idMentee, idTugas})=>{
             await axios.post("/kumpul-tugas", formValues, {headers: {
                     'Content-Type': 'multipart/form-data'
                 }})
+            await Swal.fire({
+                title: "Berhasil",
+                text: "Tugas berhasil dikumpulkan",
+                icon: "success"
+            })
             handleRefresh()
         }catch (e) {
             console.log(e)
+            Swal.fire({
+                title: "Terjadi Kesalahan",
+                text: "Periksa Koneksi",
+                icon: "error"
+            })
         }
     };
 
     const handleDelete = async ()=>{
         console.log(pengumpulan.id_pengumpulan)
-        try {
-            await axios.delete(`/kumpul-tugas/${pengumpulan.id_pengumpulan}`)
-            handleRefresh()
-        }catch (e) {
-            console.log(e)
-        }
+        Swal.fire({
+            title:"Apakah anda yakin?",
+            text:"Pengumpulan tugas akan terhapus",
+            icon:"warning",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText:'Iya, hapus!',
+            cancelButtonText:"Tidak"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/kumpul-tugas/${pengumpulan.id_pengumpulan}`)
+                    .then(res=>{
+                        console.log(res.data.msg)
+                        handleRefresh()
+                    })
+                    .catch(err=>{
+                        Swal.fire({
+                            title: "Terjadi Kesalahan",
+                            text: "Periksa Koneksi",
+                            icon: "error"
+                        })
+                        console.log(err)
+                    })
+            }
+        })
     }
     console.log(pengumpulan.nilai)
     return <div className="bg-white mx-10 my-5 p-5">

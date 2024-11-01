@@ -2,6 +2,7 @@ import {useRef, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import axios from "../../utils/axios.js";
+import Swal from "sweetalert2";
 
 const FormPengunduran =()=>{
     const {accountId} = useSelector(state => state.Auth)
@@ -20,6 +21,11 @@ const FormPengunduran =()=>{
             await axios.post("/pengunduran", formValues, {headers: {
                     'Content-Type': 'multipart/form-data'
                 }})
+            await Swal.fire({
+                title: "Berhasil",
+                text: "Pengunduran diri berhasil diajukan",
+                icon: "success"
+            })
             setFormValues({ id: accountId });
             if (fileInputRef.current) fileInputRef.current.value = ""; // Clear file input
             if (alasanInputRef.current) alasanInputRef.current.value = ""; // Clear file input

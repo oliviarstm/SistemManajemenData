@@ -138,15 +138,32 @@ export const universitas={
 export const tugas={
     delete:(id, handleRefresh)=>{
         console.log("delete ",id)
-        axios.delete(`/tugas/${id}`)
-            .then(res=>{
-                console.log(res.data.msg)
-                handleRefresh()
-            })
-            .catch(err=>{
-                console.log(err)
-            })
-
+        Swal.fire({
+            title:"Apakah anda yakin?",
+            text:"Data pengumpulan akan ikut terhapus",
+            icon:"warning",
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText:'Iya, hapus!',
+            cancelButtonText:"Tidak"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                axios.delete(`/tugas/${id}`)
+                    .then(res=>{
+                        console.log(res.data.msg)
+                        handleRefresh()
+                    })
+                    .catch(err=>{
+                        Swal.fire({
+                            title: "Terjadi Kesalahan",
+                            text: "Periksa Koneksi",
+                            icon: "error"
+                        })
+                        console.log(err)
+                    })
+            }
+        })
     },
     edit:(id, dispatch, openInputModal)=>{
         console.log("edit ",id)

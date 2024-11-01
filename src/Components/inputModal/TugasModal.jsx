@@ -29,6 +29,11 @@ const TugasModal = ({ isOpen, onClose, title, isButton }) => {
                 }
             }catch (e) {
                 console.log(e)
+                await Swal.fire({
+                    title: "Terjadi Kesalahan",
+                    text: "Periksa Koneksi",
+                    icon: "error"
+                })
             }
         }
         callData()
