@@ -1,38 +1,11 @@
-import Swal from "sweetalert2";
-import PdfView from "../../PdfView.jsx";
+import {onPreview} from "../../../utils/helper.js";
 
 const TableData = ({
                        field,
                        data,
                        type,
                    }) => {
-    function isPDF(filename) {
-        // Use a regular expression to check if the filename ends with ".pdf" (case-insensitive)
-        return /\.pdf$/i.test(filename);
-    }
-    const onPreview  = (name)=>{
-        const fileUrl = `${import.meta.env.VITE_APP_IMG_URL}${name}`
-        console.log(fileUrl)
-        if (!isPDF(name)){
-            Swal.fire({
-                imageUrl:fileUrl,
-            })
-        }else {
-            console.log("ITS A PDF")
-            //TODO pdf view
-            Swal.fire({
-                title: "Download File",
-                icon: "info",
-                confirmButtonColor: "#3085d6",
-                confirmButtonText: "Download"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    //Open fileUrl on the new tab
-                    window.open(fileUrl, "_blank");
-                }
-            })
-        }
-    }
+
 
     return (
         <div className="bg-white mx-10 my-5 flex flex-row justify-between items-center text-black">

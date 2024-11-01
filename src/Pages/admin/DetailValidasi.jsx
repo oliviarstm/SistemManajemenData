@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import FormCard from "../../Components/FormCard.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "../../utils/axios.js";
+import {isPDF, onPreview} from "../../utils/helper.js";
+import Swal from "sweetalert2";
 
 const DetailValidasi = () => {
   const location = useLocation();
@@ -69,6 +71,7 @@ const DetailValidasi = () => {
         fields={titles}
         editable={false} // Set nilai editable sesuai dengan status input
         formData={formData} // kirim data formData sebagai prop
+          onView={onPreview}
       />
       <div className="mt-4 flex flex-row gap-5">
         <button

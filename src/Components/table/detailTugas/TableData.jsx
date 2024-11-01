@@ -1,10 +1,8 @@
 import Swal from "sweetalert2";
 import axios from "../../../utils/axios.js";
+import {isPDF, onPreview} from "../../../utils/helper.js";
 
 const TableData = ({ field, data, type, handleRefresh }) => {
-    const showFile = (path) => {
-        console.log(path);
-    };
 
     const handleEdit = async (index, initialValue) => {
         console.log(index)
@@ -61,7 +59,7 @@ const TableData = ({ field, data, type, handleRefresh }) => {
                         <td className="px-5 text-black">
                             <button
                                 className="border border-gray-700 hover:border-gray-500 text-gray-700 hover:text-gray-500 py-2 px-4 rounded-xl"
-                                onClick={() => showFile(val.lampiran)}
+                                onClick={() => onPreview(val.lampiran)}
                             >
                                 Lihat File
                             </button>
