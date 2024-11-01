@@ -22,6 +22,7 @@ const DataMentee = () => {
   const dispatch = useDispatch()
   const {accountId} = useSelector(state => state.Auth)
   const [classFilter, setClassFilter] = useState(false)
+  const [refresh, setRefresh] = useState(false); // State variable for managing refresh
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +64,7 @@ const DataMentee = () => {
     } else {
       fetchIndividual()
     }
-  }, [filter, menteeProfil]);
+  }, [filter, menteeProfil, refresh]);
 
   const handleFilterChange = (selectedOption) => {
     setFilter(selectedOption.value);
@@ -93,6 +94,9 @@ const DataMentee = () => {
   const toDetail = (id) => {
     navigate("nilai", { state: { id_mentee: id } });
   };
+  const handleRefresh = () => {
+    setRefresh(!refresh); // Toggle refresh state to trigger re-fetching data
+  }
 
   // FOR TABLE SETTINGS
   const propsData = {
@@ -111,7 +115,8 @@ const DataMentee = () => {
     buttonLabel: role === "mentor" ? "Detail" : null,
     buttonClick: toDetail,
     classFilter:classFilter,
-    classFilterFunction:handleFilterChange
+    classFilterFunction:handleFilterChange,
+    handleRefresh:handleRefresh
   };
 
   return (

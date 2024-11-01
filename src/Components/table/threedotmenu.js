@@ -15,7 +15,7 @@ export const menteeeditdelete = [
   {
     label: "Delete",
     value: "delete",
-    onClick: (id, handleRefresh) => mentee.delete(id),
+    onClick: (id, handleRefresh) => mentee.delete(id, handleRefresh),
   },
 ];
 export const admineditdelete = [

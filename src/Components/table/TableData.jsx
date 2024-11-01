@@ -1,16 +1,3 @@
-// const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""]
-// const exData = [{
-//     Name:"Olivia",
-//     Universty:"Poltek",
-//     Class:"A",
-//     Session:"Pagi"
-// }, {
-//     Name:"Kelvin",
-//     Universty:"ITEBA",
-//     Class:"B",
-//     Session:"Siang"
-// }]
-
 import ThreeDot from "./ThreeDot.jsx";
 import AbsenButton from "../AbsenButton.jsx";
 import { useNavigate } from "react-router-dom";
