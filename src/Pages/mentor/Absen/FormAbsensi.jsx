@@ -1,10 +1,9 @@
-import Table from "../../../Components/table/Index.jsx";
-import { useNavigate } from "react-router-dom";
+import Table from "../../../Components/table/izin/Index.jsx";
 import { useEffect, useState } from "react";
 import axios from "../../../utils/axios.js";
 
 const exTitle = "Form Absensi";
-const exField = ["Nama", "Kelas", "Sesi", "Tanggal", "Alasan"];
+const exField = ["Nama", "Kelas", "Sesi", "Tanggal", "Alasan", "Lampiran"];
 
 const FormAbsensi = () => {
     const [izinData, setIzinData] = useState([]);
@@ -29,6 +28,7 @@ const FormAbsensi = () => {
                 console.log(err);
             });
     }, []);
+    console.log(izinData)
 
     const propsData = {
         title: exTitle,
