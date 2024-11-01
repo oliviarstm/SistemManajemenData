@@ -53,15 +53,29 @@ const DetailValidasi = () => {
   };
 
   const handleTerima = () => {
-    axios
-      .delete(`/pengunduran/${id_pengajuan}`)
-      .then((res) => {
-        console.log(res.data.msg);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    navigate(-1);
+
+    Swal.fire({
+      title:"Apakah anda yakin?",
+      text:"Setelah ini data tidak akan ditampilkan lagi!",
+      icon:"warning",
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText:'Oke!',
+      cancelButtonText:"Tidak"
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+            .delete(`/pengunduran/${id_pengajuan}`)
+            .then((res) => {
+              console.log(res.data.msg);
+              navigate(-1);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }
+    })
   };
 
   return (
