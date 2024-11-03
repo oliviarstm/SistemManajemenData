@@ -10,9 +10,6 @@ const Tugas = createSlice({
   name: "tugas",
   initialState,
   reducers: {
-    setTugas: (state, action) => {
-      state.tugasProfil = action.payload;
-    },
     setListTugas: (state, action) => {
       state.listTugas = action.payload;
     },

@@ -10,9 +10,6 @@ const Univ = createSlice({
   name: "univ",
   initialState,
   reducers: {
-    setUniv: (state, action) => {
-      state.univProfil = action.payload;
-    },
     setListUniv: (state, action) => {
       state.listUniv = action.payload;
     },

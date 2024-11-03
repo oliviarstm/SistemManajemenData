@@ -10,9 +10,6 @@ const Mentor = createSlice({
   name: "mentor",
   initialState,
   reducers: {
-    setMentor: (state, action) => {
-      state.mentorProfil = action.payload;
-    },
     setListMentor: (state, action) => {
       state.listMentor = action.payload;
     },

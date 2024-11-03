@@ -7,8 +7,8 @@ import {useDispatch, useSelector} from "react-redux";
 import axios from "../../utils/axios.js";
 import {removeMenteeEditId} from "../../store/reducer/mentee.js";
 
-const exTitle = "Data Mentee";
-const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""];
+const title = "Data Mentee";
+const fields = ["Nama", "Universitas", "Kelas", "Sesi", ""];
 
 const DataMentee = () => {
   const location = useLocation();
@@ -100,8 +100,8 @@ const DataMentee = () => {
 
   // FOR TABLE SETTINGS
   const propsData = {
-    title: exTitle,
-    field: exField,
+    title: title,
+    field: fields,
     data: menteeData,
     isEnable: false,
     // desc:

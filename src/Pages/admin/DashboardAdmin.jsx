@@ -20,7 +20,7 @@ const DashboardAdmin = () => {
         <DashboardButton
           title="Data Mentor"
           image={gambar13}
-          path="/admin/user"
+          path="/admin/mentor"
         />
         <DashboardButton
           title="Validasi"

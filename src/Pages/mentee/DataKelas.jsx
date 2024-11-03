@@ -9,11 +9,14 @@ const DataKelas=()=>{
     const [menteeData, setMenteeData] = useState([]);
     const {accountId} = useSelector(state => state.Auth)
 
+    // Mengambil data mentee dari database
     const fetchData =async ()=>{
         try {
+            // Mengambil data berdasarkan id mentee
             const getKelas =await axios.get(`/mentee/${accountId}`)
             const kelas = getKelas.data.data.class
             let result;
+            // Mengambil data berdasarkan kelas
             const res = await axios.get(`/menteeclass/?class=${kelas}`);
             result = res.data.data;
             setMenteeData(result); // Set menteeData

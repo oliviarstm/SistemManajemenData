@@ -18,18 +18,6 @@ export const menteeeditdelete = [
     onClick: (id, handleRefresh) => mentee.delete(id, handleRefresh),
   },
 ];
-export const admineditdelete = [
-  {
-    label: "Edit",
-    value: "edit",
-    onClick: (id) => admin.edit(id),
-  },
-  {
-    label: "Delete",
-    value: "delete",
-    onClick: (id, handleRefresh) => admin.delete(id, handleRefresh),
-  },
-];
 export const mentoreditdelete = [
   {
     label: "Edit",
@@ -65,10 +53,4 @@ export const tugaseditdelete = [
     value: "delete",
     onClick: (id, handleRefresh) => tugas.delete(id, handleRefresh),
   },
-];
-export const absen = [
-  { label: "On Cam", value: "oncam", onClick: (id) => absenAcion.oncam(id) },
-  { label: "Off Cam", value: "offcam", onClick: (id) => absenAcion.offcam(id) },
-  { label: "Izin", value: "izin", onClick: (id) => absenAcion.izin(id) },
-  { label: "Alpha", value: "aplha", onClick: (id) => absenAcion.alpha(id) },
 ];
