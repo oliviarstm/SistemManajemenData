@@ -25,6 +25,6 @@ const Univ = createSlice({
   },
 });
 
-export const {setUniv, setListUniv, setUnivEditId, removeUnivEditId} =Univ.actions
+export const {setListUniv, setUnivEditId, removeUnivEditId} =Univ.actions
 // export const {toggleDarkMode} =auth.actions
 export default Univ.reducer;
