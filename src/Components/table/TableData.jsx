@@ -41,11 +41,6 @@ const TableData = ({
                     {field}
                   </td>
               );
-              // return (
-              //     <td key={index} className={`px-5 font-semibold ${isLast ? "text-right pe-8" : ""}`}>
-              //         {field}
-              //     </td>
-              // );
             })}
           </tr>
           {data.map((val, index) => {

@@ -1,16 +1,3 @@
-// const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""]
-// const exData = [{
-//     Name:"Olivia",
-//     Universty:"Poltek",
-//     Class:"A",
-//     Session:"Pagi"
-// }, {
-//     Name:"Kelvin",
-//     Universty:"ITEBA",
-//     Class:"B",
-//     Session:"Siang"
-// }]
-
 import AbsenButton from "../AbsenButton.jsx";
 import ThreeDot from "../table/ThreeDot.jsx";
 
@@ -22,7 +9,6 @@ const TableData = ({
   buttonLabel,
   buttonDropDown,
 }) => {
-  // Temporary
 
   return (
     <div className="bg-white mx-10 my-5 flex flex-row justify-between items-center text-black">

@@ -24,7 +24,6 @@ const onPreview  = (name)=>{
         })
     }else {
         console.log("ITS A PDF")
-        //TODO pdf view
         Swal.fire({
             title: "Download File",
             icon: "info",

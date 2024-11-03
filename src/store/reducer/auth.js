@@ -40,5 +40,4 @@ const Auth = createSlice({
 });
 
 export const {logout, login} =Auth.actions
-// export const {toggleDarkMode} =auth.actions
 export default Auth.reducer;

@@ -21,13 +21,6 @@ const DashboardMentee = () => {
                 console.log(err)
             })
     }, [menteeProfil]);
-    // const data = {
-    //   nama: "Olivia",
-    //   univ: "Universitas Terbuka",
-    //   kelas: "B",
-    //   sesi: "Malam",
-    //   mentor: "Kelvin",
-    // };
     return (
         <div>
             <div className="max-w-6xl bg-white rounded-lg mx-auto mt-12 h-40 p-5 shadow-xl">

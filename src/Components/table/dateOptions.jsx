@@ -18,7 +18,6 @@ export const absenOptions = {
     selected: "",
   },
   icons: {
-    // () => ReactElement | JSX.Element
     prev: () => <span>Previous</span>,
     next: () => <span>Next</span>,
   },
@@ -55,7 +54,6 @@ export const absenFilter = {
     selected: "",
   },
   icons: {
-    // () => ReactElement | JSX.Element
     prev: () => <span>Previous</span>,
     next: () => <span>Next</span>,
   },

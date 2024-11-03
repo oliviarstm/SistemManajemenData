@@ -8,15 +8,6 @@ const DataMenteeMenu = ({ role }) => {
   const handleClickAll = () => {
     navigate("detail", { state: { filter: "Semua Mentee" } });
   };
-  // const handleClickA = ()=>{
-  //     navigate('detail', {state:{filter:"Kelas A"}})
-  // }
-  // const handleClickB = ()=>{
-  //     navigate('detail', {state:{filter:"Kelas B"}})
-  // }
-  // const handleClickC = ()=>{
-  //     navigate('detail', {state:{filter:"Kelas C"}})
-  // }
   const handleClickIndividual = () => {
     navigate("detail", { state: { filter: "Mentor" } });
   };
@@ -33,21 +24,6 @@ const DataMenteeMenu = ({ role }) => {
           image={semuaMentee}
           onClick={handleClickAll}
         />
-        {/* <DashboardButton
-          title="Kelas A"
-          image={kelasA}
-          onClick={handleClickA}
-        />
-        <DashboardButton
-          title="Kelas B"
-          image={kelasB}
-          onClick={handleClickB}
-        />
-        <DashboardButton
-          title="Kelas C"
-          image={kelasC}
-          onClick={handleClickC}
-        /> */}
         {role === "mentor" ? (
           <DashboardButton
             title="Mentee Individual"

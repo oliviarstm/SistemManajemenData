@@ -14,5 +14,4 @@ const Absen = createSlice({
 });
 
 export const {setMonth} =Absen.actions
-// export const {toggleDarkMode} =auth.actions
 export default Absen.reducer;

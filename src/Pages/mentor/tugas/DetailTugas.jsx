@@ -45,10 +45,8 @@ useEffect(() => {
 
   console.log(listPengumpulan)
   const propsData = {
-    // title: listPengumpulan.length > 0 ? listPengumpulan[0].subyek : "Loading...",
     title: listPengumpulan.length > 0 ? listPengumpulan[0].subyek : "No Data",
     field: fields,
-    // data: listPengumpulan.length > 0 ? listPengumpulan : loadingData,
     data: listPengumpulan,
     tableType: "score",
     handleRefresh: handleRefresh,

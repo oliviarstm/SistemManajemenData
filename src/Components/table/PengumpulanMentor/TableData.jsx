@@ -1,6 +1,4 @@
 const TableData=({field, data, isEnable})=>{
-    // Temporary
-
     return <div className="bg-white mx-10 my-5 flex flex-row justify-between items-center text-black">
         <table className="w-full min-w-max table-auto text-left">
             <tr className="bg-[#FCFCFD] text-gray-600 text-sm h-12">

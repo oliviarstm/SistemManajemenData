@@ -43,7 +43,6 @@ const FormIzin = () => {
       })
     }
   };
-  // const [show, setShow] = useState(false)
   const handleChange = (selectedDate) => {
     handleInputChange("Tanggal", selectedDate);
     console.log(selectedDate);

@@ -30,7 +30,6 @@ const MainLayout = ({role}) => {
             <ProfilButton />
           </div>
         </div>
-        {/* TODO Outlet */}
         <Outlet />
       </div>
     </div>

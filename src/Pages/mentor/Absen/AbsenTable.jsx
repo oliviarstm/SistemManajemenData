@@ -59,7 +59,6 @@ const AbsenTable = () => {
     setFilter(selectedOption.value);
   }
   const dateFilterFunction = (selectedDate) => {
-    // setFilter(selectedOption.value);
     const date = formatDate(selectedDate)
     setDateFilter(date)
   }
@@ -73,7 +72,6 @@ const AbsenTable = () => {
     title: title,
     field: fields,
     data: absensiData,
-    // data: exData,
     classFilterFunction:handleFilterChange,
     dateFilterFunction:dateFilterFunction,
     date: dateFilter,

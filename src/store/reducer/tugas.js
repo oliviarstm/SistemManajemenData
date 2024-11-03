@@ -23,5 +23,4 @@ const Tugas = createSlice({
 });
 
 export const {setListTugas, setTugasEditId, removeTugasEditId} =Tugas.actions
-// export const {toggleDarkMode} =auth.actions
 export default Tugas.reducer;

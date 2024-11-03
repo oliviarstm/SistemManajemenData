@@ -5,7 +5,6 @@ import Mentor from "./mentor.js";
 import Univ from "./univ.js";
 import Tugas from "./Tugas.js";
 import Absen from "./absensi.js";
-// import slice2 from "./slice2.js";
 
 const reducer=combineReducers({
     Auth,

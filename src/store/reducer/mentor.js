@@ -23,5 +23,4 @@ const Mentor = createSlice({
 });
 
 export const {setListMentor, setMentorEditId, removeMentorEditId} =Mentor.actions
-// export const {toggleDarkMode} =auth.actions
 export default Mentor.reducer;

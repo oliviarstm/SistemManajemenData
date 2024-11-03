@@ -104,10 +104,6 @@ const DataMentee = () => {
     field: fields,
     data: menteeData,
     isEnable: false,
-    // desc:
-    //   filter === "Individual Mentor"
-    //     ? "Individual Mentee"
-    //     : filter || "Semua Kelas",
     type: role === "admin" ? "add" : null,
     option: menteeeditdelete,
     tableType: null,

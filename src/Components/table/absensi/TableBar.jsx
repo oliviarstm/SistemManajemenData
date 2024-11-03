@@ -15,7 +15,6 @@ const TableBar = ({ title, desc, classFilterFunction, dateFilterFunction }) => {
     const [filter, setFilter] = useState(null);
     const [show, setShow] = useState(false);
     const handleChange = (selectedDate) => {
-        // handleInputChange("Tanggal", selectedDate);
         dateFilterFunction(selectedDate)
         console.log(selectedDate);
     };
@@ -38,15 +37,6 @@ const TableBar = ({ title, desc, classFilterFunction, dateFilterFunction }) => {
                     options={options}
                     placeholder="Filter Kelas"
                 />
-                {/*<Select*/}
-                {/*    classNames="px-10"*/}
-                {/*    value={filter}*/}
-                {/*    options={absenOptions}*/}
-                {/*    onChange={handleChange}*/}
-                {/*    show={show}*/}
-                {/*    setShow={closeDropdown}*/}
-                {/*    placeholder="Pilih Filter"*/}
-                {/*/>*/}
                 <Datepicker
                 classNames="w-[75%] grow rounded-md border"
                 options={absenFilter}

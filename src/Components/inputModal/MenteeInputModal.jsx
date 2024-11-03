@@ -8,7 +8,6 @@ import {setListMentee} from "../../store/reducer/mentee.js";
 import {setListMentor} from "../../store/reducer/mentor.js";
 
 // Options for Select
-// let universitasOptions = [];
 const kategoriOptions = [
   { value: 0, label: "Non-It" },
   { value: 1, label: "IT" },
@@ -80,7 +79,6 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
       try {
         if (editId!==""){
           const response = await axios.get(`/mentee/${editId}`)
-          // setFormValues((await axios.get(`/mentee/1`)).response)
           const data = response.data.data
           setFormValues({
             "Username":data.username,
@@ -110,7 +108,6 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
         if (mentorEditId!==""){
           console.log("MENTOR GET")
           const response = await axios.get(`/mentor/${mentorEditId}`)
-          // setFormValues((await axios.get(`/mentee/1`)).response)
           const data = response.data.data
           setFormValues({
             "Username":data.username,
@@ -179,7 +176,6 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
     }catch (e) {
       console.log(e)
       await createMentor()
-      // throw e
     }
   }
 
@@ -222,7 +218,6 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
     }catch (e) {
       console.log(e)
       await editMentor()
-      // throw e
     }
   }
   const editMentor = async ()=>{

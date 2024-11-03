@@ -26,5 +26,4 @@ const Mentee = createSlice({
 });
 
 export const {setMentee, setListMentee, setMenteeEditId, removeMenteeEditId} =Mentee.actions
-// export const {toggleDarkMode} =auth.actions
 export default Mentee.reducer;

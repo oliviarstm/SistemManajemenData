@@ -1,5 +1,3 @@
-// src/MonthSelector.js
-
 import { useState, useRef, useEffect } from 'react';
 import {useDispatch} from "react-redux";
 import {setMonth} from "../../store/reducer/absensi.js";
