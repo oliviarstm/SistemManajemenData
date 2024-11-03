@@ -4,17 +4,8 @@ import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "../../utils/axios.js";
 
-const exTitle = "Validasi Pengajuan";
-const exField = ["Nama Pengajuan",""];
-const exData = [{
-    id:1,
-    Name:"Olivia",
-},{
-    id:2,
-    Name:"Kelvin",
-}]
-
-
+const title = "Validasi Pengajuan";
+const fields = ["Nama Pengajuan",""];
 const Validasi = () => {
     const navigate = useNavigate()
     const [pengunduranData, setPengunduranData]=useState([])
@@ -35,8 +26,8 @@ const Validasi = () => {
     }
 
     const propsData={
-        title:exTitle,
-        field:exField,
+        title:title,
+        field:fields,
         data:pengunduranData,
         isEnable:false,
         option:menteeeditdelete,

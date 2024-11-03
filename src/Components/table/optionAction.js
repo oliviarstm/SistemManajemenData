@@ -1,5 +1,4 @@
 import axios from "../../utils/axios.js";
-import {useDispatch} from "react-redux";
 import {setMenteeEditId} from "../../store/reducer/mentee.js";
 import {setMentorEditId} from "../../store/reducer/mentor.js";
 import {setUnivEditId} from "../../store/reducer/univ.js";

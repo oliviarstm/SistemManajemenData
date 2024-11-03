@@ -1,11 +1,7 @@
 import {useEffect, useState} from "react";
-import Select from "react-select";
 import axios from "../../utils/axios.js";
 import Swal from "sweetalert2";
-import {tempPassword} from "../../utils/helper.js";
 import {useDispatch, useSelector} from "react-redux";
-import {setListMentee} from "../../store/reducer/mentee.js";
-import {setListMentor} from "../../store/reducer/mentor.js";
 import {setListUniv} from "../../store/reducer/univ.js";
 
 const UnivInputModal = ({ isOpen, onClose, title, isButton }) => {
@@ -89,7 +85,7 @@ const UnivInputModal = ({ isOpen, onClose, title, isButton }) => {
     console.log("THIS RUNSS")
     for (let titles of title) {
       if (!formValues[titles]) {
-        Swal.fire({
+        await Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: `Please fill in the ${titles}`

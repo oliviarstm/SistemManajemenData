@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "../../utils/axios.js";
-import {useSelector} from "react-redux";
 import Swal from "sweetalert2";
 
 const FormTugas =({titleTugas, batas, idMentee, idTugas})=>{
@@ -48,7 +47,7 @@ const FormTugas =({titleTugas, batas, idMentee, idTugas})=>{
             handleRefresh()
         }catch (e) {
             console.log(e)
-            Swal.fire({
+            await Swal.fire({
                 title: "Terjadi Kesalahan",
                 text: "Periksa Koneksi",
                 icon: "error"

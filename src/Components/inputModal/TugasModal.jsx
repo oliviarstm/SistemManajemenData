@@ -83,7 +83,7 @@ const TugasModal = ({ isOpen, onClose, title, isButton }) => {
         editId===""?await createTugas():await editTugas()
         for (let titles of title) {
             if (!formValues[titles]) {
-                Swal.fire({
+                await Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
                     text: `Please fill in the ${titles}`

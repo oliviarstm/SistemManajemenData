@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 import axios from "../../../utils/axios.js";
-import {isPDF, onPreview} from "../../../utils/helper.js";
+import {onPreview} from "../../../utils/helper.js";
 
 const TableData = ({ field, data, type, handleRefresh }) => {
 
@@ -21,7 +21,7 @@ const TableData = ({ field, data, type, handleRefresh }) => {
         })
         await axios.put(`/pengumpulan-tugas/${index}`, {nilai:nilai})
         if (nilai){
-            Swal.fire(`Nilai di update`)
+            await Swal.fire(`Nilai di update`)
             handleRefresh()
         }
     };

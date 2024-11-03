@@ -246,7 +246,7 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
     console.log("THIS RUNSS")
     for (let titles of title) {
       if (!formValues[titles]) {
-        Swal.fire({
+        await Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: `Please fill in the ${titles}`

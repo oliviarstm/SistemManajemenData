@@ -15,7 +15,7 @@ import TableData from "./TableData.jsx";
 
 
 const Table =({props})=>{
-    const {title, field, data, isEnable, desc, option, handleAdd, buttonLabel, buttonDropDown}=props
+    const {title, field, data, isEnable, desc, option, buttonLabel, buttonDropDown}=props
     return <>
         <TableBar title={title} desc={desc}/>
         <TableData field={field} data={data} isEnable={isEnable} options={option} buttonLabel={buttonLabel} buttonDropDown={buttonDropDown}/>

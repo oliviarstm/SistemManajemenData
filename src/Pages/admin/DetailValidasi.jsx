@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import FormCard from "../../Components/FormCard.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "../../utils/axios.js";
-import {isPDF, onPreview} from "../../utils/helper.js";
+import {onPreview} from "../../utils/helper.js";
 import Swal from "sweetalert2";
 
 const DetailValidasi = () => {
@@ -10,16 +10,6 @@ const DetailValidasi = () => {
   const id_pengajuan = location.state?.id_pengajuan;
   const navigate = useNavigate();
   console.log(id_pengajuan);
-  // State untuk menyimpan data formulir
-  // const [formData, setFormData] = useState({
-  //     "Nama":"Kelvin",
-  //     "Universitas":"Institut Teknologi Batam",
-  //     "Kelas":"A",
-  //     "Sesi":"Morning",
-  //     "Individual Mentor":"Olivia",
-  //     "Alasan":"Jadwal sudah tidak mendukung",
-  //     "File":"File",
-  // });
   const [formData, setFormData] = useState([]);
   useEffect(() => {
     axios

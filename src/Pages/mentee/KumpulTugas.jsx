@@ -5,12 +5,6 @@ import axios from "../../utils/axios.js";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 
-const data = {
-    id:1,
-    nama:"Crazy 8",
-    batas_waktu:"10-10-2024"
-}
-
 const KumpulTugas=()=>{
     const location = useLocation()
     const id_tugas = location.state?.id_tugas

@@ -1,27 +1,10 @@
 import Table from "../../../Components/table/absensi/Index.jsx";
-import {absen} from "../../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
 import axios from "../../../utils/axios.js";
 import {useSelector} from "react-redux";
 
-const exTitle = "Absensi";
-const exField = ["Nama", "Kelas", "Sesi", "Hadir"];
-const exData = [
-  {
-    id: 1,
-    Name: "Kelvin",
-    Kelas: "A",
-    Sesi: "Morning",
-    checked:0
-  },
-  {
-    id: 2,
-    Name: "Abdee",
-    Kelas: "C",
-    Sesi: "Afternoon",
-    checked:null
-  },
-];
+const title = "Absensi";
+const fields = ["Nama", "Kelas", "Sesi", "Hadir"];
 
 const AbsenTable = () => {
   const [filter, setFilter] = useState("");
@@ -33,8 +16,6 @@ const AbsenTable = () => {
   const fetchData = async () => {
     try {
       let result;
-      // const res = await axios.get(`/absensi`);
-      // result = res.data.data;
       if (
           filter === "Kelas A" || filter === "Kelas B" || filter === "Kelas C"
       ) {
@@ -89,8 +70,8 @@ const AbsenTable = () => {
 
 
   const propsData = {
-    title: exTitle,
-    field: exField,
+    title: title,
+    field: fields,
     data: absensiData,
     // data: exData,
     classFilterFunction:handleFilterChange,

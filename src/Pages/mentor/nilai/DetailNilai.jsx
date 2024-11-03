@@ -3,21 +3,7 @@ import {useLocation} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "../../../utils/axios.js";
 
-const Field = ["Nama Tugas", "Nilai"];
-const exData = [{
-    id:1,
-    NameTugas:"Crazy 8",
-    Nilai:"80"
-}, {
-    id:2,
-    NameTugas:"Portofolio",
-    Nilai:"82"
-},{
-    id:3,
-    NameTugas:"Front end",
-    Nilai:"91"
-}]
-
+const fields = ["Nama Tugas", "Nilai"];
 const DetailNilai=()=>{
     const location = useLocation()
     const id_mentee = location.state?.id_mentee
@@ -52,7 +38,7 @@ const DetailNilai=()=>{
 
     const propsData={
         title: mentee.name,
-        field: Field,
+        field: fields,
         data: tugas,
         isEnable: false,
         tableType:"none"

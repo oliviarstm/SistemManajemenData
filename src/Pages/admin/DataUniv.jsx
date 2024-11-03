@@ -6,26 +6,8 @@ import UnivInputModal from "../../Components/inputModal/UnivInputModal.jsx";
 import {removeUnivEditId} from "../../store/reducer/univ.js";
 import {useDispatch} from "react-redux";
 
-const exTitle = "Data Universitas";
-const exField = ["Nama", "Email", "Alamat", "Nama PIC", "Nomor PIC", "Email PIC",""];
-const exData = [{
-    id:1,
-    Name:"institut teknologi batam",
-    Email:"iteba@email.com",
-    Alamat:"tiban",
-    NamaPic:"bapak1",
-    NomorPic:"081111",
-    EmailPic:"bapak1@email.com"
-},{
-    id:2,
-    Name:"politeknik negeri batam",
-    Email:"polibatam@email.com",
-    Alamat:"batam center",
-    NamaPic:"bapak2",
-    NomorPic:"081122",
-    EmailPic:"bapak2@email.com"
-}]
-
+const title = "Data Universitas";
+const fields = ["Nama", "Email", "Alamat", "Nama PIC", "Nomor PIC", "Email PIC",""];
 const DataUniv = () => {
     const dispatch = useDispatch()
     const [isModalOpen, setModalOpen] = useState(false);
@@ -57,8 +39,8 @@ const DataUniv = () => {
     }
 
     const propsData={
-        title:exTitle,
-        field:exField,
+        title:title,
+        field:fields,
         data:univData,
         isEnable:false,
         type:'add',

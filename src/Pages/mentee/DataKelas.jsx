@@ -3,21 +3,8 @@ import axios from "../../utils/axios.js";
 import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 
-const exTitle = "Data Kelas";
-const exField = ["Nama", "Universitas", "Kelas", "Sesi"];
-const exData = [{
-    id:1,
-    Name:"Olivia",
-    Universty:"Poltek",
-    Class:"A",
-    Session:"Pagi"
-}, {
-    id:2,
-    Name:"Kelvin",
-    Universty:"ITEBA",
-    Class:"A",
-    Session:"Siang"
-}]
+const title = "Data Kelas";
+const fields = ["Nama", "Universitas", "Kelas", "Sesi"];
 const DataKelas=()=>{
     const [menteeData, setMenteeData] = useState([]);
     const {accountId} = useSelector(state => state.Auth)
@@ -40,8 +27,8 @@ const DataKelas=()=>{
     }, []);
 
     const propsData={
-        title:exTitle,
-        field:exField,
+        title:title,
+        field:fields,
         data:menteeData,
         isEnable:false,
         tableType:"none"

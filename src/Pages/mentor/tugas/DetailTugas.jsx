@@ -3,16 +3,7 @@ import { useEffect, useState } from "react";
 import Table from "../../../Components/table/detailTugas/Index.jsx";
 import axios from "../../../utils/axios.js";
 
-const exField = ["Nama", "Kelas", "Sesi", "File", "Nilai", "Aksi"];
-const loadingData = [
-  {
-    id: 1,
-    Name: "Loading",
-    Class: "Loading",
-    Session: "Loading",
-  },
-];
-
+const fields = ["Nama", "Kelas", "Sesi", "File", "Nilai", "Aksi"];
 const DetailTugas = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -56,7 +47,7 @@ useEffect(() => {
   const propsData = {
     // title: listPengumpulan.length > 0 ? listPengumpulan[0].subyek : "Loading...",
     title: listPengumpulan.length > 0 ? listPengumpulan[0].subyek : "No Data",
-    field: exField,
+    field: fields,
     // data: listPengumpulan.length > 0 ? listPengumpulan : loadingData,
     data: listPengumpulan,
     tableType: "score",

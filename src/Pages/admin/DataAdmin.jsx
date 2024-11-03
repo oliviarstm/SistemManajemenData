@@ -4,19 +4,8 @@ import {useEffect, useState} from "react";
 import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
 import axios from "../../utils/axios.js";
 
-const exTitle = "Data Admin";
-const exField = ["Nama", "Email", "Username",""];
-const exData = [{
-    id:1,
-    Name:"kelvin",
-    Email:"kelvin@email.com",
-    Username:"kln",
-},{
-    id:2,
-    Name:"olivia",
-    Email:"olivia@email.com",
-    Username:"oliv",
-}]
+const title = "Data Admin";
+const fields = ["Nama", "Email", "Username",""];
 
 const DataAdmin = () => {
     const [isModalOpen, setModalOpen] = useState(false);
@@ -47,8 +36,8 @@ const DataAdmin = () => {
     };
 
     const propsData={
-        title:exTitle,
-        field:exField,
+        title:title,
+        field:fields,
         data:adminData,
         isEnable:false,
         type:'add',

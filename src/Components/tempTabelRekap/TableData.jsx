@@ -1,20 +1,6 @@
-// const exField = ["Nama", "Universitas", "Kelas", "Sesi", ""]
-// const exData = [{
-//     Name:"Olivia",
-//     Universty:"Poltek",
-//     Class:"A",
-//     Session:"Pagi"
-// }, {
-//     Name:"Kelvin",
-//     Universty:"ITEBA",
-//     Class:"B",
-//     Session:"Siang"
-// }]
-
-
 import {useNavigate} from "react-router-dom";
 
-const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, dataClick})=>{
+const TableData=({field, data, isEnable, dataClick})=>{
     const navigate = useNavigate()
     const moveToMenuPage=(id)=>{
         console.log(id)
@@ -38,7 +24,7 @@ const TableData=({field, data, isEnable, options, buttonLabel, buttonDropDown, d
                 data.map((val, index) => {
                     return <tr key={index} className="h-12">
                         {
-                            Object.entries(val).slice(1).map(([key, value, array], innerIndex) => {
+                            Object.entries(val).slice(1).map(([value, array], innerIndex) => {
                                 console.log(array)
                                 if (innerIndex===0){
                                     return <td key={innerIndex} className="px-5 text-black">

@@ -3,23 +3,11 @@ import {mentoreditdelete} from "../../Components/table/threedotmenu.js";
 import {useEffect, useState} from "react";
 import MenteeInputModal from "../../Components/inputModal/MenteeInputModal.jsx";
 import axios from "../../utils/axios.js";
-import {removeMenteeEditId} from "../../store/reducer/mentee.js";
 import {removeMentorEditId} from "../../store/reducer/mentor.js";
 import {useDispatch} from "react-redux";
 
-const exTitle = "Data Mentor";
-const exField = ["Nama", "Email", "Username",""];
-const exData = [{
-    id:1,
-    Name:"budi",
-    Email:"budi@email.com",
-    Username:"budiii",
-},{
-    id:2,
-    Name:"hanif",
-    Email:"hanif@email.com",
-    Username:"hanip",
-}]
+const title = "Data Mentor";
+const fields = ["Nama", "Email", "Username",""];
 
 const DataMentor = () => {
     const dispatch = useDispatch()
@@ -53,8 +41,8 @@ const DataMentor = () => {
     };
 
     const propsData={
-        title:exTitle,
-        field:exField,
+        title:title,
+        field:fields,
         data:mentorData,
         isEnable:false,
         type:'add',

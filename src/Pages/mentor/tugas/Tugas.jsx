@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {menteeeditdelete, tugaseditdelete} from "../../../Components/table/threedotmenu.js";
+import {tugaseditdelete} from "../../../Components/table/threedotmenu.js";
 import Table from "../../../Components/table/Index.jsx";
 import TugasModal from "../../../Components/inputModal/TugasModal.jsx";
 import {useDispatch, useSelector} from "react-redux";
@@ -7,21 +7,8 @@ import { useNavigate } from "react-router-dom";
 import {removeTugasEditId} from "../../../store/reducer/tugas.js";
 import axios from "../../../utils/axios.js";
 
-const exTitle = "Tugas";
-const exField = ["Nama Tugas", "Batas Pengumpulan", ""];
-const exData = [
-  {
-    id: 1,
-    subyek: "Crazy 8",
-    batas_waktu: "8-10-2024",
-  },
-  {
-    id: 2,
-    subyek: "Portofolio",
-    batas_waktu: "25-10-2024",
-  },
-];
-
+const title = "Tugas";
+const fields = ["Nama Tugas", "Batas Pengumpulan", ""];
 const Tugas = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch()
@@ -58,8 +45,8 @@ const Tugas = () => {
     setRefresh(!refresh); // Toggle refresh state to trigger re-fetching data
   }
   const propsData = {
-    title: exTitle,
-    field: exField,
+    title: title,
+    field: fields,
     data: tugasData,
     isEnable: role !== "mentee",
     type: role === "mentee" ? null : "add",

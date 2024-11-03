@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "../../utils/axios.js";
 import {setMonth} from "../../store/reducer/absensi.js";
 
-const Title = "Rekap Absen Mentee";
-const Field = ["Tanggal", "Status"];
+const title = "Rekap Absen Mentee";
+const fields = ["Tanggal", "Status"];
 
 const Absen = () => {
     const { AbsensiMonth } = useSelector((state) => state.Absen);
@@ -45,8 +45,8 @@ const Absen = () => {
     console.log(absen)
 
     const propsData = {
-        title: Title,
-        field: Field,
+        title: title,
+        field: fields,
         data: absen,
         isEnable: false,
         tableType: "none",

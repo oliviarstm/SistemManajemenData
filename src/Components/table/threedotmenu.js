@@ -22,7 +22,7 @@ export const admineditdelete = [
   {
     label: "Edit",
     value: "edit",
-    onClick: (id, handleRefresh) => admin.edit(id),
+    onClick: (id) => admin.edit(id),
   },
   {
     label: "Delete",
