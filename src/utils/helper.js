@@ -1,5 +1,6 @@
 import Swal from "sweetalert2";
 
+// Membuat password berdasarkan email dan nomor telepon
 const tempPassword = (email, phoneNumber=1234) => {
     // Extract the email name (everything before the @)
     const emailName = email.split('@')[0];
@@ -11,10 +12,12 @@ const tempPassword = (email, phoneNumber=1234) => {
     return `${emailName}${phoneLastFour}`;
 };
 
+// Function untuk mengecek file pdf
 function isPDF(filename) {
-    // Use a regular expression to check if the filename ends with ".pdf" (case-insensitive)
     return /\.pdf$/i.test(filename);
 }
+
+// Membuka pop up menampilkan gambar atau download pdf
 const onPreview  = (name)=>{
     const fileUrl = `${import.meta.env.VITE_APP_IMG_URL}${name}`
     console.log(fileUrl)
@@ -31,7 +34,7 @@ const onPreview  = (name)=>{
             confirmButtonText: "Download"
         }).then((result) => {
             if (result.isConfirmed) {
-                //Open fileUrl on the new tab
+                //Buka pdf di tab baru
                 window.open(fileUrl, "_blank");
             }
         })

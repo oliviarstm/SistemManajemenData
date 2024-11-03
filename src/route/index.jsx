@@ -45,7 +45,9 @@ const Routing = () => {
           </Route>
           {/*auth route*/}
           <Route element={<AuthRoute isLogin={isLogin} />}>
+            {/*Main Layout*/}
             <Route element={<MainLayout role={role} />}>
+              {/*Admin Route*/}
               <Route element={<AdminRoute role={role} />}>
                 <Route path="admin">
                   <Route path="dashboard" element={<DashboardAdmin />} />
@@ -60,6 +62,7 @@ const Routing = () => {
                   </Route>
                 </Route>
               </Route>
+              {/*Mentor Route*/}
               <Route element={<MentorRoute role={role} />}>
                 <Route path="mentor">
                   <Route path="dashboard" element={<DashboardMentor />} />
@@ -84,6 +87,7 @@ const Routing = () => {
                   <Route path="profile" element={<EditProfilMentor />} />
                 </Route>
               </Route>
+              {/*Mentee Route*/}
               <Route element={<MenteeRoute role={role} />}>
                 <Route path="mentee">
                   <Route path="dashboard" element={<DashboardMentee />} />
