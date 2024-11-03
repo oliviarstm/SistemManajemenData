@@ -169,7 +169,6 @@ const MenteeInputModal = ({ isOpen, onClose, title, isButton }) => {
         "phone_number": formValues["No. Hp"],
         "category": formValues["Kategori"]["value"],
         "major": formValues["Jurusan"].toLowerCase(),
-        // "id_user": 16,
         "id_mentor": formValues["Individual Mentor"]["value"],
         "id_university": formValues["Universitas"]["value"]
       }
