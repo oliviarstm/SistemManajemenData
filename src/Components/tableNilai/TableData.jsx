@@ -13,15 +13,18 @@ const TableData = ({
   return (
     <div className="bg-white mx-10 my-5 flex flex-row justify-between items-center text-black">
       <table className="w-full min-w-max table-auto text-left">
+        <thead>
         <tr className="bg-[#FCFCFD] text-gray-600 text-sm h-12">
           {field.map((field, index) => {
             return (
-              <td key={index} className="px-5 font-semibold">
-                {field}
-              </td>
+                <td key={index} className="px-5 font-semibold">
+                  {field}
+                </td>
             );
           })}
         </tr>
+        </thead>
+        <tbody>
         {data.map((val, index) => {
           return (
             <tr key={index} className="h-12">
@@ -72,8 +75,9 @@ const TableData = ({
                 )}
               </td>
             </tr>
-          );
+          )
         })}
+        </tbody>
       </table>
     </div>
   );
